@@ -11,28 +11,24 @@ def getnext (list):
 def reader (s, k):
     word = list()            
     char = getnext(s)
-    while char != None :
-        
+    while char != None :        
         if len(word) < k :
             word.append(char)
         else :
-            word.append(char)
             word.pop(0)
-            print word, len(word)                
-        
-#         if len(word) == k:            
-            
+            word.append(char)
+            print word, len(word)                                    
         char = getnext(s)
+    return 0
 
 
 def main():
     
-    k = 3
-    s = list('gagtccgatggcgttggat')
+    k = 5
+    s = 'gagtccgatggcgttggat'
     
-    reader(s, k)
+    return reader(list(s), k)
         
-  
  
 if __name__ == "__main__":
     sys.exit(main())
