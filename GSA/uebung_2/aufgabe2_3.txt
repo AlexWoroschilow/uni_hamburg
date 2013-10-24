@@ -1,0 +1,14 @@
+Pseudocode:
+
+Assign k
+Initialize count = 0
+FOR i in length(s)
+	x = getnext(s)
+	IF x = n
+		break
+	ELSE 
+		count ++
+		IF count >= k
+			print s[i-k]
+	ENDIF
+ENDFOR
