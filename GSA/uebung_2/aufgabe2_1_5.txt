@@ -1,0 +1,4 @@
+5. Konzeptionellen Untershied zwischen 1 und 3:
+
+Eine echt rekursive Implementierung einer Rekurrenzvorschrift muss sich immer wiederholen.
+Bei einer Implementierung mit Hilfe einer Matrix füllen wir die Matrix auf, von vorne an (d.h. von [0,0] bis [m,n]), so dass wir die Zahlen schon haben, die wir für die nächste Elementberechnung brauchen. 
