@@ -5,6 +5,7 @@
 # Nummer 1
 
 import string
+import sys
 
 counter=[0]
 
@@ -20,21 +21,21 @@ def Aligns(m,n):
 		else:
 			return Aligns(m-1,n) + Aligns(m,n-1) + Aligns(m-1,n-1)
 
-# Ask for user input of m and n
-x = int(raw_input('Choose m: '))
-y = int(raw_input('Choose n: '))
+# m und n als Kommandozeilen-Argumente
+x = int(sys.argv[1])
+y = int(sys.argv[2])
 
 a = Aligns(x,y)
 
 # Either print answer or error message
 if isinstance(a,int) == True:
+	print 'Aligns:'
 	print x, y, a, '(', counter[0], 'calls)'
 else:
 	print a
 
 		
 print 
-print
 
 
 # Nummer 2	
@@ -55,9 +56,9 @@ print
 counter=[0]
 
 def Alignstab(m,n):
-#	if m > 15 or n > 15:
-#		return 'Error. Parameters must be less than or equal to 15.'
-#	else:
+	if m > 15 or n > 15:
+		return 'Error. Parameters must be less than or equal to 15.'
+	else:
 		Matrix = []
 		for i in range(0,m+1):
 			Matrix.append([])
@@ -73,30 +74,27 @@ def Alignstab(m,n):
 				Matrix[i].append(x)
 		return Matrix[m][n]
 
-
-# Ask for user input of m and n
-x = int(raw_input('Choose m: '))
-y = int(raw_input('Choose n: '))
-
 b = Alignstab(x,y)
 
 # Either print answer or error message
-#if isinstance(b,int) == True:
-print x, y, b, '(', counter[0], 'accesses)'
-#else:
-#	print b
+if isinstance(b,int) == True:
+	print 'Alignstab: '
+	print x, y, b, '(', counter[0], 'accesses)'
+else:
+	print b
 
-print
-print
+
 
 
 
 # Nummer 4
 
-f = 15
-g = 11
-print 'Alignstab(15,11):'
-print f, g, Alignstab(f,g), '(', counter[0], 'accesses)'
+#f = 15
+#g = 11
+#print 'Alignstab(15,11):'
+#print f, g, Alignstab(f,g), '(', counter[0], 'accesses)'
 
 # Wir sehen damit, dass
 # Alignstab(15,11) = 921406335 braucht 522 Zugriffe auf die Matrix. 
+
+
