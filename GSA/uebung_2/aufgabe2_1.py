@@ -99,4 +99,4 @@ print 'Alignstab(15,11):'
 print f, g, Alignstab(f,g), '(', counter[0], 'accesses)'
 
 # Wir sehen damit, dass
-# Aligns(15,11) = 921406335 braucht 522 Zugriffe auf die Matrix. 
+# Alignstab(15,11) = 921406335 braucht 522 Zugriffe auf die Matrix. 
