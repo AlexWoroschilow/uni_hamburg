@@ -16,10 +16,11 @@ class Helper:
             return result
         return None
 
+
 def loesung (s, k, n):
+    word = list()
     hlp = Helper() 
     char = hlp.getnext(s)
-    word = list()
     while char != None :
         if char not in n :
             if len(word) == k :
@@ -35,13 +36,11 @@ def loesung (s, k, n):
 def main(argv):
 
 
-    k = 2
-    n = 'nag'
+    k = 5
+    n = 'tn'
     s = 'atgcatgcggttcgatgcgaccaatgcgtgncgtgaaaccatgcggngggntgcgaacnaatgcgtgcg'
     
     loesung (s, k, n)
-
-
 
 
  

@@ -3,27 +3,42 @@
 import sys, math, getopt, numpy
 
 class Loesung:
-    count = None
+    
+    countC = None
+    countA = None
     matrix = None
     
     def __init__(self):
-        self.count = 0 
-    
-    def getCount (self):
-        return self.count 
+        self.countC = 0 
+        self.countA = 0 
+        self.matrix = []
 
-    def aligns (self, i, j):
-        self.count +=1
+    def calls (self):
+        return self.countC
+
+    def accesses (self):
+        return self.countA 
+
+    def alignsR (self, i, j):
+        self.countC +=1
         result = 1
         if i <= 15 and j <= 15:
             if i != 0 and j != 0 :
-                result = self.aligns(i-1, j) + self.aligns(i, j-1) + self.aligns(i-1, j-1)
+                result = self.alignsR(i-1, j) + self.alignsR(i, j-1) + self.alignsR(i-1, j-1)
             return result
         return None
 
-    def alignsMatrix (self, i, j):
-#         matrix = [[0 for x in xrange(i+1)] for x in xrange(j+1)]
-                    
+    def alignsM (self, n, m):
+        if n <= 15 and m <= 15 :
+            for i in range (0, n + 1) :
+                self.matrix.append([])
+                for j in range (0, m + 1) : 
+                    if i == 0 or j == 0 :
+                        self.matrix[i].append(1)
+                    else :
+                        self.countA += 1
+                        self.matrix[i].append(self.matrix[i-1][j] + self.matrix[i][j-1] + self.matrix[i-1][j-1])
+            return self.matrix[n][m]
         return None
 
 
@@ -31,35 +46,35 @@ def main(argv):
 
     arg1 = None
     arg2 = None
-    
+
     if len(argv) == 2 :
-         
+        
         arg1 = int(argv[0])
         arg2 = int(argv[1])
-    
-        loesung = Loesung()
-        result = loesung.aligns(arg1, arg2)
-        count = loesung.getCount()
         
-        if result != None :
-            print arg1, arg2, result, "(" + str(count) + " calls)"
+        loesung = Loesung()
+        
+        resultM = loesung.alignsM(arg1, arg2)
+        accesses = loesung.accesses()
+        
+        resultR = loesung.alignsR(arg1, arg2)
+        calls = loesung.calls()
+                
+        if resultR != None and resultM != None:
+            print arg1, arg2, resultM, "(" + str(accesses) + " accesses)"
+            print arg1, arg2, resultR, "(" + str(calls) + " calls)"
             return(0)
 
+
     print("Falshe eingabe!")
-    
     if arg1 == None or arg2 == None :
         print("Bitte, geben Sie zwei Zahlen ein!")
         return(0)
-    
     print("i="+str(arg1)+" j="+str(arg2))
     return(0)
-    
 
-        
-sys.argv[1]
-sys.argv[2]
- 
+
+
 if __name__ == "__main__":
     sys.exit(main(sys.argv[1:]))
-    
     
