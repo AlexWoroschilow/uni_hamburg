@@ -2,7 +2,6 @@
 
 import sys, math, getopt, numpy
 
-
 class Helper:
     p = None
     
