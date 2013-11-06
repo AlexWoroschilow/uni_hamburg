@@ -3,16 +3,13 @@
 #include <string.h>
 
 
-
-
 int main(int argc, char *argv[])
 {
-	int temp = 0;
-	int eingabe = 0;
 	int quersumme = 0;
+	long int eingabe = 0, temp = 0;
 
 	if(argc == 2) {
-		if(sscanf(argv[1], "%d", &eingabe)) {
+		if(sscanf(argv[1], "%ld", &eingabe)) {
 			temp = eingabe;
 			while (temp != 0) {
 				quersumme = quersumme + ( temp % 10 );
@@ -21,6 +18,6 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	printf("Quersumme von %d ist %d \n", eingabe, quersumme); /* prints !!!Hello World!!! */
+	printf("Quersumme von %ld ist %d \n", eingabe, quersumme); /* prints !!!Hello World!!! */
 	return EXIT_SUCCESS;
 }
