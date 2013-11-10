@@ -91,10 +91,6 @@ def main(argv):
     
     
     sequenz_1 = Sequenz (seq_1)
-    sequenz_2 = Sequenz (seq_2)
-    
-
-    sequenz_1 = Sequenz (seq_1)
     substring_1 = sequenz_1.substring(k)
     while substring_1 != None :
         sequenz_2 = Sequenz (seq_2)
