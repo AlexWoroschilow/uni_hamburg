@@ -40,8 +40,6 @@ int main(int argc, char *argv[])
     }
   }
   
-  
-
   for(j = 0; j < 6; j++) {
     printf("\n");
     for(i = 0; i < 6; i++) {
@@ -56,6 +54,7 @@ int main(int argc, char *argv[])
       printf("\t%d", A[i][j]);
     }
   }
+  
   printf("\n\n");
   for(i = 1; i <= 6 - k; i++){
     for(j = 1; j <= 6 - k; j++){
@@ -74,6 +73,7 @@ int main(int argc, char *argv[])
       }
     }
   }
+  
   printf("\n");
   return(EXIT_SUCCESS);
 }
