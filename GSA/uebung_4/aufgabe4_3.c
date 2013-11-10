@@ -45,6 +45,7 @@ int fillDPtable(int m,int n)
             }
        }
     }
+    return(EXIT_SUCCESS);
 }
 
 
@@ -60,5 +61,6 @@ int main(int argc, char *argv[])
 	
 	/* Ausgabe: */
 	printf("u= %s, v= %s \n edist= %d ", u, v, fillDPtable(m,n));
-
+	
+	return(EXIT_SUCCESS); /* in order to prevent "warning: control reaches end of non-void function" */
 }
