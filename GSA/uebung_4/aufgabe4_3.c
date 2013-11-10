@@ -15,37 +15,37 @@ int fillDPtable(int m,int n)
 	int i, j;
 	int u, v;
 
-	int matrix[m+1][n+1];
+	int E[m+1][n+1];
 
     for(i = 0; i < n+1; i++) {
 		for(j = 0; j < m+1; j++) {
 			if( i == 0 && j == 0) {
-          		matrix[i][j] = 0;          
+          		E[i][j] = 0;          
          	} 
                         
                         
         	else if( i == 0 && j != 0) {
-                matrix[j][i] = matrix[j-1][i] + 1;
+                E[j][i] = E[j-1][i] + 1;
            }
                         
             else if( i != 0 && j == 0) {
-                matrix[j][i] = matrix[j][i-1] + 1;
+                E[j][i] = E[j][i-1] + 1;
            }
                         
             else {
                     
-                if(u[i] == v[j]){	/* hier ist das Syntax falsch!! */
+                if(u[i] == v[j]){	/* hier ist das Syntax irgendwie falsch!! */
                 	/* 'error: subscripted value is neither array nor pointer' */
                 	/* wie kann ich das richtig machen?? */
                     
-                	matrix[j][i] = min( matrix[j][i-1] + 1, min(matrix[j-1][i] + 1, matrix[j-1][i-1]));
+                	E[j][i] = min( E[j][i-1] + 1, min(E[j-1][i] + 1, E[j-1][i-1]));
                     	
                 }
-                	matrix[j][i] = min( matrix[j][i-1] + 1, min(matrix[j-1][i] + 1, matrix[j-1][i-1] + 1 ));
+                	E[j][i] = min( E[j][i-1] + 1, min(E[j-1][i] + 1, E[j-1][i-1] + 1 ));
             }
        }
     }
-    return matrix[m+1][n+1];
+    return E[m+1][n+1];
 }
 
 
@@ -62,5 +62,5 @@ int main(int argc, char *argv[])
 	/* Ausgabe: */
 	printf("u= %s, v= %s \n edist= %d ", u, v, fillDPtable(m,n));
 	
-	return(EXIT_SUCCESS); /* in order to prevent "warning: control reaches end of non-void function" */
+	return fillDPtable(m,n); /* in order to prevent "warning: control reaches end of non-void function" */
 }
