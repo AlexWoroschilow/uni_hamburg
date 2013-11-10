@@ -42,7 +42,7 @@ int min(int a,int b,int c)
 				E[j][i] = min((E[j][i-1] + 1), (E[j-1][i] + 1), (E[j-1][i-1] + 1));
       		  }
       	}
-    printf("\t%d", E[j][i]);
+    /*printf("\t%d", E[j][i]);*/
     }
   }
   printf("\n\n");
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
 	int n = strlen(v);
 	fillDPtable(m, n, u, v);
 	
-	printf("\tu = %s, v = %s, m = %d, n = %d \n", u, v, m, n); 
+	/*printf("\tu = %s, v = %s, m = %d, n = %d \n\n", u, v, m, n); */
 	
 	return(0);
 }
