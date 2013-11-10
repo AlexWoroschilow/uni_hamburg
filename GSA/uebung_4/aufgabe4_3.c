@@ -41,7 +41,10 @@ int fillDPtable(int m,int n)
                 	E[j][i] = min( E[j][i-1] + 1, min(E[j-1][i] + 1, E[j-1][i-1]));
                     	
                 }
+                else {
                 	E[j][i] = min( E[j][i-1] + 1, min(E[j-1][i] + 1, E[j-1][i-1] + 1 ));
+            	}
+                
             }
        }
     }
