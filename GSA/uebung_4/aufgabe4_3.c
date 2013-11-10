@@ -45,7 +45,7 @@ int fillDPtable(int m,int n)
             }
        }
     }
-    return(EXIT_SUCCESS);
+    return matrix[m+1][n+1];
 }
 
 
