@@ -3,7 +3,6 @@
 import sys, getopt, string, difflib
 
 
-
 class Diff: 
     substring_1 = None
     substring_2 = None
@@ -50,7 +49,6 @@ class Substring:
     def toString (self):
         return self.substring
 
-
 class Sequenz:
 
     sequenz = None
@@ -63,12 +61,14 @@ class Sequenz:
         self.sequenz_pos = 0
 
     def substring(self, len):
-        if self.sequenz_pos <= self.sequenz_len - len: 
+        if self.sequenz_pos <= self.sequenz_len - len:
             substring = self.sequenz[self.sequenz_pos:self.sequenz_pos+len]
             self.sequenz_pos = self.sequenz_pos + 1
             return Substring(substring)
         return None 
-
+    
+    def toString (self):
+        return self.sequenz
 
 
 
@@ -85,10 +85,12 @@ def main(argv):
     # mc (aaa, aab) = 2 
     # mc (aab, aba) = 1 
     # mc (aaa, aba) = 2 
-    
     seq_1 = 'aaaba'
     seq_2 = 'baaba'
     
+    # O(k(n-k+1)^2) => O(kn^2)
+    print ("\n Loesung 1 O(kn^2)")
+    print ("\n\t Ausgabe:")
     
     sequenz_1 = Sequenz (seq_1)
     substring_1 = sequenz_1.substring(k)
@@ -97,28 +99,61 @@ def main(argv):
         substring_2 = sequenz_2.substring(k)
         while substring_2 != None :
             diff = Diff(substring_1, substring_2)
-            print (substring_1.toString(), substring_2.toString(), diff.match())
+            print "\t\t mc(%s, %s) = %d" % (substring_1.toString(), substring_2.toString(), diff.match())
             substring_2 = sequenz_2.substring(k)
         substring_1 = sequenz_1.substring(k)
 
-#     
-#     i = 0
-#     matrix = list()
-#     for char_1 in seq_1 :
-#         j = 0
-#         matrix_1 = list()
-#         for char_2 in seq_2 :
-#             if char_1 == char_2 :
-#                 matrix_1.insert(j, 0)
-#             else :
-#                 matrix_1.insert(j, 1)
-#             j = j + 1
-#         matrix.insert(i, matrix_1)
-#         i = i + 1
-#     for test in matrix :
-#         print(test)
-        
-        
+     
+    # O(n^2)
+    print ("\n Loesung 2 O(n^2)")
+    j = 0
+    matrix = [[0 for x in xrange(len(seq_1))] for x in xrange(len(seq_2))] 
+    for j in range (0, len(matrix)) :
+        i = 0
+        for i in range (0, len(matrix[i])) :
+            if i == 0 or j == 0 :
+                value = 0
+                if seq_1[i] == seq_2[j] :
+                    value = 1
+                matrix[j][i] = value
+            else :
+                value =  matrix[j-1][i-1]
+                if seq_1[i] == seq_2[j] :
+                    value = value + 1
+                matrix[j][i] = value
+
+    print ("\n\t Matix")
+    for line in matrix :
+        print "\t\t", line
+
+
+    print ("\n\t Ausgabe:")
+    x = 0
+    sequenz_1 = Sequenz (seq_1)
+    substring_1 = sequenz_1.substring(k)
+    while substring_1 != None :
+        sequenz_2 = Sequenz (seq_2)
+        y = 0
+        substring_2 = sequenz_2.substring(k)
+        while substring_2 != None :
+            
+            x_prev = x-1
+            if x_prev < 0 :
+                x_prev = None
+            y_prev = y-1
+            if y_prev < 0 :
+                y_prev = None
+
+            value = matrix[x + k - 1][y + k - 1]
+            if x_prev != None and y_prev != None :
+                value = value - matrix[x_prev][y_prev]
+            
+            print "\t\t mc(%s, %s) = %d" % (substring_2.toString(), substring_2.toString(), value )
+            y = y + 1
+            substring_2 = sequenz_2.substring(k)
+        x = x + 1
+        substring_1 = sequenz_1.substring(k)
+
 
 
 if __name__ == "__main__":
