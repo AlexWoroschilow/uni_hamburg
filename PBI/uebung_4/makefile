@@ -41,3 +41,11 @@ main.o module.o: module.h
 # this adds module.o to the dependencies of main.x
 main.x: module.o
 # vim: ft=make
+
+#
+# Clean (remove) all compilierte Dataien
+# und zwar all .x files und all .o files
+clean:
+	${RM} -rf *.x *.o
+
+
