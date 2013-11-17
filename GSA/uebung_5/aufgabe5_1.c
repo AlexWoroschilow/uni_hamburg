@@ -5,12 +5,18 @@
 #include <string.h>
 
 typedef enum {
-	0 = 'R', 1 = 'I', 2 = 'D'
+	R, I, D
 } edit;
 
 typedef enum {
-	0 = 'a', 1 = 'c', 2 = 'g', 3 = 't'
+	a,c,g,t
 } base;
+
+
+typedef struct multiedit {
+	char type;
+	int count;
+} multiedit;
 
 typedef struct alignment {
 
@@ -32,17 +38,13 @@ typedef struct alignment {
  */
 alignment alignment_new(base *seq1, base *seq2, char *alg) {
 
-//	int i,;
-//	char c;
 	alignment structure;
 
 	structure.alglen = sizeof(alg);
-	structure.seq1 = (base *) malloc(sizeof(seq1) * sizeof(char));
-	structure.seq2 = (base *) malloc(sizeof(seq2) * sizeof(char));
-	structure.seq1len = sizeof(seq1);
-	structure.seq1len = sizeof(seq2);
-
-
+	structure.seq1 = (base *) malloc(sizeof(seq1));
+	structure.seq1len = sizeof(seq1) / sizeof(char);
+	structure.seq2 = (base *) malloc(sizeof(seq2));
+	structure.seq2len = sizeof(seq2) / sizeof(char);
 
 
 	return structure;
@@ -187,27 +189,24 @@ alignment alignment_new(base *seq1, base *seq2, char *alg) {
 //
 int main() {
 
-    alignment alg;
-
-	base seq1[] = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
-	base seq2[] = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
-
-	char *alg = "R7I2R2D1R3I1R3";
-
-	alignment_new(seq1, seq2, alg);
+//    alignment alg;
 //
-	fprintf(stdout, "%s\n", alg);
-
-//    alg.seq1len = ;
-//    alg.seq2len = ;
-//    alg.alglen = ;
-
-    alg.operations = {'R', 'I', 'R', 'D', 'R', 'I', 'R'};
-    alg.index = {7, 2, 2, 1, 3, 1, 3};
-
-    alg.seq1 = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
-    alg.seq2 = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
+////	base seq1[] = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
+////	base seq2[] = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
+////
+////	alignment_new(seq1, seq2, alg);
+//
+////    alg.seq1len = ;
+////    alg.seq2len = ;
+////    alg.alglen = ;
+//
+//    alg.operations = {'R', 'I', 'R', 'D', 'R', 'I', 'R'};
+//    alg.index = {7, 2, 2, 1, 3, 1, 3};
+//
+//    alg.seq1 = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
+//    alg.seq2 = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
     
+
     
     return(EXIT_SUCCESS);
 }
