@@ -18,7 +18,7 @@
 typedef struct multiedit {
 
     int count;
-    /*edit*/char type;
+    char type;
 
 } multiedit;
 
@@ -51,21 +51,15 @@ typedef struct alignment {
 }*/
 
 
-/*int alignment_add_replacement(struct alignment *alg, int count) {
+int alignment_add_replacement(struct alignment *alg, int count) {
 
-    multiedit* cache;
-    multiedit element;
+    struct multiedit e;
 
-    element.type = "R";
-    element.count = count;
+    e.type = 'R';
+	e.count = count;
 
-    cache = (base *) malloc(sizeof(*alg->editop))
-        cache = *alg->editop;
-
-    free(*alg->editop);
-
-    *alg->editop = (base *) malloc(sizeof(*alg->editop) + sizeof(element))
-    *alg->editop[sizeof(*alg->editop)/sizeof(*alg->editop[0])] = element;
+	(*alg).editop[(*alg).alglen] = e;
+	(*alg).alglen++;
 
     return 1;
 }
@@ -73,19 +67,13 @@ typedef struct alignment {
 
 int alignment_add_insertion(struct alignment *alg, int count) {
 
-    multiedit* cache;
-    multiedit element;
+    struct multiedit e;
 
-    element.type = "I";
-    element.count = count;
+    e.type = 'I';
+	e.count = count;
 
-    cache = (char *) malloc(sizeof(*alg->editop))
-        cache = *alg->editop;
-
-    free(*alg->editop);
-
-    *alg->editop = (base *) malloc(sizeof(*alg->editop) + sizeof(element))
-    *alg->editop[sizeof(*alg->editop)/sizeof(*alg->editop[0])] = element;
+	(*alg).editop[(*alg).alglen] = e;
+	(*alg).alglen++;
 
     return 1;
 }
@@ -93,23 +81,16 @@ int alignment_add_insertion(struct alignment *alg, int count) {
 
 int alignment_add_deletion(struct alignment *alg, int count) {
 
-    multiedit* cache;
-    multiedit element;
+    struct multiedit e;
 
-    element.type = "D";
-    element.count = count;
+    e.type = 'D';
+	e.count = count;
 
-    cache = (char *) malloc(sizeof(*alg->editop))
-        cache = *alg->editop;
-
-    free(*alg->editop);
-
-    *alg->editop = (char *) malloc(sizeof(*alg->editop) + sizeof(element))
-    *alg->editop[sizeof(*alg->editop)/sizeof(*alg->editop[0])] = element;
+	(*alg).editop[(*alg).alglen] = e;
+	(*alg).alglen++;
 
     return 1;
 }
-*/
 
 int alignment_show(alignment alg) {
     
