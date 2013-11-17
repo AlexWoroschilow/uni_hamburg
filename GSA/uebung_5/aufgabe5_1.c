@@ -255,15 +255,6 @@ int main() {
     *alg.seq1 = *seq1;
     *alg.seq2 = *seq2;
 
-    
-//    for(i = 0; seq1[i] != '/0'; i++) {
-//        sscanf(seq1[j], "%c", alg.seq1[i]);
-//    }  
-//    
-//    for(i = 0; seq2[i] != '/0'; i++) {
-//        sscanf(seq2[i], "%c", alg.seq2[i]);
-//    }
-//
     for(i = 0; i < alg.alglen; i += 2) {
         alg.editop[j].type = align[i];
         j++;
@@ -277,6 +268,5 @@ int main() {
         j++;
     }
     
-
     return(EXIT_SUCCESS);
 }
