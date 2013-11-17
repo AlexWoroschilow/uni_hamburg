@@ -1,22 +1,24 @@
 /* Aufgabe 5.1 GSA Uebungen - Erstellen einer Struktur zum speichern und bearbeiten von Alignments */
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 
-typedef enum {
-  R = 'R', I = 'I', D = 'D'
-} edit;
-  
-typedef enum {
-  a = 'a', c = 'c', g = 'g', t = 't'
-} base;
+
+//typedef enum {
+//  R = 'R', I = 'I', D = 'D'
+//} edit;
+//  
+//typedef enum {
+//  a = 'a', c = 'c', g = 'g', t = 't'
+//} base;
 
 typedef struct multiedit {
 
     int count;
-    edit type;
+    /*edit*/char type;
 
 } multiedit;
 
@@ -26,32 +28,30 @@ typedef struct alignment {
     int seq1len;
     int seq2len;
 
-    multiedit* editop;
+    multiedit editop[1000]/* = (multiedit *) malloc(alglen * (sizeof(int) + sizeof(edit)))*/;
 
-    base* seq1;
-    base* seq2;
+    /*base*/char seq1[1000] /*= (base *) malloc(seq1len * sizeof(base))*/;
+    /*base*/char seq2[1000] /*= (base *) malloc(seq2len * sizeof(base))*/;
 
 } alignment;
 
 
-/**
- * Create new Alignment
- *
- */
-alignment alignment_new(base *seq1, base *seq2) {
+/*int alignment_new(base seq1[], base seq2[]) {
+    
+    alignment alignment_new(base *seq1, base *seq2) {
 
-	alignment structure;
-	
-	structure.seq1 = (base *) malloc(sizeof(seq1)));
-	structure.seq2 = (base *) malloc(sizeof(seq2));
-	structure.seq1len = sizeof(seq1)/sizeof(char);
-	structure.seq2len = sizeof(seq2)/sizeof(char);
+    alignment structure;
+    
+    structure.seq1 = (base *) malloc(sizeof(seq1) * sizeof(char));
+    structure.seq2 = (base *) malloc(sizeof(seq2) * sizeof(char));
+    structure.seq1len = sizeof(seq1);
+    structure.seq1len = sizeof(seq2);
 
-	return structure;
-}
+    return structure;
+}*/
 
 
-int alignment_add_replacement(struct alignment *alg, int count) {
+/*int alignment_add_replacement(struct alignment *alg, int count) {
 
     multiedit* cache;
     multiedit element;
@@ -60,7 +60,7 @@ int alignment_add_replacement(struct alignment *alg, int count) {
     element.count = count;
 
     cache = (base *) malloc(sizeof(*alg->editop))
-	cache = *alg->editop;
+        cache = *alg->editop;
 
     free(*alg->editop);
 
@@ -70,6 +70,7 @@ int alignment_add_replacement(struct alignment *alg, int count) {
     return 1;
 }
 
+
 int alignment_add_insertion(struct alignment *alg, int count) {
 
     multiedit* cache;
@@ -78,8 +79,8 @@ int alignment_add_insertion(struct alignment *alg, int count) {
     element.type = "I";
     element.count = count;
 
-    cache = (base *) malloc(sizeof(*alg->editop))
-	cache = *alg->editop;
+    cache = (char *) malloc(sizeof(*alg->editop))
+        cache = *alg->editop;
 
     free(*alg->editop);
 
@@ -98,17 +99,17 @@ int alignment_add_deletion(struct alignment *alg, int count) {
     element.type = "D";
     element.count = count;
 
-    cache = (base *) malloc(sizeof(*alg->editop))
-	cache = *alg->editop;
+    cache = (char *) malloc(sizeof(*alg->editop))
+        cache = *alg->editop;
 
     free(*alg->editop);
 
-    *alg->editop = (base *) malloc(sizeof(*alg->editop) + sizeof(element))
+    *alg->editop = (char *) malloc(sizeof(*alg->editop) + sizeof(element))
     *alg->editop[sizeof(*alg->editop)/sizeof(*alg->editop[0])] = element;
 
     return 1;
 }
-
+*/
 
 int alignment_show(alignment alg) {
     
@@ -219,35 +220,61 @@ int alignment_evalcost(alignment alg) {
 }
 
 
-
-
-int alignment_delete(alignment alg) {
+/*int alignment_delete(alignment alg) {
 
     alg.seq1len = 0;
     alg.seq2len = 0;
     alg.alglen = 0;
 
-    free(alg.editop)
+    free(alg.editop);
 
     free(alg.seq1);
     free(alg.seq2);
   
     return(0);
 }
-
+*/
 
 int main() {
 
-    alignment alg;
-//
-//    alg.seq1len = ;
-//    alg.seq2len = ;
-//    alg.alglen = ;
-    
-//    alg.editop = {}
+    int i;
+    int j = 0;
 
-    alg.seq1 = {a, c, g, t, a, g, a, t, a, t, a, t, a, g, a, t};
-    alg.seq2 = {a, g, a, a, a, g, a, g, g, t, a, a, g, a, g, g, g, a};
+    char *align = "R7I2R2D1R3I1R3";
+
+    char *seq1 = "acgtagatatatagat";
+    char *seq2 = "agaaagaggtaagaggga";
+    
+    alignment alg;
+    
+    alg.alglen = strlen(align) / 2;
+    alg.seq1len = strlen(seq1);
+    alg.seq2len = strlen(seq2);
+
+    *alg.seq1 = *seq1;
+    *alg.seq2 = *seq2;
+
+    
+//    for(i = 0; seq1[i] != '/0'; i++) {
+//        sscanf(seq1[j], "%c", alg.seq1[i]);
+//    }  
+//    
+//    for(i = 0; seq2[i] != '/0'; i++) {
+//        sscanf(seq2[i], "%c", alg.seq2[i]);
+//    }
+//
+    for(i = 0; i < alg.alglen; i += 2) {
+        alg.editop[j].type = align[i];
+        j++;
+    }
+
+    j = 0;
+
+    for(i = 1; i < alg.alglen; i += 2) {
+        sscanf(align[i],"%d", &alg.editop[j].count);
+        j++;
+    }
+    
 
     return(EXIT_SUCCESS);
 }
