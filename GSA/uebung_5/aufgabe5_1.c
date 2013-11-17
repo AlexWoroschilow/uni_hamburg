@@ -49,11 +49,6 @@ int alignment_add_deletion() {
 }
 
 
-int alignment_add_deletion() {
-  
-}
-
-
 int alignment_show(alignment alg) {
     
     int i, j;
