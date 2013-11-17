@@ -200,7 +200,8 @@ int main() {
 
     alignment alg;
 
-    alg.seqlen = ;
+    alg.seq1len = ;
+    alg.seq2len = ;
     alg.alglen = ;
 
     alg.operations = {'R', 'I', 'R', 'D', 'R', 'I', 'R'};
