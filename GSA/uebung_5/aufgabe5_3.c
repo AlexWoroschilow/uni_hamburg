@@ -24,10 +24,10 @@ int fillDPtable(int m,int n, char u[], char v[])
 			E[j][i][0] = 0; 
       } else if((i == 0) && (j > 0)) {
 			E[j][i][0] = j;
-			E[j][i][2] = *"W";
+			E[j][i][2] = *"W";				/* W = west */
       } else if((i > 0) && (j == 0)) {
         	E[j][i][0] = i;
-        	E[j][i][1] = *"N";
+        	E[j][i][1] = *"N";				/* N = north */
       } else {
       	a = E[j][i-1][0] + 1;
       	b = E[j-1][i][0] + 1;
@@ -42,7 +42,7 @@ int fillDPtable(int m,int n, char u[], char v[])
 	  				E[j][i][2] = *"W";
 	  			}
 	  			if (min(a,b,c) == c) { 
-	  				E[j][i][3] = *"NW";
+	  				E[j][i][3] = *"D";		/* D = diagonal */
 	  			}
 			} else {
 				E[j][i][0] = min(a, b, d);
@@ -53,7 +53,7 @@ int fillDPtable(int m,int n, char u[], char v[])
 	  				E[j][i][2] = *"W";
 	  			}
 	  			if (min(a,b,d) == d) { 
-	  				E[j][i][3] = *"NW";
+	  				E[j][i][3] = *"D";
 	  			}
       		}
       }
