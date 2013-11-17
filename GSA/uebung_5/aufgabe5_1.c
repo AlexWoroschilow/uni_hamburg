@@ -49,6 +49,11 @@ int alignment_add_deletion() {
 }
 
 
+int alignment_add_deletion() {
+  
+}
+
+
 int alignment_show(alignment alg) {
     
     int i, j;
@@ -58,6 +63,7 @@ int alignment_show(alignment alg) {
 
        
     for(i = 0; i < alg.alglen; i++) {              /* Wiedergabe erste Zeile */
+        
         if(alg.operations[i] == 'R') {
             for(j = 0; j < alg.index[i]; j++) {
                 printf("%c", alg.seq1[u]);
@@ -68,12 +74,14 @@ int alignment_show(alignment alg) {
                 }
                 u++; v++;
             }
+
         } else if(alg.operations[i] == 'I') {
             for(j = 0; j < alg.index[i]; j++) {
                 printf("-");
                 equal[i] = ' ';
                 v++;
    	        }
+
         } else if(alg.operations[i] == 'D') {
             for(j = 0; j < alg.index[i]; j++) {
                 printf("%c", alg.seq1[u]);
@@ -81,6 +89,7 @@ int alignment_show(alignment alg) {
                 u++;
             }
         }
+
         if(i == alg.alglen - 1) {
             printf("\n");
             u = 0;
@@ -90,23 +99,28 @@ int alignment_show(alignment alg) {
         
     printf("%s\n", equal);                         /* Wiedergabe zweite Zeile */
 
+
     for(i = 0; i < alg.alglen; i++) {              /* Wiedergabe dritte Zeile */
+        
         if(alg.operations[i] == 'R') {
             for(j = 0; j < alg.index[i]; j++) {
                 printf("%c", alg.seq2[v]);
                 u++; v++;
             }
+
         } else if(alg.operations[i] == 'D') {
             for(j = 0; j < alg.index[i]; j++) {
                 printf("-");
                 u++;
             }
+
         } else if(alg.operations[i] == 'I') {
             for(j = 0; j < alg.index[i]; j++) {
                 printf("%c", alg.seq2[v]);
                 v++;
             }
         }
+
         if(i == alg.alglen - 1) {
             printf("\n");
         }
@@ -116,8 +130,36 @@ int alignment_show(alignment alg) {
 }
 
 
-int alignment_evalcost() {
-  
+int alignment_evalcost(alignment alg) {
+
+    int i, j;
+    int u, v;
+    int counter = 0;
+
+    for(i = 0; i < alg.alglen; i++) {
+        
+        if(alg.operations[i] == 'R') {
+            for(j = 0; j < alg.index[i], j++) {
+                if(alg.seq1[u] == alg.seq[v]) {
+                    u++; v++;
+                } else {
+                    counter++;
+                    u++; v++;
+                }
+            }
+            
+        } else if(alg.operations[i] == 'I') {
+            counter += alg.index[i];
+            v += alg.index[i];
+
+        } else if(alg.operations[i] == 'D') {
+            counter += alg.index[i];
+            u += alg.index[i];
+        }
+
+    }
+
+    return(counter);
 }
 
 
