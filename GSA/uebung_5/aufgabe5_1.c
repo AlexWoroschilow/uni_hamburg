@@ -239,6 +239,7 @@ int main() {
 
     int i;
     int j = 0;
+    char test1[] = "";
 
     char *align = "R7I2R2D1R3I1R3";
 
@@ -271,7 +272,8 @@ int main() {
     j = 0;
 
     for(i = 1; i < alg.alglen; i += 2) {
-        sscanf(align[i],"%d", &alg.editop[j].count);
+        test1[0] = align[i];
+        sscanf(test1,"%d", &alg.editop[j].count);
         j++;
     }
     
