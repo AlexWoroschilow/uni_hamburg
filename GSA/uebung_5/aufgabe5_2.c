@@ -4,10 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define linelength 500 	/* must be >= maximum line length - line length of FASTA files is
-										no longer than 120 characters
-										but to do strcat must be maximum stringlength,
-										which I have set to 500*/
+#define linelength 500 	/* must be >= maximum line length, which for FASTA files is
+										120 characters - but for strcat must be maximum 
+										stringlength (500) */
 #define maxlines 1000 		/* must be >= number of lines in FASTA file */
 
 
@@ -28,14 +27,13 @@ int read_fasta_file(int a, int b)		/* liest eine Sequenz im Multiple-FASTA-Forma
         i++;     
     }
 	numlines = i;
-
-   for(i = 0; i < numlines; ++i) {		/* print fasta file line by line */
+	/* print fasta file line by line */
+   /*for(i = 0; i < numlines; ++i) {		
         printf("%s\n", line[i]);
     }
-    printf("\n\n");
+    printf("\n\n");*/
     
-    
-    seqs[1][counter]="cc";
+    seqs[1][counter]="\0";
     
     for(i = 0; i < numlines; ++i) { 
         if (line[i][0] == *">") {	
@@ -43,9 +41,12 @@ int read_fasta_file(int a, int b)		/* liest eine Sequenz im Multiple-FASTA-Forma
 			seqs[0][counter] = line[i];
         } else {
         	seqs[1][counter]= strcat(seqs[1][counter],line[i]);
+        	/* Wir wissen, dass hier mit Line 44 (strcat) das Problem ist. Damit bekommen 
+        	wir immer "Segmentation Fault" oder "Bus Error". Leider sind unsere
+        	C-Kenntnisse nicht gut genug, um herauszufinden, was wir besser machen sollen. */
         }
     }
-	printf("\n\n\n%s\n\n\n",seqs[1][3]);
+	/*printf("\n\n\n%s\n\n\n",seqs[1][3]);*/
 	return *seqs[a][b];
 }
 
