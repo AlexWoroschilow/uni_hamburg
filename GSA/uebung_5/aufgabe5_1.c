@@ -32,14 +32,18 @@ typedef struct alignment {
  */
 alignment alignment_new(base *seq1, base *seq2, char *alg) {
 
+//	int i,;
+//	char c;
 	alignment structure;
 
-	structure.seq1len = strlen(seq1);
-	structure.seq1len = strlen(seq2);
-	structure.alglen = strlen(alg);
+	structure.alglen = sizeof(alg);
+	structure.seq1 = (base *) malloc(sizeof(seq1) * sizeof(char));
+	structure.seq2 = (base *) malloc(sizeof(seq2) * sizeof(char));
+	structure.seq1len = sizeof(seq1);
+	structure.seq1len = sizeof(seq2);
 
-	structure.seq1 = seq1;
-	structure.seq2 = seq2;
+
+
 
 	return structure;
 }
@@ -184,31 +188,31 @@ alignment alignment_new(base *seq1, base *seq2, char *alg) {
 
 int main(int argc, char *argv[]) {
 
-	base *seq1 = "acgtagatatatagat";
-	base *seq2 = "agaaagaggtaagaggga";
+	base seq1[] = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
+	base seq2[] = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
+
 	char *alg = "R7I2R2D1R3I1R3";
 
 	alignment_new(seq1, seq2, alg);
-
+//
 	fprintf(stdout, "%s\n", alg);
 
 	return EXIT_SUCCESS;
 }
 
-
-int main() {
-
-    alignment alg;
-
-    alg.seqlen = ;
-    alg.alglen = ;
-
-    alg.operations = {'R', 'I', 'R', 'D', 'R', 'I', 'R'};
-    alg.index = {7, 2, 2, 1, 3, 1, 3};
-
-    alg.seq1 = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
-    alg.seq2 = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
-    
-    
-    return(EXIT_SUCCESS);
-}
+//int main() {
+//
+//    alignment alg;
+//
+//    alg.seqlen = ;
+//    alg.alglen = ;
+//
+//    alg.operations = {'R', 'I', 'R', 'D', 'R', 'I', 'R'};
+//    alg.index = {7, 2, 2, 1, 3, 1, 3};
+//
+//    alg.seq1 = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
+//    alg.seq2 = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
+//
+//
+//    return(EXIT_SUCCESS);
+//}
