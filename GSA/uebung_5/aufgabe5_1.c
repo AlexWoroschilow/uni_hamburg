@@ -184,4 +184,7 @@ int main() {
 
     alg.seq1 = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
     alg.seq2 = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
+    
+    
+    return(EXIT_SUCCESS);
 }
