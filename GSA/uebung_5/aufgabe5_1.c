@@ -196,17 +196,15 @@ int alignment_delete(alignment alg) {
 int main() {
 
     alignment alg;
-
-
-    alg.editop = {}
-
-    alg.seq1 = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
-    alg.seq2 = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
+//
+//    alg.seq1len = ;
+//    alg.seq2len = ;
+//    alg.alglen = ;
     
+//    alg.editop = {}
 
-    alignment_new(alg.seq1, alg.seq2);
+    alg.seq1 = {a, c, g, t, a, g, a, t, a, t, a, t, a, g, a, t};
+    alg.seq2 = {a, g, a, a, a, g, a, g, g, t, a, a, g, a, g, g, g, a};
 
-
-    
     return(EXIT_SUCCESS);
 }
