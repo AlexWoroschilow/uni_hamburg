@@ -5,11 +5,11 @@
 #include <string.h>
 
 typedef enum {
-	R = 'R', I = 'I', D = 'D'
+	0 = 'R', 1 = 'I', 2 = 'D'
 } edit;
 
 typedef enum {
-	a = 'a', c = 'c', g = 'g', t = 't'
+	0 = 'a', 1 = 'c', 2 = 'g', 3 = 't'
 } base;
 
 typedef struct alignment {
