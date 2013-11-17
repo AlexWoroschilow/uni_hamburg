@@ -41,7 +41,7 @@ int read_fasta_file(int a, int b)		/* liest eine Sequenz im Multiple-FASTA-Forma
 			seqs[0][counter] = line[i];
         } else {
         	seqs[1][counter]= strcat(seqs[1][counter],line[i]);
-        	/* Wir wissen, dass hier mit Line 44 (strcat) das Problem ist. Damit bekommen 
+        	/* Wir wissen, dass hier mit Line 43 (strcat) das Problem ist. Damit bekommen 
         	wir immer "Segmentation Fault" oder "Bus Error". Leider sind unsere
         	C-Kenntnisse nicht gut genug, um herauszufinden, was wir besser machen sollen. */
         }
