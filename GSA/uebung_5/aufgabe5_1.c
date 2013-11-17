@@ -152,8 +152,8 @@ int alignment_evalcost(alignment alg) {
     for(i = 0; i < alg.alglen; i++) {
         
         if(alg.editop[i].type == 'R') {
-            for(j = 0; j < alg.editop[i].count, j++) {
-                if(alg.seq1[u] == alg.seq[v]) {
+            for(j = 0; j < alg.editop[i].count; j++) {
+                if(alg.seq1[u] == alg.seq2[v]) {
                     u++; v++;
                 } else {
                     counter++;
@@ -174,6 +174,7 @@ int alignment_evalcost(alignment alg) {
 
     return(counter);
 }
+
 
 
 
