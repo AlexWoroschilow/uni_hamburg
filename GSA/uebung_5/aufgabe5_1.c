@@ -48,9 +48,78 @@ int alignment_add_deletion() {
   
 }
 
-int alignment_show() {
 
+int alignment_show(alignment alg) {
+    
+    int i, j;
+    int u = 0;
+    int v = 0;
+    char equal[alg.alglen];
+
+       
+    for(i = 0; i < alg.alglen; i++) {              /* Wiedergabe erste Zeile */
+        if(alg.operations[i] == 'R') {
+            for(j = 0; j < alg.index[i]; j++) {
+                printf("%c", alg.seq1[u]);
+                if(alg.seq1[u] == alg.seq2[v]) {
+                    equal[i] = '|';
+                } else {
+                    equal[i] = ' ';
+                }
+                u++; v++;
+            }
+        } else if(alg.operations[i] == 'I') {
+            for(j = 0; j < alg.index[i]; j++) {
+                printf("-");
+                equal[i] = ' ';
+                v++;
+   	        }
+        } else if(alg.operations[i] == 'D') {
+            for(j = 0; j < alg.index[i]; j++) {
+                printf("%c", alg.seq1[u]);
+                equal[i] = ' ';
+                u++;
+            }
+        }
+        if(i == alg.alglen - 1) {
+            printf("\n");
+            u = 0;
+            v = 0;
+        }
+    }    
+        
+    for(i = 0; i < alg.alglen; i++) {              /* Wiedergabe zweite Zeile */
+        printf("%c", equal[i]);
+        if(i == alg.alglen - 1) {
+            printf("\n");
+        }   
+    }
+
+    for(i = 0; i < alg.alglen; i++) {              /* Wiedergabe dritte Zeile */
+        if(alg.operations[i] == 'R') {
+            for(j = 0; j < alg.index[i]; j++) {
+                printf("%c", alg.seq2[v]);
+                u++; v++;
+            }
+        } else if(alg.operations[i] == 'D') {
+            for(j = 0; j < alg.index[i]; j++) {
+                printf("-");
+                u++;
+            }
+        } else if(alg.operations[i] == 'I') {
+            for(j = 0; j < alg.index[i]; j++) {
+                printf("%c", seq1[u]);
+                v++;
+            }
+        }
+        if(i == alg.alglen - 1) {
+            printf("\n");
+        }
+    }
+
+    return(0); 
 }
+
 
 int alignment_evalcost() {
   
