@@ -18,7 +18,7 @@ typedef enum {
 typedef struct alignment {
 
   int seqlen;
-  int alilen;
+  int alglen;
 
   edit operations[];
   int index[];
