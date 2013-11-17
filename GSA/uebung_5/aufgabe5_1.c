@@ -194,3 +194,21 @@ int main(int argc, char *argv[]) {
 
 	return EXIT_SUCCESS;
 }
+
+
+int main() {
+
+    alignment alg;
+
+    alg.seqlen = ;
+    alg.alglen = ;
+
+    alg.operations = {'R', 'I', 'R', 'D', 'R', 'I', 'R'};
+    alg.index = {7, 2, 2, 1, 3, 1, 3};
+
+    alg.seq1 = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
+    alg.seq2 = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
+    
+    
+    return(EXIT_SUCCESS);
+}
