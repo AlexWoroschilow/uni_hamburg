@@ -5,18 +5,12 @@
 #include <string.h>
 
 typedef enum {
-	R, I, D
+	R = 'R', I = 'I', D = 'D'
 } edit;
 
 typedef enum {
-	a,c,g,t
+	a = 'a', c = 'c', g = 'g', t = 't'
 } base;
-
-
-typedef struct multiedit {
-	char type;
-	int count;
-} multiedit;
 
 typedef struct alignment {
 
@@ -32,19 +26,26 @@ typedef struct alignment {
 
 } alignment;
 
+
 /**
  * Create new Alignment
  *
  */
-alignment alignment_new(base *seq1, base *seq2, char *alg) {
 
+
+alignment alignment_new(base *seq1, base *seq2) {
+
+//	int i,;
+//	char c;
 	alignment structure;
 
-	structure.alglen = sizeof(alg);
-	structure.seq1 = (base *) malloc(sizeof(seq1));
-	structure.seq1len = sizeof(seq1) / sizeof(char);
-	structure.seq2 = (base *) malloc(sizeof(seq2));
-	structure.seq2len = sizeof(seq2) / sizeof(char);
+//	structure.alglen = sizeof(alg);
+	structure.seq1 = (base *) malloc(sizeof(seq1) * sizeof(char));
+	structure.seq2 = (base *) malloc(sizeof(seq2) * sizeof(char));
+	structure.seq1len = sizeof(seq1);
+	structure.seq1len = sizeof(seq2);
+
+
 
 
 	return structure;
@@ -189,23 +190,18 @@ alignment alignment_new(base *seq1, base *seq2, char *alg) {
 //
 int main() {
 
-//    alignment alg;
-//
-////	base seq1[] = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
-////	base seq2[] = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
-////
-////	alignment_new(seq1, seq2, alg);
-//
-////    alg.seq1len = ;
-////    alg.seq2len = ;
-////    alg.alglen = ;
-//
-//    alg.operations = {'R', 'I', 'R', 'D', 'R', 'I', 'R'};
-//    alg.index = {7, 2, 2, 1, 3, 1, 3};
-//
-//    alg.seq1 = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
-//    alg.seq2 = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
+    alignment alg;
+
+
+    alg.operations = {'R', 'I', 'R', 'D', 'R', 'I', 'R'};
+    alg.index = {7, 2, 2, 1, 3, 1, 3};
+
+    alg.seq1 = {'a', 'c', 'g', 't', 'a', 'g', 'a', 't', 'a', 't', 'a', 't', 'a', 'g', 'a', 't'};
+    alg.seq2 = {'a', 'g', 'a', 'a', 'a', 'g', 'a', 'g', 'g', 't', 'a', 'a', 'g', 'a', 'g', 'g', 'g', 'a'};
     
+
+    alignment_new(alg.seq1, alg.seq2);
+
 
     
     return(EXIT_SUCCESS);
