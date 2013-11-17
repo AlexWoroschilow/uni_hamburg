@@ -179,18 +179,19 @@ int alignment_evalcost(alignment alg) {
 
 int alignment_delete(alignment alg) {
 
-    free(alg.seqlen);
-    free(alg.alglen);
+    alg.seq1len = 0;
+    alg.seq2len = 0;
+    alg.alglen = 0;
 
-    free(alg.operations);
-    free(alg.index);
+    free(alg.editop)
 
     free(alg.seq1);
     free(alg.seq2);
   
     return(0);
 }
-//
+
+
 int main() {
 
     alignment alg;
