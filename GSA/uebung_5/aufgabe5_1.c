@@ -15,7 +15,7 @@ typedef enum {
 } base;
 
 
-typedef struct {
+typedef struct alignment {
 
   int seqlen;
   int alilen;
