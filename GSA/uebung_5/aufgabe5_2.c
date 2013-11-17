@@ -37,31 +37,14 @@ int read_fasta_file(int a, int b)		/* liest eine Sequenz im Multiple-FASTA-Forma
     
     seqs[1][counter]="cc";
     
-    for(i = 0; i < numlines; ++i) {
-        
-        /*printf("%c\t%d\n",line[i][0],i);*/
-        
-      
-        if (line[i][0] == *">") {
-			
+    for(i = 0; i < numlines; ++i) { 
+        if (line[i][0] == *">") {	
         	counter++;
 			seqs[0][counter] = line[i];
         } else {
         	seqs[1][counter]= strcat(seqs[1][counter],line[i]);
         }
-    
     }
-        	
- /*   while (line[i][0] != *">" && i < numlines){
-    
-        		seqs[1][counter]= strcat(line[i],line[i+1]);
-        		i++;}*/
-        		
-        		/*printf("%s\n",seqs[1][counter]);*/
-        		/*printf("%d\n",counter);*/
-        	
-
-	
 	printf("\n\n\n%s\n\n\n",seqs[1][3]);
 	return *seqs[a][b];
 }
@@ -99,15 +82,11 @@ int min(int a,int b,int c)
 				E[j][i] = min((E[j][i-1] + 1), (E[j-1][i] + 1), (E[j-1][i-1] + 1));
       		  }
       	}
-    /*printf("\t%d", E[j][i]);*/
     }
   }
-  /*printf("\n\n");*/
-  /* Ausgabe: */
-  printf("\t edist= %d \n \n",E[m][n]);
+  printf("\t edist= %d \n \n",E[m][n]);		/* Edit-Distanz ausgeben */
   return E[m+1][n+1];
  }
-
 
 
 int main(void)
@@ -125,5 +104,4 @@ int main(void)
 		}
 	}
 	return(0);
-	
 }
