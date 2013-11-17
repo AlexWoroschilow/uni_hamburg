@@ -61,7 +61,6 @@ int alignment_show(alignment alg) {
     int v = 0;
     char equal[alg.alglen + 1];
 
-       
     for(i = 0; i < alg.alglen; i++) {              /* Wiedergabe erste Zeile */
         
         if(alg.operations[i] == 'R') {
