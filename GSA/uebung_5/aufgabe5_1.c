@@ -36,19 +36,36 @@ typedef struct alignment {
 } alignment;
 
 
-/*int alignment_new(base seq1[], base seq2[]) {
-    
-    alignment alignment_new(base *seq1, base *seq2) {
+alignment alignment_new(char seq1[], char seq2[], char align[]) {
 
-    alignment structure;
-    
-    structure.seq1 = (base *) malloc(sizeof(seq1) * sizeof(char));
-    structure.seq2 = (base *) malloc(sizeof(seq2) * sizeof(char));
-    structure.seq1len = sizeof(seq1);
-    structure.seq1len = sizeof(seq2);
+    int i;
+    int j = 0;
+    char test1[] = "";
 
-    return structure;
-}*/
+    alignment newalg;
+    
+    newalg.alglen = strlen(align) / 2;
+    newalg.seq1len = strlen(seq1);
+    newalg.seq2len = strlen(seq2);
+    
+    *newalg.seq1 = *seq1;
+    *newalg.seq2 = *seq2;
+
+    for(i = 0; i < newalg.alglen; i += 2) {
+        newalg.editop[j].type = align[i];
+        j++;
+    }
+
+    j = 0;
+
+    for(i = 1; i < newalg.alglen; i += 2) {
+        test1[0] = align[i];
+        sscanf(test1,"%d", &newalg.editop[j].count);
+        j++;
+    }
+
+    return(newalg);
+}
 
 
 int alignment_add_replacement(struct alignment *alg, int count) {
