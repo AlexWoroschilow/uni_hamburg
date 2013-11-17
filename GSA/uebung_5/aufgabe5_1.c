@@ -42,10 +42,10 @@ alignment alignment_new(base *seq1, base *seq2) {
 
 	alignment structure;
 	
-	structure.seq1 = (base *) malloc(sizeof(seq1) * sizeof(char));
-	structure.seq2 = (base *) malloc(sizeof(seq2) * sizeof(char));
-	structure.seq1len = sizeof(seq1);
-	structure.seq1len = sizeof(seq2);
+	structure.seq1 = (base *) malloc(sizeof(seq1)));
+	structure.seq2 = (base *) malloc(sizeof(seq2));
+	structure.seq1len = sizeof(seq1)/sizeof(char);
+	structure.seq2len = sizeof(seq2)/sizeof(char);
 
 	return structure;
 }
