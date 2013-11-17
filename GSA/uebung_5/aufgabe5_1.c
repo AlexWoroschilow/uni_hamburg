@@ -54,7 +54,7 @@ int alignment_show(alignment alg) {
     int i, j;
     int u = 0;
     int v = 0;
-    char equal[alg.alglen];
+    char equal[alg.alglen + 1];
 
        
     for(i = 0; i < alg.alglen; i++) {              /* Wiedergabe erste Zeile */
@@ -88,12 +88,7 @@ int alignment_show(alignment alg) {
         }
     }    
         
-    for(i = 0; i < alg.alglen; i++) {              /* Wiedergabe zweite Zeile */
-        printf("%c", equal[i]);
-        if(i == alg.alglen - 1) {
-            printf("\n");
-        }   
-    }
+    printf("%s\n", equal);                         /* Wiedergabe zweite Zeile */
 
     for(i = 0; i < alg.alglen; i++) {              /* Wiedergabe dritte Zeile */
         if(alg.operations[i] == 'R') {
