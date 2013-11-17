@@ -14,7 +14,7 @@ typedef enum {
 
 typedef struct multiedit {
 	int count;
-	char type;
+	edit type;
 } multiedit;
 
 
@@ -37,31 +37,23 @@ typedef struct alignment {
  * Create new Alignment
  *
  */
-
-
 alignment alignment_new(base *seq1, base *seq2) {
 
 	alignment structure;
 	
-	structure.index = ;
-	structure.operations = ;
-
-//	structure.alglen = sizeof(alg);
 	structure.seq1 = (base *) malloc(sizeof(seq1) * sizeof(char));
 	structure.seq2 = (base *) malloc(sizeof(seq2) * sizeof(char));
 	structure.seq1len = sizeof(seq1);
 	structure.seq1len = sizeof(seq2);
 
-
-
 	return structure;
 }
 
-//
-//
-//int alignment_add_replacement() {
-//
-//}
+
+int alignment_add_replacement(int count) {
+	multiedit edit;
+
+}
 //
 //
 //int alignment_add_insertion() {
