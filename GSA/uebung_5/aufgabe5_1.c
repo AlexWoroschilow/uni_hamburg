@@ -35,21 +35,21 @@ typedef struct alignment {
 
 alignment alignment_new(base *seq1, base *seq2, char *alg) {
 
-//	int i,;
-//	char c;
 	alignment structure;
+	
+	structure.index = ;
+	structure.operations = ;
 
-	structure.alglen = sizeof(alg);
-	structure.seq1 = (base *) malloc(sizeof(seq1) * sizeof(char));
-	structure.seq2 = (base *) malloc(sizeof(seq2) * sizeof(char));
-	structure.seq1len = sizeof(seq1);
-	structure.seq1len = sizeof(seq2);
-
-
+	structure.alglen = sizeof(structure.index) / sizeof(int);
+	structure.seq1 = (base *) malloc(sizeof(seq1));
+	structure.seq2 = (base *) malloc(sizeof(seq2));
+	structure.seq1len = sizeof(seq1) / sizeof(base);
+	structure.seq2len = sizeof(seq2) / sizeof(base);
 
 
 	return structure;
 }
+
 //
 //
 //int alignment_add_replacement() {
@@ -176,8 +176,8 @@ alignment alignment_new(base *seq1, base *seq2, char *alg) {
 
 //int alignment_delete(alignment alg) {
 //
-//    free(alg.seqlen);
-//    free(alg.alglen);
+//    alg.seqlen = 0;
+//    alg.alglen = 0;
 //
 //    free(alg.operations);
 //    free(alg.index);
