@@ -103,7 +103,7 @@ int alignment_show(alignment alg) {
             }
         } else if(alg.operations[i] == 'I') {
             for(j = 0; j < alg.index[i]; j++) {
-                printf("%c", seq1[u]);
+                printf("%c", alg.seq2[v]);
                 v++;
             }
         }
