@@ -162,6 +162,16 @@ int alignment_evalcost(alignment alg) {
 }
 
 
-int alignment_delete() {
+int alignment_delete(alignment alg) {
+
+    free(alg.seqlen);
+    free(alg.alglen);
+
+    free(alg.operations);
+    free(alg.index);
+
+    free(alg.seq1);
+    free(alg.seq2);
   
+    return(0);
 }
