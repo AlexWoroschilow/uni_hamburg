@@ -51,22 +51,65 @@ alignment alignment_new(base *seq1, base *seq2) {
 }
 
 
-int alignment_add_replacement(int count) {
-	multiedit edit;
+int alignment_add_replacement(struct alignment *alg, int count) {
 
+    multiedit* cache;
+    multiedit element;
+
+    element.type = "R";
+    element.count = count;
+
+    cache = (base *) malloc(sizeof(*alg->editop))
+	cache = *alg->editop;
+
+    free(*alg->editop);
+
+    *alg->editop = (base *) malloc(sizeof(*alg->editop) + sizeof(element))
+    *alg->editop[sizeof(*alg->editop)/sizeof(*alg->editop[0])] = element;
+
+    return 1;
 }
-//
-//
-//int alignment_add_insertion() {
-//
-//}
-//
-//
-//int alignment_add_deletion() {
-//
-//}
-//
-//
+
+int alignment_add_insertion(struct alignment *alg, int count) {
+
+    multiedit* cache;
+    multiedit element;
+
+    element.type = "I";
+    element.count = count;
+
+    cache = (base *) malloc(sizeof(*alg->editop))
+	cache = *alg->editop;
+
+    free(*alg->editop);
+
+    *alg->editop = (base *) malloc(sizeof(*alg->editop) + sizeof(element))
+    *alg->editop[sizeof(*alg->editop)/sizeof(*alg->editop[0])] = element;
+
+    return 1;
+}
+
+
+int alignment_add_deletion(struct alignment *alg, int count) {
+
+    multiedit* cache;
+    multiedit element;
+
+    element.type = "D";
+    element.count = count;
+
+    cache = (base *) malloc(sizeof(*alg->editop))
+	cache = *alg->editop;
+
+    free(*alg->editop);
+
+    *alg->editop = (base *) malloc(sizeof(*alg->editop) + sizeof(element))
+    *alg->editop[sizeof(*alg->editop)/sizeof(*alg->editop[0])] = element;
+
+    return 1;
+}
+
+
 int alignment_show(alignment alg) {
     
     int i, j;
