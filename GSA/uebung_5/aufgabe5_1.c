@@ -12,6 +12,12 @@ typedef enum {
 	a = 'a', c = 'c', g = 'g', t = 't'
 } base;
 
+typedef struct multiedit {
+	int count;
+	char type;
+} multiedit;
+
+
 typedef struct alignment {
 
 	int alglen;
@@ -35,9 +41,10 @@ typedef struct alignment {
 
 alignment alignment_new(base *seq1, base *seq2) {
 
-//	int i,;
-//	char c;
 	alignment structure;
+	
+	structure.index = ;
+	structure.operations = ;
 
 //	structure.alglen = sizeof(alg);
 	structure.seq1 = (base *) malloc(sizeof(seq1) * sizeof(char));
@@ -47,9 +54,9 @@ alignment alignment_new(base *seq1, base *seq2) {
 
 
 
-
 	return structure;
 }
+
 //
 //
 //int alignment_add_replacement() {
@@ -176,8 +183,8 @@ alignment alignment_new(base *seq1, base *seq2) {
 
 //int alignment_delete(alignment alg) {
 //
-//    free(alg.seqlen);
-//    free(alg.alglen);
+//    alg.seqlen = 0;
+//    alg.alglen = 0;
 //
 //    free(alg.operations);
 //    free(alg.index);
