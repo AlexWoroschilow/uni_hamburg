@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 
 
@@ -28,94 +29,80 @@ typedef struct alignment {
     int seq1len;
     int seq2len;
 
-    multiedit editop[1000]/* = (multiedit *) malloc(alglen * (sizeof(int) + sizeof(edit)))*/;
+    multiedit *editop;
 
-    /*base*/char seq1[1000] /*= (base *) malloc(seq1len * sizeof(base))*/;
-    /*base*/char seq2[1000] /*= (base *) malloc(seq2len * sizeof(base))*/;
+    /*base*/char *seq1;
+    /*base*/char *seq2;
 
 } alignment;
 
 
-alignment alignment_new(char seq1[], char seq2[], char align[]) {
+int alignment_new(alignment *newalg, char seq1[], char seq2[], char align[]) {
 
     int i;
     int j = 0;
-    char zwabl[] = "";
+    int k = 0;
+    char zwabl[10] = "";
+     
+    (*newalg).alglen = 0;
 
-    alignment newalg;
-    
-    newalg.alglen = strlen(align) / 2;
-    newalg.seq1len = strlen(seq1);
-    newalg.seq2len = strlen(seq2);
-
-    for(i = 0; i < newalg.seq1len; i++) {
-        newalg.seq1[i] = seq1[i];
+    for(i = 0; align[i] != '\0'; i++) {
+        if(isdigit(align[i])) {
+            continue;    
+        } else {
+            (*newalg).alglen++;
+        }
     }
 
+    (*newalg).seq1len = strlen(seq1);
+    (*newalg).seq2len = strlen(seq2);
 
-    for(i = 0; i < newalg.seq2len; i++) {
-        newalg.seq2[i] = seq2[i];
+    (*newalg).seq1 = malloc((*newalg).seq1len * sizeof(char));
+    strcpy((*newalg).seq1, seq1);
+
+    (*newalg).seq2 = malloc((*newalg).seq2len * sizeof(char));
+    strcpy((*newalg).seq2, seq2);
+
+    (*newalg).editop = malloc((*newalg).alglen * sizeof(multiedit));
+
+    for(i = 0; align[i] != '\0'; i++) {
+        if(i == 0) {
+            (*newalg).editop[j].type = align[i];
+        } else if(isdigit(align[i])) {
+            zwabl[k] = align[i];
+            k++;
+            zwabl[k] = '\n';
+            sscanf(zwabl,"%d", &(*newalg).editop[j].count);
+        } else {
+            k = 0;
+            j++;
+            (*newalg).editop[j].type = align[i];
+        }
     }
-    
 
-    for(i = 0; i < (newalg.alglen * 2); i += 2) {
-        newalg.editop[j].type = align[i];
-        j++;
-    }
-
-    printf("\n");
-
-    j = 0;
-
-    for(i = 1; i < (newalg.alglen * 2); i += 2) {
-        zwabl[0] = align[i];
-        sscanf(zwabl,"%d", &newalg.editop[j].count);
-        j++;
-    }
-    
-    return(newalg);
+    return(EXIT_SUCCESS);
 }
 
+int alignment_add_operation(alignment *alg, int count, char type) {
 
-int alignment_add_replacement(struct alignment *alg, int count) {
+    if((*alg).editop[(*alg).alglen].type == type) {
 
-    struct multiedit e;
+        (*alg).alglen += count;
 
-    e.type = 'R';
+    } else {
+        
+        struct multiedit e;
+
+        e.type = type;
         e.count = count;
 
         (*alg).editop[(*alg).alglen] = e;
         (*alg).alglen++;
+    
+    }
+    
 
-    return 1;
-}
-
-
-int alignment_add_insertion(struct alignment *alg, int count) {
-
-    struct multiedit e;
-
-    e.type = 'I';
-        e.count = count;
-
-        (*alg).editop[(*alg).alglen] = e;
-        (*alg).alglen++;
-
-    return 1;
-}
-
-
-int alignment_add_deletion(struct alignment *alg, int count) {
-
-    struct multiedit e;
-
-    e.type = 'D';
-        e.count = count;
-
-        (*alg).editop[(*alg).alglen] = e;
-        (*alg).alglen++;
-
-    return 1;
+    return(EXIT_SUCCESS);
 }
 
 
@@ -127,7 +114,7 @@ int alignment_show(alignment alg) {
     int x = 0;
     char equal[alg.alglen + 1];
 
-    printf("\t");
+    printf("\n\t");
 
     for(i = 0; i < alg.alglen; i++) {              /* Wiedergabe erste Zeile */
         
@@ -194,7 +181,7 @@ int alignment_show(alignment alg) {
         }
     }
 
-    return(0); 
+    return(EXIT_SUCCESS); 
 }
 
 
@@ -231,31 +218,33 @@ int alignment_evalcost(alignment alg) {
 }
 
 
-/*int alignment_delete(alignment alg) {
+int alignment_delete(alignment *alg) {
 
-    alg.seq1len = 0;
-    alg.seq2len = 0;
-    alg.alglen = 0;
+    (*alg).seq1len = 0;
+    (*alg).seq2len = 0;
+    (*alg).alglen = 0;
 
-    free(alg.editop);
+    free((*alg).editop);
 
-    free(alg.seq1);
-    free(alg.seq2);
+    free((*alg).seq1);
+    free((*alg).seq2);
   
-    return(0);
+    return(EXIT_SUCCESS);
 }
-*/
+
 
 int main() {
 
-    int evalcost; 
+    int evalcost;
 
     char *align = "R7I2R2D1R3I1R3";
 
     char *seq1 = "acgtagatatatagat";
     char *seq2 = "agaaagaggtaagaggga";
     
-    alignment alg = alignment_new(seq1, seq2, align);
+    alignment alg;
+    
+    alignment_new(&alg, seq1, seq2, align);
 
     alignment_show(alg);
 
@@ -264,15 +253,15 @@ int main() {
     printf("\tCosts: %d\n\n", evalcost);
 
     printf("\tadding one deletion...\n");
-    alignment_add_deletion(&alg, 1);
+    alignment_add_operation(&alg, 1, 'D');
     alignment_show(alg);
 
     printf("\tadding one insertion...\n");
-    alignment_add_insertion(&alg, 1);
+    alignment_add_operation(&alg, 1, 'I');
     alignment_show(alg);
 
     printf("\tadding one replacement...\n");
-    alignment_add_replacement(&alg, 1);
+    alignment_add_operation(&alg, 1, 'R');
     alignment_show(alg);
 
     return(EXIT_SUCCESS);
