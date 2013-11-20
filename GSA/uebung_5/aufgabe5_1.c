@@ -23,6 +23,7 @@ typedef struct multiedit {
 
 } multiedit;
 
+
 typedef struct alignment {
 
     int alglen;
@@ -82,6 +83,7 @@ int alignment_new(alignment *newalg, char seq1[], char seq2[], char align[]) {
 
     return(EXIT_SUCCESS);
 }
+
 
 int alignment_add_operation(alignment *alg, int count, char type) {
 
