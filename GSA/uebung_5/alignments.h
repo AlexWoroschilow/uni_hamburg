@@ -1,4 +1,4 @@
-/* alignments.c */
+/* alignments.h */
 
 
 #include <stdio.h>
