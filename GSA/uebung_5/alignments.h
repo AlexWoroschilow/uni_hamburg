@@ -1,21 +1,32 @@
 /* alignments.h */
 
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-
-
+#ifndef ALIGNMENTS
+#define ALIGNMENTS
 
 //typedef enum edit;
 //  
 //typedef enum base;
 
-typedef struct multiedit multiedit;
+typedef struct multiedit {
 
+    int count;
+    /*edit*/char type;
 
-typedef struct alignment alignment;
+} multiedit;
+
+typedef struct alignment {
+
+    int alglen;
+    int seq1len;
+    int seq2len;
+
+    multiedit *editop;
+
+    /*base*/char *seq1;
+    /*base*/char *seq2;
+
+} alignment;
 
 
 alignment alignment_new(char seq1[], char seq2[], char align[]);
@@ -31,3 +42,5 @@ int alignment_evalcost(alignment alg);
 
 
 void alignment_delete(alignment *alg);
+
+#endif

@@ -17,25 +17,25 @@
 //  a = 'a', c = 'c', g = 'g', t = 't'
 //} base;
 
-typedef struct multiedit {
-
-    int count;
-    /*edit*/char type;
-
-} multiedit;
-
-typedef struct alignment {
-
-    int alglen;
-    int seq1len;
-    int seq2len;
-
-    multiedit *editop;
-
-    /*base*/char *seq1;
-    /*base*/char *seq2;
-
-} alignment;
+// typedef struct multiedit {
+// 
+//     int count;
+//     /*edit*/char type;
+// 
+// } multiedit;
+// 
+// typedef struct alignment {
+// 
+//     int alglen;
+//     int seq1len;
+//     int seq2len;
+// 
+//     multiedit *editop;
+// 
+//     /*base*/char *seq1;
+//     /*base*/char *seq2;
+// 
+// } alignment;
 
 
 alignment alignment_new(char seq1[], char seq2[], char align[]) {
