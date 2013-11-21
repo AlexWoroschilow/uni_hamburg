@@ -38,12 +38,14 @@ typedef struct alignment {
 } alignment;
 
 
-int alignment_new(alignment *newalg, char seq1[], char seq2[], char align[]) {
+alignment alignment_new(char seq1[], char seq2[], char align[]) {
 
     int i;
     int j = 0;
     int k = 0;
     char zwabl[10] = "";
+    
+    alignment *newalg = malloc(sizeof(*newalg));
      
     (*newalg).alglen = 0;
 
@@ -81,7 +83,7 @@ int alignment_new(alignment *newalg, char seq1[], char seq2[], char align[]) {
         }
     }
 
-    return(EXIT_SUCCESS);
+    return(newalg);
 }
 
 
@@ -104,7 +106,7 @@ int alignment_add_operation(alignment *alg, int count, char type) {
     }
     
 
-    return(EXIT_SUCCESS);
+    return(0);
 }
 
 
@@ -220,16 +222,17 @@ int alignment_evalcost(alignment alg) {
 }
 
 
-int alignment_delete(alignment *alg) {
+void alignment_delete(alignment *alg) {
 
-    (*alg).seq1len = 0;
-    (*alg).seq2len = 0;
-    (*alg).alglen = 0;
+    if(alg != NULL) {
+    
+    free(alg->editop);
 
-    free((*alg).editop);
-
-    free((*alg).seq1);
-    free((*alg).seq2);
-  
-    return(EXIT_SUCCESS);
+    free(alg->seq1);
+    free(alg->seq2);
+    
+    free(alg);
+    
+    }
+    
 }
