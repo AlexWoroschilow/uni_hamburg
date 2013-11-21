@@ -15,9 +15,9 @@
 //typedef enum {
 //  a = 'a', c = 'c', g = 'g', t = 't'
 //} base;
-
+// /*
 typedef struct multiedit {
-
+ 
     int count;
     /*edit*/char type;
 
@@ -30,10 +30,10 @@ typedef struct alignment {
     int seq2len;
 
     multiedit *editop;
-
-    /*base*/char *seq1;
-    /*base*/char *seq2;
-
+ 
+     /*base*/char *seq1;
+     /*base*/char *seq2;
+ 
 } alignment;
 
 
@@ -191,7 +191,7 @@ int alignment_show(alignment alg) {
 int alignment_evalcost(alignment alg) {
 
     int i, j;
-    int u, v;
+    int u = 0; int v = 0;
     int counter = 0;
 
     for(i = 0; i < alg.alglen; i++) {
@@ -205,11 +205,11 @@ int alignment_evalcost(alignment alg) {
                     u++; v++;
                 }
             }
-            
+                                    
         } else if(alg.editop[i].type == 'I') {
             counter += alg.editop[i].count;
             v += alg.editop[i].count;
-
+            
         } else if(alg.editop[i].type == 'D') {
             counter += alg.editop[i].count;
             u += alg.editop[i].count;
@@ -267,5 +267,9 @@ int main() {
     alignment_add_operation(&alg, 1, 'R');
     alignment_show(alg);
 
+    evalcost = alignment_evalcost(alg);
+
+    printf("\tCosts: %d\n\n", evalcost);
+    
     return(EXIT_SUCCESS);
 }
