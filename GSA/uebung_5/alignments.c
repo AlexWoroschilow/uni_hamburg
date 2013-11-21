@@ -83,7 +83,7 @@ alignment alignment_new(char seq1[], char seq2[], char align[]) {
         }
     }
 
-    return(newalg);
+    return(*newalg);
 }
 
 
