@@ -192,7 +192,7 @@ int alignment_show(alignment alg) {
 int alignment_evalcost(alignment alg) {
 
     int i, j;
-    int u, v;
+    int u = 0; int v = 0;
     int counter = 0;
 
     for(i = 0; i < alg.alglen; i++) {
@@ -206,11 +206,11 @@ int alignment_evalcost(alignment alg) {
                     u++; v++;
                 }
             }
-            
+                                    
         } else if(alg.editop[i].type == 'I') {
             counter += alg.editop[i].count;
             v += alg.editop[i].count;
-
+            
         } else if(alg.editop[i].type == 'D') {
             counter += alg.editop[i].count;
             u += alg.editop[i].count;
