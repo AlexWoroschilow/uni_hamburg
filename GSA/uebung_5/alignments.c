@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "./alignments.h"
+#include "alignments.h"
 
 
 
@@ -53,33 +53,33 @@ alignment alignment_new(char seq1[], char seq2[], char align[]) {
         if(isdigit(align[i])) {
             continue;    
         } else {
-            (*newalg).alglen++;
+            newalg->alglen++;
         }
     }
 
-    (*newalg).seq1len = strlen(seq1);
-    (*newalg).seq2len = strlen(seq2);
+    newalg->seq1len = strlen(seq1);
+    newalg->seq2len = strlen(seq2);
 
-    (*newalg).seq1 = malloc((*newalg).seq1len * sizeof(char));
-    strcpy((*newalg).seq1, seq1);
+    newalg->seq1 = malloc(newalg->seq1len * sizeof(char));
+    strcpy(newalg->seq1, seq1);
 
-    (*newalg).seq2 = malloc((*newalg).seq2len * sizeof(char));
-    strcpy((*newalg).seq2, seq2);
+    newalg->seq2 = malloc(newalg->seq2len * sizeof(char));
+    strcpy(newalg->seq2, seq2);
 
-    (*newalg).editop = malloc((*newalg).alglen * sizeof(multiedit));
+    newalg->editop = malloc(newalg->alglen * sizeof(multiedit));
 
     for(i = 0; align[i] != '\0'; i++) {
         if(i == 0) {
-            (*newalg).editop[j].type = align[i];
+            newalg->editop[j].type = align[i];
         } else if(isdigit(align[i])) {
             zwabl[k] = align[i];
             k++;
             zwabl[k] = '\n';
-            sscanf(zwabl,"%d", &(*newalg).editop[j].count);
+            sscanf(zwabl,"%d", &newalg->editop[j].count);
         } else {
             k = 0;
             j++;
-            (*newalg).editop[j].type = align[i];
+            newalg->editop[j].type = align[i];
         }
     }
 
@@ -89,9 +89,9 @@ alignment alignment_new(char seq1[], char seq2[], char align[]) {
 
 int alignment_add_operation(alignment *alg, int count, char type) {
 
-    if((*alg).editop[(*alg).alglen].type == type) {
+    if(alg->editop[alg->alglen].type == type) {
 
-        (*alg).alglen += count;
+        alg->alglen += count;
 
     } else {
         
@@ -100,8 +100,8 @@ int alignment_add_operation(alignment *alg, int count, char type) {
         e.type = type;
         e.count = count;
 
-        (*alg).editop[(*alg).alglen] = e;
-        (*alg).alglen++;
+        alg->editop[(*alg).alglen] = e;
+        alg->alglen++;
     
     }
     
@@ -116,7 +116,7 @@ int alignment_show(alignment alg) {
     int u = 0;
     int v = 0;
     int x = 0;
-    char equal[alg.alglen + 1];
+    char *equal = (malloc(alg.alglen * sizeof(char)));
 
     printf("\n\t");
 
