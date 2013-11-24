@@ -6,14 +6,14 @@
 #include "editmatrix.h"
 
 
-void traceback(int matrix[6][6], alignment alg, int i, int j)
+void traceback(int matrix[6][6], struct alignment *alg, int i, int j)
 {
     int n,
         m;
 
 
-    int lenX = alg.seq1len,
-        lenY = alg.seq2len;
+    int lenX = alg->seq1len,
+        lenY = alg->seq2len;
 
     int current = NULL;
     int currentTop = NULL;
@@ -52,16 +52,19 @@ void traceback(int matrix[6][6], alignment alg, int i, int j)
             if(currentTop < currentLeft && currentTop < currentLeftTop) {
                 x = xTop;
                 y = yTop;
+                alignment_add_operation(alg, 1, 'D');
             } else if(currentLeft < currentTop && currentLeft < currentLeftTop) {
                 x = xLeft;
                 y = yLeft;
-
+                alignment_add_operation(alg, 1, 'I');
             } else if(currentLeftTop < currentTop && currentLeftTop < currentLeft) {
                 x = xLeftTop;
                 y = yLeftTop;
+                alignment_add_operation(alg, 1, 'R');
             } else {
                 x = xLeftTop;
                 y = yLeftTop;
+                alignment_add_operation(alg, 1, 'R');
             }
         }
 
@@ -83,21 +86,21 @@ int main (int argc, char *argv[]) {
         {2,2,3,1,1,0},
     };
 
-    alignment alg;
+    struct alignment alg;
 
     char seq1[] = "acgtagatatatagat";
     char seq2[] = "agaaagaggtaagaggga";
     char seq1_seq2_alg[] = "R7I2R2D1R3I1R3";
 
-
     int * matrix1;
+
     matrix1 = fillDPtable(seq1, seq2);
 
 
     alg = alignment_new(seq1, seq2, seq1_seq2_alg);
 
 
-    traceback(matrix, alg, 4, 4);
+    traceback(matrix, &alg, 4, 4);
 
 
     alignment_show(alg);
