@@ -1,0 +1,107 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "alignments.h"
+#include "editmatrix.h"
+
+
+void traceback(int matrix[6][6], alignment alg, int i, int j)
+{
+    int n,
+        m;
+
+
+    int lenX = alg.seq1len,
+        lenY = alg.seq2len;
+
+    int current = NULL;
+    int currentTop = NULL;
+    int currentLeft = NULL;
+    int currentLeftTop = NULL;
+
+    int x, y, xLeft, yLeft, xTop, yTop, xLeftTop, yLeftTop;
+
+
+    x = i-1;
+    y = j-1;
+
+    printf("\n\t%d\t%d\t", x, y);
+
+    while ( x != 0 && y != 0 ) {
+
+        xTop = x;
+        yTop = y-1;
+        xLeft = x-1;
+        yLeft = y;
+        xLeftTop = x-1;
+        yLeftTop = y-1;
+
+        if(i < lenX && j < lenY) {
+
+            if (xTop < lenX && yTop < lenY) {
+                currentTop = matrix[xTop][yTop];
+            }
+            if (xLeft < lenX && yLeft < lenY) {
+                currentLeft = matrix[xLeft][yLeft];
+            }
+            if (xLeftTop < lenX && yLeftTop < lenY) {
+                currentLeftTop = matrix[xLeftTop][yLeftTop];
+            }
+
+            if(currentTop < currentLeft && currentTop < currentLeftTop) {
+                x = xTop;
+                y = yTop;
+            } else if(currentLeft < currentTop && currentLeft < currentLeftTop) {
+                x = xLeft;
+                y = yLeft;
+
+            } else if(currentLeftTop < currentTop && currentLeftTop < currentLeft) {
+                x = xLeftTop;
+                y = yLeftTop;
+            } else {
+                x = xLeftTop;
+                y = yLeftTop;
+            }
+        }
+
+        printf("\n\t%d\t%d\t", x, y);
+    }
+}
+
+
+int main (int argc, char *argv[]) {
+
+    int x, y;
+
+    int matrix[6][6] = {
+        {1,1,0,0,0,0},
+        {2,2,1,1,0,0},
+        {2,2,3,1,1,0},
+        {1,1,0,0,0,0},
+        {2,2,1,1,0,0},
+        {2,2,3,1,1,0},
+    };
+
+    alignment alg;
+
+    char seq1[] = "acgtagatatatagat";
+    char seq2[] = "agaaagaggtaagaggga";
+    char seq1_seq2_alg[] = "R7I2R2D1R3I1R3";
+
+
+    int * matrix1;
+    matrix1 = fillDPtable(seq1, seq2);
+
+
+    alg = alignment_new(seq1, seq2, seq1_seq2_alg);
+
+
+    traceback(matrix, alg, 4, 4);
+
+
+    alignment_show(alg);
+
+
+    return 0;
+}
