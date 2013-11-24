@@ -2,7 +2,8 @@
 # or rename it to Makefile and just call: make <executable>
 
 # default parameters for CFLAGS
-CFLAGS=-Wall -Werror -g
+CFLAGS=
+#-Wall -Werror -g
 
 # a local variable that gets set if it is not set in the environment
 opt?=no
@@ -13,11 +14,16 @@ ifeq (${opt}, yes)
   CFLAGS+= -O3
 endif
 
-all: test.x
+all: afg61.x
+test: test.x 
 
 test.x: alignments.o
 
-test.o alignments.o: alignments.h
+afg61.x: alignments.o editmatrix.o
+
+alignments.o: alignments.h
+editmatrix.o: editmatrix.h
+
 
 # rule for all targets that end in .x, depending on a file with the same name
 # and ending .o.
