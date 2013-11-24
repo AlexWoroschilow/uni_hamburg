@@ -81,11 +81,6 @@ int main (int argc, char *argv[])
 
     struct alignment alg;
 
-    char seq1[] = "acgtagatatatagat";
-    char seq2[] = "agaaagaggtaagaggga";
-    char seq1_seq2_alg[] = "R7I2R2D1R3I1R3";
-
-
     /* ich will, dass u und v Strings sind, so dass ich die Längen finden kann */
     char *u = argv[1];
     char *v = argv[2];
@@ -97,9 +92,12 @@ int main (int argc, char *argv[])
     }
 
 
-
-
     fillDPtable(u, v);
+
+
+    char seq1[] = "acgtagatatatagat";
+    char seq2[] = "agaaagaggtaagaggga";
+    char seq1_seq2_alg[] = "R7I2R2D1R3I1R3";
 
 
     alg = alignment_new(seq1, seq2, seq1_seq2_alg);
