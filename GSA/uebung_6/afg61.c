@@ -8,14 +8,10 @@
 
 void traceback(int matrix[6][6], struct alignment *alg, int i, int j)
 {
-    int n,
-        m;
-
 
     int lenX = alg->seq1len,
         lenY = alg->seq2len;
 
-    int current = NULL;
     int currentTop = NULL;
     int currentLeft = NULL;
     int currentLeftTop = NULL;
@@ -75,7 +71,6 @@ void traceback(int matrix[6][6], struct alignment *alg, int i, int j)
 
 int main (int argc, char *argv[]) {
 
-    int x, y;
 
     int matrix[6][6] = {
         {1,1,0,0,0,0},
@@ -92,9 +87,8 @@ int main (int argc, char *argv[]) {
     char seq2[] = "agaaagaggtaagaggga";
     char seq1_seq2_alg[] = "R7I2R2D1R3I1R3";
 
-    int * matrix1;
 
-    matrix1 = fillDPtable(seq1, seq2);
+    fillDPtable(seq1, seq2);
 
 
     alg = alignment_new(seq1, seq2, seq1_seq2_alg);

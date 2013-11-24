@@ -16,7 +16,7 @@ int min(int a,int b,int c)
     }
 }
 
-int* fillDPtable(char u[], char v[])
+void fillDPtable(char u[], char v[])
 {
     int i, j, a, b, c, d, m, n;
 

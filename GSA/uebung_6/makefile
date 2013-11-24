@@ -2,8 +2,7 @@
 # or rename it to Makefile and just call: make <executable>
 
 # default parameters for CFLAGS
-CFLAGS=
-#-Wall -Werror -g
+CFLAGS=-Wall -Werror -g
 
 # a local variable that gets set if it is not set in the environment
 opt?=no
