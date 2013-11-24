@@ -67,7 +67,7 @@ int fillDPtable(char u[], char v[])
                   }
               }
         }
-      /*printf("\t%d(%c,%c,%c)", E[j][i][0],E[j][i][1],E[j][i][2],E[j][i][3]);*/
+        printf("\t%d(%c,%c,%c)", E[j][i][0],E[j][i][1],E[j][i][2],E[j][i][3]);
      }
     }
     /*printf("\n\n");*/
