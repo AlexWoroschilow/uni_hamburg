@@ -8,17 +8,19 @@
  */
 int g (char zeichen)
 {
-    switch (zeichen) {
-        case 'a': // as is in the exercise, for "a" always 1
-            return 1;
-        case 'g': // as is in the exercise, for "g" always 3
-            return 3;
+    if(zeichen == 'a') {
+        return 1; // as is in the exercise, for "a" always 1
+    } else if (zeichen == 'g') {
+        return 3; // as is in the exercise, for "g" always 3
     }
     return 2; // as is in the exercise, for "c" and "t" always 2
 }
 
 /*
- *Get all substrings with required char weight
+ * Get all substrings with required char weight
+ * Die Laufzeit ist:
+ *                    Teta (n)
+ *                    O( 2n - k) => O(n)
  * @return void
  */
 void sol (char *sequenz, int max)
@@ -32,10 +34,12 @@ void sol (char *sequenz, int max)
 
         gewicht += g(sequenz[i]);
 
+        printf("i: %d, char: %c, gw: %d\n", i, sequenz[i], gewicht);
+
         if(gewicht >= max) {
 
             if(gewicht == max) {
-                printf("\t(%d, %d)\n", (position+1), length);
+                printf("\t\t\t(%d, %d)\n", (position+1), length);
             }
 
             i = position++;
@@ -45,14 +49,15 @@ void sol (char *sequenz, int max)
     }
 }
 
-
-
+/*
+ * programm enerpoint
+ * return success status
+ */
 int main (int argc, char *argv[])
 {
     char *string1 = "acgtagctc";
 
     sol(string1, 9);
-
 
     return EXIT_SUCCESS;
 }
