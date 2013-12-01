@@ -19,8 +19,8 @@ int g (char zeichen)
 /*
  * Get all substrings with required char weight
  * Die Laufzeit ist:
- *                    Teta (n)
- *                    O( 2n - k) => O(n)
+ *                    Teta ( n )
+ *                    O( kn )
  * @return void
  */
 void sol (char *sequenz, int max)
