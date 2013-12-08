@@ -18,6 +18,9 @@ affinealign.x: alignment.o matrix.o
 alignment.o: alignment.h
 matrix.o: matrix.h
 
+aufgabe8_3.x: EDtabcolumn.o
+EDtabcolumn.o: EDtabcolumn.h
+
 
 # rule for all targets that end in .x, depending on a file with the same name
 # and ending .o.
