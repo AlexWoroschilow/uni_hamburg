@@ -1,0 +1,30 @@
+GSA - Aufgabe 8.2 - Multimengen-Substring-Problem
+
+
+Für eine Sequenz T mit Länge n, wobei S eine Multimenge ist, müssen wir die Startpositionen aller Substrings 
+von T der Länge |S| ausgeben, in denen die Zeichen aus S genauso oft vorkommen wie in S beschrieben. 
+  
+  
+Algorithmus mit der Laufzeit O(n):
+  
+  Immer nur ein Fenster der Länge |S| von T lesen und Zählen, wie viele von jedem Buchstabe es im Fenster gibt. 
+  Wenn die Anzahl von jedem Buchstabe im Fenster gleich die Zahl, die in der Definition von S gegeben war werde, dann 
+  werde die Position vom Substring ausgegeben und dazu der Substring ausgedruckt
+  
+  Da immer nur |S| Buchstaben der Sequenz auf einmal gelesen werden, müssen wir nach der Rechnung der Anzahlen der
+  Buchstaben der erste Buchstabe vom Fenster löschen und dazu 1 vom Counter für den Buchstabe, der gerade gelöscht 
+  war, abziehen. Danach lesen wir der nächste Buchstabe der Sequenz ein ins Fenster und rechnen neu die Anzahl von jedem 
+  Buchstaben im Fenster.
+
+  
+Beispiel (für S wie im Übungsblatt): afg82.c
+  
+  
+  Laufzeit: 
+    Da wir immer nur |S| Buchstaben auf einmal gespeichert haben und in der For-Schleife 
+  nur einen Buchstabe weiter einlesen, gehen wir mit dem Programm nur einmal durch der Sequenz. Deswegen ist 
+  die Laufzeit O(n). 
+
+
+
+
