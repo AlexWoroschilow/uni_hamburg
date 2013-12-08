@@ -1,13 +1,18 @@
 GSA - Aufgabe 8.2 - Multimengen-Substring-Problem
 
 
+Für eine Sequenz T mit Länge n, wobei S eine Multimenge ist, müssen wir die Startpositionen aller Substrings 
+von T der Länge |S| ausgeben, in denen die Zeichen aus S genauso oft vorkommen wie in S beschrieben. 
+  
+  
 Algorithmus mit der Laufzeit O(n):
+  
 
-  Für eine Sequenz T mit Länge n, 
+
+
+
   
-  
-  
-  
+  Beispiel (für S wie im Übungsblatt): afg82.c
   
   
   Laufzeit: 
