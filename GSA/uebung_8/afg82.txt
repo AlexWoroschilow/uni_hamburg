@@ -1,0 +1,20 @@
+GSA - Aufgabe 8.2 - Multimengen-Substring-Problem
+
+
+Algorithmus mit der Laufzeit O(n):
+
+  Für eine Sequenz T mit Länge n, 
+  
+  
+  
+  
+  
+  
+  Laufzeit: 
+    Da wir immer nur |S| Buchstaben auf einmal gespeichert haben und in der For-Schleife 
+  lesen nur einen Buchstabe weiter ein, gehen wir mit dem Programm nur einmal durch der Sequenz. Deswegen ist 
+  die Laufzeit O(n). 
+
+
+
+
