@@ -7,7 +7,14 @@ von T der Länge |S| ausgeben, in denen die Zeichen aus S genauso oft vorkommen 
   
 Algorithmus mit der Laufzeit O(n):
   
-
+  Immer nur ein Fenster der Länge |S| von T lesen und Zählen, wie viele von jedem Buchstabe es im Fenster gibt. 
+  Wenn die Anzahl von jedem Buchstabe im Fenster gleich die Zahl, die in der Definition von S gegeben werde ist, dann 
+  die Position vom Substring ausgeben und dazu der Substring selbst ausdrucken.
+  
+  Da immer nur |S| Buchstaben der Sequenz auf einmal gelesen werden, müssen wir nach der Rechnung der Anzahlen der
+  Buchstaben der erste Buchstabe vom Fenster löschen und dazu 1 vom Counter für den Buchstabe, der gerade gelöscht 
+  war abziehen. Danach lesen wir der nächste Buchstabe der Sequenz ein ins Fenster und die Anzahl von jedem Buchstaben 
+  im Fenster neu rechnen.
 
 
 
