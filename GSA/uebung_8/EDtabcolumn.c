@@ -100,6 +100,8 @@ ELEMENT* firstEDtabRcolumn(ELEMENT *rcol, int lengthu, int j0, char *u, char *v)
         rcol[i].value = col[i];
         rcol[i].origin = i;
     }
+    
+    free(col);
 
     return(rcol);
 }
