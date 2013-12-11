@@ -4,21 +4,25 @@
 #ifndef EDTABCOLUMN
 #define EDTABCOLUMN
 
-typedef struct ELEMENT ELEMENT;
+typedef struct Element Element;
 
-int getmin(int a, int b, int c);
+
+int getminA(int a, int b, int c);
+
+
+char getminB(int a, int b, int c);
 
 
 void firstEDtabcolumn(int *col, int length);
 
 
-int* nextEDtabcolumn(int *col, int length, char b, char *u);
+void nextEDtabcolumn(int *col, int length, char b, char *u);
 
 
-ELEMENT* firstEDtabRcolumn(ELEMENT *rcol, int lengthu, int j0, char *u, char *v);
+void firstEDtabRcolumn(Element *rcol, int lengthu, int j0, char *u, char *v);
 
 
-int nextEDtabRcolumn(ELEMENT *rcol, int j0, int lengthu, char b, char *u);
+int nextEDtabRcolumn(Element *rcol, int j0, int lengthu, char b, char *u);
 
 
 void evaluateallcolumns(int lengthu, int lengthv, char *u, char *v);
