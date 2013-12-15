@@ -19,7 +19,6 @@ typedef struct CrosspointCollection {
 } CrosspointCollection;
 
 
-
 /**
  * Test funktion to create cross-point array
  * @ return struct CrosspointCollection
@@ -30,6 +29,7 @@ CrosspointCollection * test_create_crosspoint_array (char * v, char * u) {
   
   CrosspointCollection * crosspointcollection = malloc(sizeof(CrosspointCollection *));
   
+  // die Länge der längsten Zeichenkette ist immer die Länge des Arrays
   crosspointcollection->count = (len_v > len_u ? len_v : len_u);
   crosspointcollection->collection = malloc(crosspointcollection->count * sizeof(Crosspoint *));
   
@@ -50,7 +50,7 @@ void test_fill_crosspoint_array (CrosspointCollection * array, int j, int i, int
 
 
 /**
- * Aufgabe 9.2 reconstruct alignment using cross point array
+ * Aufgabe 9.2 reconstruct alignment using crosspoint array
  * @return Alignment pointer
  */ 
 Alignment * reconstructalignment (CrosspointCollection * crosspoints, char * v, char * u) {
