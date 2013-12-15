@@ -29,7 +29,6 @@ int main(int argc, char *argv[]) {
     FILE* f;
     char *u, *v;
     int lengthu, lengthv;
-    Crosspoin
 
     f = fopen(argv[1], "r");
     
