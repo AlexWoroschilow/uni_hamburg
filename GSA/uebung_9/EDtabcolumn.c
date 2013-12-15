@@ -190,7 +190,7 @@ void evaluateallcolumns(int lengthu, int lengthv, char *u, char *v) {
 }
 
 
-int evaluatecrosspoints(Crosspoint *crosspoints, int j0, int lengthu, int lengthv, char *u, char *v) {
+int evaluatecrosspoints(Crosspoint **crosspoints, int j0, int lengthu, int lengthv, char *u, char *v) {
 
 	
     Element *rcol = malloc(lengthu * sizeof(rcol));
