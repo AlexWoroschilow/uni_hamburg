@@ -229,10 +229,10 @@ int evaluatecrosspoints(Crosspoint *crosspoints, int j0, int lengthu, int length
 
 	    vDown = malloc(lengthvDown * sizeof(vDown));
 	
-	   	for(i = 0; i < lengthvDown; i++) {
+	    for(i = 0; i < lengthvDown; i++) {
 	    		
 	    	vDown[i] = v[i];
-		}
+	    }
 	
 		uDown = malloc(lengthuDown * sizeof(uDown));
 	
