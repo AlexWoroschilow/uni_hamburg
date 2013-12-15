@@ -1,4 +1,4 @@
-/* header fuer Aufgabe 8.3 by Felix Braun */
+/* header fuer Aufgabe 9.1 by Felix Braun */
 
 
 #include <stdio.h>
@@ -165,7 +165,7 @@ void evaluateallcolumns(int lengthu, int lengthv, char *u, char *v) {
 
     int i, j0;
 
-    Crosspoint *crosspoints = (lengthv * sizeof(crosspoints));
+    Crosspoint *crosspoints = malloc(lengthv * sizeof(crosspoints));
 
     crosspoints[0].i = 0;
     crosspoints[0].c = 0;
@@ -184,18 +184,26 @@ void evaluateallcolumns(int lengthu, int lengthv, char *u, char *v) {
 
     j0 = lengthv / 2;
 
-    evaluatecrosspoints(crosspoints j0, lengthu, lengthv, u, v);
+	crosspoints[lengthv-1].c = evaluatecrosspoints(&crosspoints, j0, lengthu, lengthv, u, v);
 
     free (col);
-    free (rcol);
 }
 
 
 int evaluatecrosspoints(Crosspoint *crosspoints, int j0, int lengthu, int lengthv, char *u, char *v) {
 
+	
     Element *rcol = malloc(lengthu * sizeof(rcol));
 
-    char *u^, *v^;
+    int r, i;	
+
+    char *udown, *vdown;
+    char *uup, *vup;
+
+    int lengthudown, lengthvdown;
+    int lengthuup, lengthvup;
+
+    int j0up, j0down;
 
     firstEDtabRcolumn(rcol, lengthu, j0, u, v);
 
@@ -208,20 +216,56 @@ int evaluatecrosspoints(Crosspoint *crosspoints, int j0, int lengthu, int length
         } else {
 
             crosspoints[lengthv-1]->i = nextEDtabRcolumn(rcol, j0, lengthu, v[i-1], u);
-        }
-    }
+        }	
+    }	
+	
 
-    for(i = 0; i < j0; i++) {
+    if(lengthv > 1) {
+	
+		/*rekursiver Aufruf für alle j < j0 */
+		
+		    lengthudown = crosspoints[lengthv-1]->i;
+		    lengthvdown = j0;
+		
+	    for(i = 0; i < lengthvdown; i++) {
+	
+	    	vdown[i] = v[i];
+	    }
+	
+	    for(i = 0; i < lengthudown; i++) {
+	
+	    	udown[i] = u[i];
+	    }
+	
+	    j0down = j0 / 2;
+	
+		crosspoints[j0]->c = evaluatecrosspoints(&crosspoints, j0down, 
+							lengthudown, lengthvdown, udown, vdown);
+	
+	
+	    /*rekursiver Aufruf für alle j > j0 */
+	
+	    lengthuup = crosspoints[lengthv-1]->i;
+	    lengthvup = j0;
+	
+	    for(i = 0; i < lengthvup; i++) {
+	
+	    	vup[i] = v[i + lengthvup];
+	    }
+	
+	    for(i = 0; i < lengthuup; i++) {
+	
+	    	uup[i] = u[i + lengthuup];
+	    }
+	
+	    j0up = j0 / 2;
+	
+	    evaluatecrosspoints(&crosspoints, j0up, lengthuup, lengthvup, uup, vup);
+	}
 
-        u^[i] = u[i];
-    }
+    r = rcol[lengthu-1].value;
 
-    lengthu^ = crosspoints[lengthv-1].i;
-    lengthv^ = i0;
+    free(rcol);
 
-    j0^ = j0 / 2;
-
-    evaluatecrosspoints(crosspoints, j0^, lengthu^, lengthv^, u^, v^);
-
-    return(rcol[lengthu-1].value);    
+    return(r);    
 }

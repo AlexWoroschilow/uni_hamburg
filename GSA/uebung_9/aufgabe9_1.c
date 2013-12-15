@@ -1,4 +1,4 @@
-/* main fuer Aufgabe 8.3 by Felix Braun */
+/* main fuer Aufgabe 9.1 by Felix Braun */
 
 
 #include <stdio.h>
@@ -29,6 +29,7 @@ int main(int argc, char *argv[]) {
     FILE* f;
     char *u, *v;
     int lengthu, lengthv;
+    Crosspoin
 
     f = fopen(argv[1], "r");
     

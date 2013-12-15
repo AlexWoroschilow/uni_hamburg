@@ -1,10 +1,14 @@
-/* header fuer Aufgabe 8.3 by Felix Braun */
+/* header fuer Aufgabe 9.1 by Felix Braun */
 
 
 #ifndef EDTABCOLUMN
 #define EDTABCOLUMN
 
+
 typedef struct Element Element;
+
+
+typedef struct Crosspoint Crosspoint;
 
 
 int getminA(int a, int b, int c);
@@ -26,6 +30,10 @@ int nextEDtabRcolumn(Element *rcol, int j0, int lengthu, char b, char *u);
 
 
 void evaluateallcolumns(int lengthu, int lengthv, char *u, char *v);
+
+
+int evaluatecrosspoints(Crosspoint *crosspoints, int j0, 
+						int lengthu, int lengthv, char *u, char *v);
 
 
 #endif
