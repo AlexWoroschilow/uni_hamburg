@@ -1,0 +1,168 @@
+Aufgabe 9.3
+
+1)
+
+u = acgacgtag
+v = ggacgtgcag
+
+
+q = 2:
+
+Gq( )		u				v			|Gq(u)(w) - Gq(v)(w)|
+------   	---------		 ------------------		-------------------------	
+ac			2				1				1
+ca			0				1				1
+cg			2				1				1
+gc			0				1				1
+ga			1				1				0
+ag			1				1				0
+gt			1				1				0
+tg			0				1				1
+ta			1				0				1
+at			0				0				0
+aa			0				0				0
+cc			0				0				0
+gg			0				1				1
+tt			0				0				0
+
+
+Summe von |Gq(u)(w) - Gq(v)(w)| = 7 
+=> q-Wort Distanz = 7
+
+
+
+q = 3:
+
+Gq( )		u				v			|Gq(u)(w) - Gq(v)(w)|
+------   	----------    			-----------	  	-------------------------	
+acg			2				1				1
+cga			1				0				1
+gac			1				1				0
+cgt			1				1				0
+gta			1				0				1
+tag			1				0				1
+gga			0				1				1
+gtg			0				1				1
+tgc			0				1				1
+gca			0				1				1
+cag			0				1				1
+alle andere 		0				0				0
+
+
+Summe von |Gq(u)(w) - Gq(v)(w)| = 9
+=> q-Wort Distanz = 9
+
+
+
+
+2) 
+Durch unser selbstgeschriebene Code für ein Edit-Matrix von Aufgabe 5.3 sehen wir, dass edist(u,v) = 4.
+
+	 				a			c			g			a			c			g			t			a			g		
+	0(0,0,0)	1(0,W,0)	2(0,W,0)	3(0,W,0)	4(0,W,0)	5(0,W,0)	6(0,W,0)	7(0,W,0)	8(0,W,0)	9(0,W,0)
+g	1(N,0,0)	1(0,0,D)	2(0,W,D)	2(0,0,D)	3(0,W,0)	4(0,W,0)	5(0,W,D)	6(0,W,0)	7(0,W,0)	8(0,W,D)
+g	2(N,0,0)	2(N,0,D)	2(0,0,D)	2(0,0,D)	3(0,W,D)	4(0,W,D)	4(0,0,D)	5(0,W,0)	6(0,W,0)	7(0,W,D)
+a	3(N,0,0)	2(0,0,D)	3(N,W,D)	3(N,0,D)	2(0,0,D)	3(0,W,0)	4(0,W,0)	5(0,W,D)	5(0,0,D)	6(0,W,0)
+c	4(N,0,0)	3(N,0,0)	2(0,0,D)	3(0,W,0)	3(N,0,0)	2(0,0,D)	3(0,W,0)	4(0,W,0)	5(0,W,0)	6(0,W,D)
+g	5(N,0,0)	4(N,0,0)	3(N,0,0)	2(0,0,D)	3(0,W,0)	3(N,0,0)	2(0,0,D)	3(0,W,0)	4(0,W,0)	5(0,W,D)
+t	6(N,0,0)	5(N,0,0)	4(N,0,0)	3(N,0,0)	3(0,0,D)	4(N,W,D)	3(N,0,0)	2(0,0,D)	3(0,W,0)	4(0,W,0)
+g	7(N,0,0)	6(N,0,0)	5(N,0,0)	4(N,0,D)	4(N,0,D)	4(0,0,D)	4(N,0,D)	3(N,0,0)	3(0,0,D)	3(0,0,D)
+c	8(N,0,0)	7(N,0,0)	6(N,0,D)	5(N,0,0)	5(N,0,D)	4(0,0,D)	5(N,W,D)	4(N,0,0)	4(N,0,D)	4(N,0,D)
+a	9(N,0,0)	8(N,0,D)	7(N,0,0)	6(N,0,0)	5(0,0,D)	5(N,0,0)	5(0,0,D)	5(N,0,0)	4(0,0,D)	5(N,W,D)
+g	10(N,0,0)	9(N,0,0)	8(N,0,0)	7(N,0,D)	6(N,0,0)	6(N,0,D)	5(0,0,D)	6(N,W,D)	5(N,0,0)	4(0,0,D)
+
+	 edist= 4 
+
+
+Ein Traceback gibt folgendes als optimales Alignment von u (acgacgtag) und v (ggacgtgcag):
+
+acgacgt--ag			
+  |||||  ||
+g-gacgtgcag
+
+
+
+3)
+
+u = ryrryryrr
+v = rrryryryrr
+
+Einheitskostendistanz gerechnet durch unser Programm für Aufgabe 5.3: 
+	edist = 2
+	
+	
+q-Wort Distanzen:
+-----------------
+
+q = 2:
+
+Gq( )		u				v			|Gq(u)(w) - Gq(v)(w)|
+------   	----------    			-----------	  -------------------------	
+ry			3				3				0
+yr			2				2				0
+rr			2				3				1
+yy			0				0				0
+
+Summe von |Gq(u)(w) - Gq(v)(w)| = 1
+=> q-Wort Distanz = 1
+
+
+
+q = 3:
+
+Gq( )		u				v			|Gq(u)(w) - Gq(v)(w)|
+------   	----------    			-----------	  -------------------------	
+ryr			3				3				0
+yrr			2				1				1
+rry			1				1				0
+yry			1				2				1
+rrr			0				1				1
+
+
+Summe von |Gq(u)(w) - Gq(v)(w)| = 3
+=> q-Wort Distanz = 3
+
+
+
+4) Sei q = 2.
+
+	a) qwdist(u,v) > edist(u,v)
+		
+		u = aaaa
+		v = cccc
+		
+		edist = 4
+		q-Wort Distanz = 6
+			- weil Gq(aa) = 3 für u und 0 für v
+				und Gq(cc) = 0 für u und 3 für v.
+		
+	
+	b) qwdist(u,v) = edist(u,v)
+	
+		Beispiel: identische Sequenzen
+		u = actg
+		v = actg
+		
+		edist = 0
+		q-Wort Distanz = 0
+	
+	
+	c) qwdist(u,v) < edist(u,v)
+	
+		u = actg
+		v = tgac
+		
+		edist = 4
+		
+		Gq( )		u				v			|Gq(u)(w) - Gq(v)(w)|
+		------  	 ---------			 -----------	  -------------------------	
+		ac			1				1				0
+		ct			1				0				1
+		tg			1				1				0
+		ga			0				1				1
+		alle andere 		0				0				0
+		
+		Summe von |Gq(u)(w) - Gq(v)(w)| = 2
+			=> q-Wort Distanz = 2
+	
+	
