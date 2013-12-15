@@ -14,6 +14,9 @@ ifeq (${opt}, yes)
 endif
 
 
+aufgabe9_2.x: alignment.o
+alignment.o: alignment.h
+
 
 aufgabe9_1.x: EDtabcolumn.o alignment.o
 EDtabcolumn.o: EDtabcolumn.h

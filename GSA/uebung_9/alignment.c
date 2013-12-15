@@ -35,7 +35,6 @@ int alignment_show(Alignment *alg) {
     int x = 0;
     char *equal = (malloc(alg->alglen * sizeof(char)));
 
-    printf("\n\t");
 
     for(i = 0; i < alg->alglen; i++) {              /* Wiedergabe erste Zeile */
 
@@ -72,9 +71,7 @@ int alignment_show(Alignment *alg) {
         }
     }
 
-    printf("\t%s\n", equal);                       /* Wiedergabe zweite Zeile */
-
-    printf("\t");
+    printf("%s\n", equal);                       /* Wiedergabe zweite Zeile */
 
     for(i = 0; i < alg->alglen; i++) {              /* Wiedergabe dritte Zeile */
 
@@ -98,7 +95,7 @@ int alignment_show(Alignment *alg) {
         }
 
         if(i == alg->alglen - 1) {
-            printf("\n\n");
+            printf("\n");
         }
     }
 

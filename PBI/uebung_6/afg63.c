@@ -14,6 +14,9 @@ unsigned long int get_system_memory_total ()
     return pages * page_size;
 }
 
+
+
+
 int main (int argc, char *argv[])
 {
     printf("sizeof(char)=%ld bytes\n", sizeof(char));
@@ -31,5 +34,7 @@ int main (int argc, char *argv[])
     printf("sizeof(long double *)=%ld bytes\n", sizeof(long double *));
 
     printf("%ld\n", get_system_memory_total ());
+
+
     return EXIT_SUCCESS;
 }
