@@ -7,7 +7,7 @@
 #include "EDtabcolumn.h"
 #include "alignment.h"
 
-typedef struct Element {                /* Struktur der Matrixwert */
+typedef struct Element {                /* Struktur der Matrixwerte */
 
     int value;                          /* Tatsaechlicher Distanzwert */        
     int origin;                         /* Ursprung des partiellen Alignments */
@@ -107,7 +107,16 @@ void firstEDtabRcolumn(Element *rcol, int lengthu, int j0, char *u, char *v) {
 
         rcol[i].value = col[i];
         rcol[i].origin = i;
+
+//        if(!(i%3)) {
+//
+//            printf("\n\t");
+//        }
+//        
+//        printf(" v = %d; o = %d ", rcol[i].value, rcol[i].origin);
     }
+
+//    printf("\n\n");
 
     free(col);
 }
@@ -157,6 +166,9 @@ int nextEDtabRcolumn(Element *rcol, int j0, int lengthu, char b, char *u) {
         tmp2.origin = tmp1.origin;
     }
 
+//    printf("\tvi = %d; oi = %d ", rcol[lengthu-1].value, rcol[lengthu-1].origin);
+//    printf("\n");
+
     return(rcol[lengthu-1].origin);
 }
 
@@ -174,7 +186,7 @@ void evaluateallcolumns(int lengthu, int lengthv, char *u, char *v) {
 
     firstEDtabcolumn(col, lengthu);
 
-    for(i = 1; i < lengthv; i++) {
+    for(i = 1; i < (lengthv / 2); i++) {
 
         nextEDtabcolumn(col, lengthu, v[i-1], u);
     }
@@ -182,9 +194,22 @@ void evaluateallcolumns(int lengthu, int lengthv, char *u, char *v) {
     crosspoints[lengthv-1].i = lengthu;
     crosspoints[lengthv-1].c = col[lengthv-1];
 
-    j0 = lengthv / 2;
+    j0 = lengthv / 2 + (lengthv % 2);
 
 	crosspoints[lengthv-1].c = evaluatecrosspoints(crosspoints, j0, lengthu, lengthv, u, v);
+
+
+    for(i = 0; i < lengthv; i++) {
+
+        printf(" (%d|%d) -> Value = %d ", i, crosspoints[i].i, crosspoints[i].c);
+
+        if(!(i%3) && i != 0) {
+
+            printf("\n\t");
+        }
+    }
+
+	printf("\n");    
 
     free (col);
 }
@@ -192,22 +217,21 @@ void evaluateallcolumns(int lengthu, int lengthv, char *u, char *v) {
 
 int evaluatecrosspoints(Crosspoint *crosspoints, int j0, int lengthu, int lengthv, char *u, char *v) {
 
-	
     Element *rcol = malloc(lengthu * sizeof(rcol));
 
-    int r, i;	
+    int r, i;
 
-    char *uDown, *vDown;
-    char *uUp, *vUp;
+//    char *uDown, *vDown;
+//    char *uUp, *vUp;
 
-    int lengthuDown, lengthvDown;
-    int lengthuUp, lengthvUp;
+    int lengthvDown, lengthuDown;
+    int lengthvUp;
 
     int j0Up, j0Down;
 
     firstEDtabRcolumn(rcol, lengthu, j0, u, v);
 
-    for(i = j0; i < lengthv; i++) {
+    for(i = 1; i < lengthv; i++) {
 
         if(i != lengthv -1) {
 
@@ -215,63 +239,68 @@ int evaluatecrosspoints(Crosspoint *crosspoints, int j0, int lengthu, int length
 
         } else {
 
-            crosspoints[lengthv-1].i = nextEDtabRcolumn(rcol, j0, lengthu, v[i-1], u);
-        }	
-    }	
-	
+            crosspoints[j0].i = nextEDtabRcolumn(rcol, j0, lengthu, v[i-1], u);
+        }
+    }
+
 
     if(lengthv > 1) {
-	
-		/*rekursiver Aufruf für alle j < j0 */
-		
-	    lengthuDown = crosspoints[lengthv-1].i;
-	    lengthvDown = j0;
 
-	    vDown = malloc(lengthvDown * sizeof(vDown));
+        /*rekursiver Aufruf für alle j < j0 */
 	
-	    for(i = 0; i < lengthvDown; i++) {
-	    		
-	    	vDown[i] = v[i];
-	    }
-	
-		uDown = malloc(lengthuDown * sizeof(uDown));
-	
-	    for(i = 0; i < lengthuDown; i++) {
-	
-		 	uDown[i] = u[i];
-	    }
-	
-	    j0Down = j0 / 2;
-	
-		crosspoints[j0].c = evaluatecrosspoints(crosspoints, j0Down, 
-							lengthuDown, lengthvDown, uDown, vDown);
-	
-	
-	    /*rekursiver Aufruf für alle j > j0 */
-	
-	    lengthuUp = crosspoints[lengthv-1].i;
-	    lengthvUp = j0;
-	
-		vUp = malloc(lengthvUp * sizeof(vUp));
-	
-	    for(i = 0; i < lengthvUp; i++) {
-	
-	    	vUp[i] = v[i + lengthvUp];
-	    }
-	
-		uUp = malloc(lengthuUp * sizeof(uUp));
-	
-	    for(i = 0; i < lengthuUp; i++) {
-	
-	    	uUp[i] = u[i + lengthuUp];
-	    }
-	
-	    j0Up = j0 / 2;
-	
-	    evaluatecrosspoints(crosspoints, j0Up, lengthuUp, lengthvUp, uUp, vUp);
-	}
+//        lengthuDown = crosspoints[lengthv-1].i;
+//        lengthvDown = j0;
+//
+//        vDown = malloc(lengthvDown * sizeof(vDown));
+//
+//        for(i = 0; i < lengthvDown; i++) {
+//
+//            vDown[i] = v[i];
+//        }
+//    
+//    	uDown = malloc(lengthuDown * sizeof(uDown));
+//    
+//        for(i = 0; i < lengthuDown; i++) {
+//    
+//    	 	uDown[i] = u[i];
+//        }
+    
+        lengthvDown = lengthv / 2;
+        lengthuDown = crosspoints[j0].i + 1;
 
-    r = rcol[lengthu-1].value;
+        j0Down = j0 / 2;
+    
+    	crosspoints[j0].c = evaluatecrosspoints(crosspoints, j0Down, 
+    						lengthuDown, lengthvDown, u, v);
+    
+    
+        /*rekursiver Aufruf für alle j > j0 */
+    
+//        lengthuUp = crosspoints[lengthv-1].i;
+//        lengthvUp = j0;
+//    
+//    	vUp = malloc(lengthvUp * sizeof(vUp));
+//    
+//        for(i = 0; i < lengthvUp; i++) {
+//    
+//        	vUp[i] = v[i + lengthvUp];
+//        }
+//    
+//    	uUp = malloc(lengthuUp * sizeof(uUp));
+//    
+//        for(i = 0; i < lengthuUp; i++) {
+//    
+//        	uUp[i] = u[i + lengthuUp];
+//        }
+    
+        lengthvUp = lengthv / 2 + (lengthv % 2);
+
+        j0Up = j0 + (j0 / 2);
+    
+        evaluatecrosspoints(crosspoints, j0Up, lengthu, lengthvUp, u, v);
+    }
+        
+    r = rcol[crosspoints[j0].i].value;
 
     free(rcol);
 
