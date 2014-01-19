@@ -24,9 +24,10 @@ class FastaMSAParser < FastaParser
     # rung base method to check
     # for alphabet
     super
+    # check for sequenz
+    # an validate sequenz length
     if (sequenz?)
-      # check sequenz length 
-      # only for sequenz string
+      # hier check sequenz length 
       if(@lenth != @string.length)
         raise "String length is not correct\nRequired lenght: #{@lenth}\nCurrent length: #{@string.length}\nString:#{@string}"            
       end
