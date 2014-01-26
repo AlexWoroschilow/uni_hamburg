@@ -160,17 +160,17 @@ if __FILE__ == $0
 
     msa = MSA.new
     parser = FastaMSAParser.new(alphabet)
+    
     (FastaIterator.new(file, parser)).each do |fasta, header, sequenz|
       puts "Sequenz: \t #{sequenz}" 
       msa.append(sequenz)
     end
+    
     puts "\n"
     puts "Consensus: \t #{(msa.consensus).sequenz}"
     puts "\n"
     puts "Consensus distance: \t #{(msa.consensus).distance}" 
     puts "All pair sum score: \t #{(msa.all_pair_score).sum}" 
-
-
 
 
   rescue Exception => ex
