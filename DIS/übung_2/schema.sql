@@ -1,15 +1,10 @@
- 
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `uebung2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`estate_agent`
+-- Table `uebung2`.`estate_agent`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`estate_agent` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`estate_agent` (
   `name` VARCHAR(255) NOT NULL,
   `address` VARCHAR(45) NULL,
   `login` VARCHAR(45) NULL,
@@ -19,16 +14,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`estate_agent` (
   INDEX `fk_estate_agent_estate1_idx` (`estate_id` ASC),
   CONSTRAINT `fk_estate_agent_estate1`
     FOREIGN KEY (`estate_id`)
-    REFERENCES `mydb`.`estate` (`id`)
+    REFERENCES `uebung2`.`estate` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`estate`
+-- Table `uebung2`.`estate`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`estate` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`estate` (
   `id` INT NOT NULL,
   `city` VARCHAR(45) NULL,
   `zip` INT(11) NULL,
@@ -40,16 +35,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`estate` (
   INDEX `fk_estate_estate_agent_idx` (`estate_agent_name` ASC),
   CONSTRAINT `fk_estate_estate_agent`
     FOREIGN KEY (`estate_agent_name`)
-    REFERENCES `mydb`.`estate_agent` (`name`)
+    REFERENCES `uebung2`.`estate_agent` (`name`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`appartment`
+-- Table `uebung2`.`appartment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`appartment` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`appartment` (
   `id` INT NOT NULL,
   `estate_id` INT NOT NULL,
   `floor` SMALLINT UNSIGNED NULL,
@@ -61,16 +56,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`appartment` (
   INDEX `fk_appartment_estate1_idx` (`estate_id` ASC),
   CONSTRAINT `fk_appartment_estate1`
     FOREIGN KEY (`estate_id`)
-    REFERENCES `mydb`.`estate` (`id`)
+    REFERENCES `uebung2`.`estate` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`house`
+-- Table `uebung2`.`house`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`house` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`house` (
   `estate_id` INT NOT NULL,
   `floor_count` SMALLINT UNSIGNED NULL,
   `price` DOUBLE UNSIGNED NULL,
@@ -78,32 +73,32 @@ CREATE TABLE IF NOT EXISTS `mydb`.`house` (
   PRIMARY KEY (`estate_id`),
   CONSTRAINT `fk_house_estate1`
     FOREIGN KEY (`estate_id`)
-    REFERENCES `mydb`.`estate` (`id`)
+    REFERENCES `uebung2`.`estate` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`sell`
+-- Table `uebung2`.`sell`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`sell` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`sell` (
   `id` INT NOT NULL,
   `house_estate_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_sell_house1_idx` (`house_estate_id` ASC),
   CONSTRAINT `fk_sell_house1`
     FOREIGN KEY (`house_estate_id`)
-    REFERENCES `mydb`.`house` (`estate_id`)
+    REFERENCES `uebung2`.`house` (`estate_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`rent`
+-- Table `uebung2`.`rent`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`rent` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`rent` (
   `id` INT NOT NULL,
   `appartment_id` INT NOT NULL,
   `appartment_estate_id` INT NOT NULL,
@@ -111,16 +106,16 @@ CREATE TABLE IF NOT EXISTS `mydb`.`rent` (
   INDEX `fk_rent_appartment1_idx` (`appartment_id` ASC, `appartment_estate_id` ASC),
   CONSTRAINT `fk_rent_appartment1`
     FOREIGN KEY (`appartment_id` , `appartment_estate_id`)
-    REFERENCES `mydb`.`appartment` (`id` , `estate_id`)
+    REFERENCES `uebung2`.`appartment` (`id` , `estate_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`person`
+-- Table `uebung2`.`person`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`person` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`person` (
   `id` INT NOT NULL,
   `sell_id` INT NOT NULL,
   `rent_id` INT NOT NULL,
@@ -132,21 +127,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`person` (
   INDEX `fk_person_rent1_idx` (`rent_id` ASC),
   CONSTRAINT `fk_person_sell1`
     FOREIGN KEY (`sell_id`)
-    REFERENCES `mydb`.`sell` (`id`)
+    REFERENCES `uebung2`.`sell` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_person_rent1`
     FOREIGN KEY (`rent_id`)
-    REFERENCES `mydb`.`rent` (`id`)
+    REFERENCES `uebung2`.`rent` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`contract`
+-- Table `uebung2`.`contract`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`contract` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`contract` (
   `id` INT NOT NULL,
   `contract_no` INT NULL,
   `date` DATE NULL,
@@ -156,9 +151,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`contract_tenancy`
+-- Table `uebung2`.`contract_tenancy`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`contract_tenancy` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`contract_tenancy` (
   `id` INT NOT NULL,
   `contract_id` INT NOT NULL,
   `rent_id` INT NOT NULL,
@@ -170,21 +165,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`contract_tenancy` (
   INDEX `fk_contract_tenancy_rent1_idx` (`rent_id` ASC),
   CONSTRAINT `fk_contract_tenancy_contract1`
     FOREIGN KEY (`contract_id`)
-    REFERENCES `mydb`.`contract` (`id`)
+    REFERENCES `uebung2`.`contract` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_contract_tenancy_rent1`
     FOREIGN KEY (`rent_id`)
-    REFERENCES `mydb`.`rent` (`id`)
+    REFERENCES `uebung2`.`rent` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`contract_purchase`
+-- Table `uebung2`.`contract_purchase`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`contract_purchase` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`contract_purchase` (
   `id` INT NOT NULL,
   `contract_id` INT NOT NULL,
   `sell_id` INT NOT NULL,
@@ -195,21 +190,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`contract_purchase` (
   INDEX `fk_contract_purchase_sell1_idx` (`sell_id` ASC),
   CONSTRAINT `fk_contract_purchase_contract1`
     FOREIGN KEY (`contract_id`)
-    REFERENCES `mydb`.`contract` (`id`)
+    REFERENCES `uebung2`.`contract` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_contract_purchase_sell1`
     FOREIGN KEY (`sell_id`)
-    REFERENCES `mydb`.`sell` (`id`)
+    REFERENCES `uebung2`.`sell` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`person_has_house`
+-- Table `uebung2`.`person_has_house`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`person_has_house` (
+CREATE TABLE IF NOT EXISTS `uebung2`.`person_has_house` (
   `person_id` INT NOT NULL,
   `house_estate_id` INT NOT NULL,
   PRIMARY KEY (`person_id`, `house_estate_id`),
@@ -217,17 +212,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`person_has_house` (
   INDEX `fk_person_has_house_person1_idx` (`person_id` ASC),
   CONSTRAINT `fk_person_has_house_person1`
     FOREIGN KEY (`person_id`)
-    REFERENCES `mydb`.`person` (`id`)
+    REFERENCES `uebung2`.`person` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_person_has_house_house1`
     FOREIGN KEY (`house_estate_id`)
-    REFERENCES `mydb`.`house` (`estate_id`)
+    REFERENCES `uebung2`.`house` (`estate_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
