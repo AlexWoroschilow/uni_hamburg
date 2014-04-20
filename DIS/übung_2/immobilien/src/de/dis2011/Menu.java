@@ -28,11 +28,11 @@ import java.util.function.Function;
  * --
  */
 public class Menu {
-    private String title;
-    private ArrayList<String> labels = new ArrayList<String>();
-    private ArrayList<Integer> returnValues = new ArrayList<Integer>();
+    protected String title;
+    protected ArrayList<String> labels = new ArrayList<String>();
+    protected ArrayList<Integer> returnValues = new ArrayList<Integer>();
 
-    private ArrayList<MenuItem> items = new ArrayList<MenuItem>();
+    protected ArrayList<MenuInterface> items = new ArrayList<MenuInterface>();
 
     /**
      * Konstruktor.
@@ -44,18 +44,18 @@ public class Menu {
         this.title = title;
     }
 
-    public void addEntry(String label, Runnable lambda) {
-
-        this.items.add(new MenuItem(label, lambda, true));
+    public Menu addEntry(String label, Function<Object, Object> lambda) {
+        this.items.add(new MenuItem(label, lambda));
+        return this;
     }
 
-    public void addEntry(String label, Runnable lambda, boolean isContinue) {
-
-        this.items.add(new MenuItem(label, lambda, isContinue));
+    public Menu addMenuItem(MenuInterface item) {
+        this.items.add(item);
+        return this;
     }
 
 
-    public boolean process() {
+    public Object process() {
         int selection = 0;
 
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
@@ -63,8 +63,8 @@ public class Menu {
         while (selection == 0) {
             System.out.println(this.title + ":");
 
-            for (int i = 1; i <= this.items.size(); ++i) {
-                MenuItem item = this.items.get(i - 1);
+            for (int i = 0; i < this.items.size(); ++i) {
+                MenuInterface item = this.items.get(i);
                 item.setCode(i);
                 System.out.println("[" + i + "] " + item.toString());
             }
@@ -79,12 +79,10 @@ public class Menu {
                 e.printStackTrace();
             }
 
-            for (int i = 1; i <= this.items.size(); ++i) {
-                MenuItem item = this.items.get(i - 1);
-
+            for (int i = 0; i < this.items.size(); ++i) {
+                MenuInterface item = this.items.get(i);
                 if (selection == item.getCode()) {
-                    item.getLambda().run();
-                    return item.getIsContinue();
+                    return item.getLambda().apply(item);
                 }
             }
 

@@ -73,4 +73,58 @@ public class Apartment {
         return this.estate;
     }
 
+    public String getCity() {
+        return this.getEstate().getCity();
+    }
+
+    public Apartment setCity(String city) {
+        this.getEstate().setCity(city);
+        return this;
+    }
+
+    public int getZip() {
+        return this.getEstate().getZip();
+    }
+
+    public Apartment setZip(int zip) {
+        this.getEstate().setZip(zip);
+        return this;
+    }
+
+    public String getStreet() {
+        return this.getEstate().getStreet();
+    }
+
+    public Apartment setStreet(String street) {
+        this.getEstate().setStreet(street);
+        return this;
+    }
+
+    public int getStreetNo() {
+        return this.getEstate().getStreetNo();
+    }
+
+    public Apartment setStreetNo(int streetNo) {
+        this.getEstate().setStreetNo(streetNo);
+        return this;
+    }
+
+    public String toString() {
+        return new String(
+                "\t\t Zip: " +
+                        this.getZip() +
+                        "\n\t\t\t City: " +
+                        this.getCity() +
+                        "\n\t\t\t Street: " +
+                        this.getStreet() +
+                        "\n\t\t\t Street No: " +
+                        this.getStreetNo() +
+                        "\n\t\t\t Floor: " +
+                        this.getFloor() +
+                        "\n\t\t\t Has kitchen: " +
+                        this.getIsKitchen() +
+                        "\n\t\t\t Has balcon: " +
+                        this.getIsBalcony()
+        );
+    }
 }

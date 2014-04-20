@@ -1,17 +1,15 @@
 package de.dis2011;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import de.dis2011.data.Person;
+
 import java.util.function.Function;
 
-public class MenuItem implements MenuInterface {
+public class MenuItemPerson implements MenuInterface {
     private int code;
     private String title;
     private Function<Object, Object> lambda;
 
-    public MenuItem(String title, Function<Object, Object> lambda) {
+    public MenuItemPerson(String title, Function<Object, Object> lambda) {
         this.title = title;
         this.lambda = lambda;
     }

@@ -3,6 +3,10 @@ package de.dis2011;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 /**
  * Kleine Helferklasse zum Einlesen von Formulardaten
@@ -39,9 +43,9 @@ public class FormUtil {
         boolean finished = false;
 
         while (!finished) {
-            String line = readString(label);
 
             try {
+                String line = readString(label);
                 ret = Integer.parseInt(line);
                 finished = true;
             } catch (NumberFormatException e) {
@@ -57,9 +61,9 @@ public class FormUtil {
         boolean finished = false;
 
         while (!finished) {
-            String line = readString(label);
 
             try {
+                String line = readString(label);
                 ret = Float.parseFloat(line);
                 finished = true;
             } catch (NumberFormatException e) {
@@ -75,13 +79,33 @@ public class FormUtil {
         boolean finished = false;
 
         while (!finished) {
-            String line = readString(label);
 
             try {
+                String line = readString(label);
                 ret = Boolean.parseBoolean(line);
                 finished = true;
             } catch (NumberFormatException e) {
                 System.err.println("Ungültige Eingabe: Bitte geben Sie eine Zahl an!");
+            }
+        }
+
+        return ret;
+    }
+
+    public static Date readDate(String label) {
+        Date ret = null;
+        boolean finished = false;
+
+        while (!finished) {
+
+            try {
+                String line = readString(label);
+                ret = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH).parse(line);
+                finished = true;
+            } catch (NumberFormatException e) {
+                System.err.println("Ungültige Eingabe: Bitte geben Sie eine Zahl an!");
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
         }
 

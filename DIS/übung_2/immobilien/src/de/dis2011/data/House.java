@@ -36,13 +36,13 @@ public class House {
         return this.price;
     }
 
+    public Estate getEstate() {
+        return this.estate;
+    }
+
     public House setEstate(Estate estate) {
         this.estate = estate;
         return this;
-    }
-
-    public Estate getEstate() {
-        return this.estate;
     }
 
     public House setIsGarden(boolean isGarden) {
@@ -53,4 +53,61 @@ public class House {
     public boolean getIsGarden() {
         return this.is_garden;
     }
+
+
+    public String getCity() {
+        return this.getEstate().getCity();
+    }
+
+    public House setCity(String city) {
+        this.getEstate().setCity(city);
+        return this;
+    }
+
+    public int getZip() {
+        return this.getEstate().getZip();
+    }
+
+    public House setZip(int zip) {
+        this.getEstate().setZip(zip);
+        return this;
+    }
+
+    public String getStreet() {
+        return this.getEstate().getStreet();
+    }
+
+    public House setStreet(String street) {
+        this.getEstate().setStreet(street);
+        return this;
+    }
+
+    public int getStreetNo() {
+        return this.getEstate().getStreetNo();
+    }
+
+    public House setStreetNo(int streetNo) {
+        this.getEstate().setStreetNo(streetNo);
+        return this;
+    }
+
+    public String toString() {
+        return new String(
+                "\t\t Zip: " +
+                        this.getZip() +
+                        "\n\t\t\t City: " +
+                        this.getCity() +
+                        "\n\t\t\t Street: " +
+                        this.getStreet() +
+                        "\n\t\t\t Street No: " +
+                        this.getStreetNo() +
+                        "\n\t\t\t Price: " +
+                        this.getPrice() +
+                        "\n\t\t\t Has garden: " +
+                        this.getIsGarden() +
+                        "\n\t\t\t Floor count: " +
+                        this.getFloorCount()
+        );
+    }
+
 }

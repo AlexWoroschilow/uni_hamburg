@@ -48,4 +48,8 @@ public class Estate {
         this.street_no = streetNo;
         return this;
     }
+
+    public int getStreetNo() {
+        return this.street_no;
+    }
 }

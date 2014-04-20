@@ -54,4 +54,12 @@ public class Person {
         return this;
     }
 
+    public String toString() {
+        return new String(
+                "\t\t Name: " +
+                        this.getName() +
+                        "\n\t\t\t Address: " +
+                        this.getAddress()
+        );
+    }
 }
