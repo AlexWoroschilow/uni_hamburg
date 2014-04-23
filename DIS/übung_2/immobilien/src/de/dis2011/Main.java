@@ -78,6 +78,7 @@ public class Main {
      */
     public static void showMenuAgentsCreate() {
         EstateAgent makler = (new EstateAgent())
+                .setEstate(showMenuContractCreatePurchaseChooseHouse().getEstate())
                 .setName(FormUtil.readString("Name"))
                 .setAddress(FormUtil.readString("Address"))
                 .setLogin(FormUtil.readString("Login"))

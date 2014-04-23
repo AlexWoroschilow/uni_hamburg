@@ -13,7 +13,7 @@ import java.util.Properties;
 
 /**
  * Einfaches Singleton zur Verwaltung von Datenbank-Verbindungen.
- * 
+ *
  * @author Michael von Riegen
  * @version April 2009
  */
@@ -61,7 +61,7 @@ public class DB2ConnectionManager {
 
 	/**
 	 * Liefert Instanz des Managers
-	 * 
+	 *
 	 * @return DB2ConnectionManager
 	 */
 	public static DB2ConnectionManager getInstance() {
@@ -73,7 +73,7 @@ public class DB2ConnectionManager {
 
 	/**
 	 * Liefert eine Verbindung zur DB2 zurC<ck
-	 * 
+	 *
 	 * @return Connection
 	 */
 	public Connection getConnection() {

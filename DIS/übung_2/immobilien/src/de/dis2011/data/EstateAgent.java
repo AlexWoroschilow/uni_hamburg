@@ -22,6 +22,7 @@ public class EstateAgent {
     private String address;
     private String login;
     private String password;
+    private Estate estate;
 
     public int getId() {
         return id;
@@ -67,6 +68,16 @@ public class EstateAgent {
         this.password = password;
         return this;
     }
+
+    public Estate getEstate() {
+        return this.estate;
+    }
+
+    public EstateAgent setEstate(Estate estate) {
+        this.estate = estate;
+        return this;
+    }
+
 
     /**
      * Lädt einen EstateAgent aus der Datenbank
