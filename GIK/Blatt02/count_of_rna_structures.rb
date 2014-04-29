@@ -2,15 +2,9 @@ def structure_count(i, j, l)
   c=0
   if i < j
     c=1
-    if i+1 < j-1
-      c = c + structure_count(i+1, j-1, l)
-    end
-    if i+1 < j
-      c = c + structure_count(i+1, j, l)
-    end
-    if i < j-1
-      c = c + structure_count(i, j-1, l)
-    end
+    c = c + structure_count(i+1, j-1, l)
+    c = c + structure_count(i+1, j, l)
+    c = c + structure_count(i, j-1, l)
     x = (i+2)
     y = (j-1)
     if (y-x) >= l
