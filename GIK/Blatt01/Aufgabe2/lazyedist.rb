@@ -1,4 +1,15 @@
 #!/usr/bin/ruby
+#
+# GIK Uebungen Blatt 1
+
+# Aufgabe 1.2:
+#    Edit Distance Algorithm
+# -lazy-
+#
+# Gruppe: Voroshylov, Meier, Braun
+#
+# Kommentar: Stack und Recursion, macht aber mehr Schritte als im Script und im Blatt steht
+
 
 class Step
   attr_reader :i
@@ -12,10 +23,14 @@ end
 
 class Decorator
   def matrix(matrix)
+    puts("Matrix: #{matrix.size} X #{matrix[0].size}\n")
     matrix.each do |line|
-      print(line)
+      line.each do |element|
+        printf "%-3s", element.to_s
+      end
       print("\n")
     end
+    print("\n")
   end
 end
 
@@ -78,7 +93,7 @@ class EDistLazy
     fill_stack(m, n, seq1, seq2)
 
     @matrix = Array.new(m + 1) {
-      Array.new(n + 1) { 0 }
+      Array.new(n + 1) { 'x' }
     }
 
     while element = @stack.pop
@@ -107,22 +122,27 @@ class EDistLazy
       else
         @matrix[i][j] = [
             @matrix[i-1][j-1],
-            @matrix[i-1][j],
             @matrix[i][j-1],
         ].min + 1
       end
     end
-
     @decorator.matrix(@matrix)
-
   end
-
 end
 
 
 (EDistLazy.new(Stack.new, Decorator.new)).eDist('freizeit', 'zeitgeist')
 (EDistLazy.new(Stack.new, Decorator.new)).eDist('aabaa', 'aaaba')
-(EDistLazy.new(Stack.new, Decorator.new)).eDist(
-    'acgtgagtatagatagatgccccagagggttagacagatagaccgatgagacgagtagacggagtttagagagatgatgc',
-    'acgtgattatagatagatgccccagagcgttagacagataaaccgatgagacgtgtagacggagttcagagagatgatgc'
-)
+#(EDistLazy.new(Stack.new, Decorator.new)).eDist(
+#    'acgtgagtatagatagatgccccagagggttagacagatagaccgatgagacgagtagacggagtttagagagatgatgc',
+#    'acgtgattatagatagatgccccagagcgttagacagataaaccgatgagacgtgtagacggagttcagagagatgatgc'
+#
+
+
+#hash = Hash.new
+#hash[-1] = 12
+#print hash[-1
+#
+#
+#
+# ]

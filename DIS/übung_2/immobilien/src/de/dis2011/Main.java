@@ -194,7 +194,7 @@ public class Main {
                 )
                 .setFloorCount(FormUtil.readInt("Floor count"))
                 .setPrice(FormUtil.readFloat("Price"))
-                .setIsGarden(FormUtil.readBoolean("Has garden"));
+                .setIsGarden(FormUtil.readInt("Has garden"));
         (new EntityManager()).persist(house);
         System.out.println(">> House has been created!");
     }
@@ -266,7 +266,7 @@ public class Main {
                 .setStreetNo(FormUtil.readInt("Street No (" + estate.getStreetNo() + ")"))
                 .setFloorCount(FormUtil.readInt("Floors (" + estate.getFloorCount() + ")"))
                 .setPrice(FormUtil.readFloat("Price (" + estate.getPrice() + ")"))
-                .setIsGarden(FormUtil.readBoolean("Has Garden (" + estate.getIsGarden() + ")"));
+                .setIsGarden(FormUtil.readInt("Has Garden (" + estate.getIsGarden() + ")"));
         (new EntityManager()).persist(estate);
         System.out.println("Estate has been updated!");
     }

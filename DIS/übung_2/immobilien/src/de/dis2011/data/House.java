@@ -6,7 +6,7 @@ public class House {
     private int id;
     private int floor_count;
     private float price;
-    private boolean is_garden;
+    private int is_garden;
     private Estate estate;
 
     public int getId() {
@@ -45,12 +45,12 @@ public class House {
         return this;
     }
 
-    public House setIsGarden(boolean isGarden) {
+    public House setIsGarden(int isGarden) {
         this.is_garden = isGarden;
         return this;
     }
 
-    public boolean getIsGarden() {
+    public int getIsGarden() {
         return this.is_garden;
     }
 

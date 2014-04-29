@@ -29,7 +29,7 @@ public class EntityManager {
                                                 (new House())
                                                         .setEstate(new Estate())
                                                         .setFloorCount(12)
-                                                        .setIsGarden(true)
+                                                        .setIsGarden(1)
                                                         .setPrice(123000)
                                                         .setCity("Hamburg")
                                                         .setStreet("Bundesstrasse")
@@ -155,7 +155,7 @@ public class EntityManager {
                         (new House())
                                 .setEstate(getEstate(rs.getInt("estate_id")))
                                 .setFloorCount(rs.getInt("floor_count"))
-                                .setIsGarden(rs.getBoolean("is_garden"))
+                                .setIsGarden(rs.getInt("is_garden"))
                                 .setPrice(rs.getFloat("price"))
                 );
             }
@@ -281,13 +281,16 @@ public class EntityManager {
         try {
 
             PreparedStatement pstmtEstate = connection
-                    .prepareStatement("INSERT INTO estate(zip, city, street, street_no) VALUES (?, ?, ?, ?)",
+                    .prepareStatement("INSERT INTO estate(zip, city, street, street_no, square, estate_agent_name) VALUES (?, ?, ?, ?, ?, ?)",
                             RETURN_GENERATED_KEYS);
 
             pstmtEstate.setInt(1, estate.getZip());
             pstmtEstate.setString(2, estate.getCity());
             pstmtEstate.setString(3, estate.getStreet());
             pstmtEstate.setInt(4, estate.getStreetNo());
+            pstmtEstate.setInt(5, 1);
+            pstmtEstate.setString(6, "Test");
+
             pstmtEstate.executeUpdate();
 
             ResultSet rs = pstmtEstate.getGeneratedKeys();
@@ -304,7 +307,7 @@ public class EntityManager {
             pstmt.setInt(1, estate.getId());
             pstmt.setInt(2, house.getFloorCount());
             pstmt.setFloat(3, house.getPrice());
-            pstmt.setBoolean(4, house.getIsGarden());
+            pstmt.setInt(4, house.getIsGarden());
             pstmt.executeUpdate();
 
             ResultSet rs2 = pstmtEstate.getGeneratedKeys();
