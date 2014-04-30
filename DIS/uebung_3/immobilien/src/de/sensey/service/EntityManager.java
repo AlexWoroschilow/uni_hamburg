@@ -10,150 +10,113 @@ import org.hibernate.cfg.Configuration;
 
 public class EntityManager {
 
-    private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory = null;
 
     public EntityManager() {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+        if (sessionFactory == null) {
+            sessionFactory = new Configuration().configure().buildSessionFactory();
+        }
     }
 
+    /**
+     * @return
+     */
     public ArrayList<Purchase> getContractsPurchase() {
-        ArrayList<Purchase> collection = new ArrayList<Purchase>();
 
-//        collection.add(
-//                (new Purchase())
-//                        .setSell(
-//                                (new Sell())
-//                                        .setHouse(
-//                                                (new House())
-//                                                        .setEstate(new Estate())
-//                                                        .setFloorCount(12)
-//                                                        .setIsGarden(1)
-//                                                        .setPrice(123000)
-//                                                        .setCity("Hamburg")
-//                                                        .setStreet("Bundesstrasse")
-//                                        )
-//                                        .setPerson(
-//                                                (new Person())
-//                                                        .setName("Person 1")
-//                                                        .setFirstName("Alex")
-//                                        )
-//                        )
-//                        .setContract(
-//                                (new Contract())
-//                                        .setContractNo(23423413)
-//                                        .setDate(new Date())
-//                                        .setPlace("test place")
-//                        )
-//                        .setInstallmentCount(12)
-//                        .setRate(23)
-//        );
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+
+        ArrayList<Purchase> collection = (ArrayList<Purchase>) session
+                .createQuery("from Purchase")
+                .list();
+
+        session.getTransaction().commit();
+
         return collection;
     }
 
+    /**
+     * @return
+     */
     public ArrayList<Tenancy> getContractsTenancy() {
-        ArrayList<Tenancy> collection = new ArrayList<Tenancy>();
-//        collection.add(
-//                (new Tenancy())
-//                        .setRent(
-//                                (new Rent())
-//                                        .setApartment(
-//                                                (new Apartment())
-//                                                        .setEstate(new Estate())
-//                                                        .setFloor(1)
-//                                                        .setIsKitchen(true)
-//                                                        .setIsBalcony(true)
-//                                                        .setRoomCount(12)
-//                                                        .setCity("Hamburg")
-//                                                        .setStreet("Bundesstrasse")
-//                                                        .setStreetNo(42)
-//                                        )
-//                                        .setPerson(
-//                                                (new Person())
-//                                                        .setName("Person 1")
-//                                                        .setFirstName("Alex")
-//                                        )
-//                        ).setContract(
-//                        (new Contract())
-//                                .setContractNo(423452345)
-//                                .setDate(new Date())
-//                                .setPlace("Test place")
-//                ).setDuration(12)
-//                        .setAdditionalCost(12)
-//                        .setStartedAt(new Date())
-//        );
+
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+
+        ArrayList<Tenancy> collection = (ArrayList<Tenancy>) session
+                .createQuery("from Tenancy")
+                .list();
+
+        session.getTransaction().commit();
 
         return collection;
     }
 
+    /**
+     * @return
+     */
     public ArrayList<Person> getPersons() {
-        ArrayList<Person> collection = new ArrayList<Person>();
-//
-//        collection.add(
-//                (new Person())
-//                        .setName("Person 1")
-//        );
-//        collection.add(
-//                (new Person())
-//                        .setName("Person 2")
-//        );
-//        collection.add(
-//                (new Person())
-//                        .setName("Person 3")
-//        );
+
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+
+        ArrayList<Person> collection = (ArrayList<Person>) session
+                .createQuery("from Person")
+                .list();
+
+        session.getTransaction().commit();
 
         return collection;
     }
 
 
-//    public Estate getEstate(int id) {
-//        return null;
-//    }
-
+    /**
+     * @return
+     */
     public ArrayList<House> getHouses() {
 
-        ArrayList<House> collection = new ArrayList<House>();
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+
+        ArrayList<House> collection = (ArrayList<House>) session
+                .createQuery("from House")
+                .list();
+
+        session.getTransaction().commit();
 
         return collection;
     }
 
+    /**
+     * @return
+     */
     public ArrayList<Apartment> getApartments() {
 
-        ArrayList<Apartment> collection = new ArrayList<Apartment>();
-//
-//        collection.add(
-//                (new Apartment())
-//                        .setEstate(
-//                                (new Estate())
-//                                        .setCity("Hamburg")
-//                                        .setStreet("Grindelhoff")
-//                                        .setStreetNo(12)
-//                                        .setZip(24254)
-//                        )
-//                        .setIsBalcony(true)
-//                        .setIsKitchen(true)
-//                        .setFloor(4)
-//                        .setRent(700)
-//                        .setRoomCount(3)
-//        );
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+
+        ArrayList<Apartment> collection = (ArrayList<Apartment>) session
+                .createQuery("from Apartment")
+                .list();
+
+        session.getTransaction().commit();
 
         return collection;
     }
 
-    public ArrayList<Agent> getEstateAgents() {
+    /**
+     * @return
+     */
+    public ArrayList<Agent> getAgents() {
 
-        ArrayList<Agent> collection = new ArrayList<Agent>();
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
 
-        collection.add(
-                (new Agent())
-                        .setId(1)
-                        .setName("Test 1")
-        );
+        ArrayList<Agent> collection = (ArrayList<Agent>) session
+                .createQuery("from Agent")
+                .list();
 
-        collection.add(
-                (new Agent())
-                        .setId(2)
-                        .setName("Test 2")
-        );
+        session.getTransaction().commit();
 
         return collection;
     }
@@ -181,28 +144,76 @@ public class EntityManager {
     }
 
 
+    /**
+     * Create or update Agent object
+     *
+     * @param agent
+     */
     public void persist(Agent agent) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.save(agent);
+        session.merge(agent);
         session.getTransaction().commit();
     }
 
 
-    public void persist(House entity) {
+    /**
+     * Create or update House object
+     *
+     * @param house
+     */
+    public void persist(House house) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.merge(house);
+        session.getTransaction().commit();
     }
 
-    public void persist(Apartment entity) {
+    /**
+     * Create or update Apartment object
+     *
+     * @param apartment
+     */
+    public void persist(Apartment apartment) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.merge(apartment);
+        session.getTransaction().commit();
     }
 
-
-    public void persist(Purchase entity) {
-
+    /**
+     * Create or update Purchase object
+     *
+     * @param purchase
+     */
+    public void persist(Purchase purchase) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.merge(purchase);
+        session.getTransaction().commit();
     }
 
-    public void persist(Tenancy entity) {
+    /**
+     * Create or update Tenancty object
+     *
+     * @param tenancy
+     */
+    public void persist(Tenancy tenancy) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(tenancy);
+        session.getTransaction().commit();
     }
 
-    public void persist(Person entity) {
+    /**
+     * Create or update Person object
+     *
+     * @param person
+     */
+    public void persist(Person person) {
+        Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.save(person);
+        session.getTransaction().commit();
     }
 }

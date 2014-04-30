@@ -14,11 +14,11 @@
         <property name="square" type="string" column="square"/>
         <property name="price" type="float" column="price"/>
         <property name="floor_count" type="integer" column="floor_count"/>
-        <property name="is_garden" type="boolean" column="is_garden"/>
+        <property name="is_garden" type="integer" column="is_garden"/>
 
         <many-to-one name="agent" class="de.sensey.data.Agent" column="agent" not-null="true"/>
 
-        <set name="contract" table="sell">
+        <set name="contract" table="sell" inverse="false" lazy="true" fetch="select" cascade="all">
             <key column="house_id"/>
             <many-to-many column="purchase_id" class="de.sensey.data.Purchase"/>
         </set>

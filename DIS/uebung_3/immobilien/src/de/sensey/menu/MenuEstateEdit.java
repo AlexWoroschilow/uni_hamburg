@@ -1,5 +1,6 @@
 package de.sensey.menu;
 
+import de.sensey.data.Agent;
 import de.sensey.service.EntityManager;
 import de.sensey.FormUtil;
 import de.sensey.menu.item.MenuItem;
@@ -52,13 +53,15 @@ public class MenuEstateEdit extends Menu {
      */
     protected Object onEditHouse(House house) {
         (new EntityManager()).persist(
-                house.setCity(FormUtil.readString("City (" + house.getCity() + ")"))
+                house
+                        .setAgent((Agent) (new MenuChooseAgent("Choose agent (" + house.getAgent() + ")")).process())
+                        .setCity(FormUtil.readString("City (" + house.getCity() + ")"))
                         .setZip(FormUtil.readString("Zip (" + house.getZip() + ")"))
                         .setStreet(FormUtil.readString("Street (" + house.getStreet() + ")"))
                         .setStreet_no(FormUtil.readString("Street No (" + house.getStreet_no() + ")"))
                         .setFloor_count(FormUtil.readInt("Floors (" + house.getFloor_count() + ")"))
-                        .setPrice(FormUtil.readFloat("Price (" + house.getPrice() + ")"))
                         .setIs_garden(FormUtil.readInt("Has Garden (" + house.getIs_garden() + ")"))
+                        .setPrice(FormUtil.readFloat("Price (" + house.getPrice() + ")"))
         );
 
         return true;
@@ -71,15 +74,17 @@ public class MenuEstateEdit extends Menu {
     protected Object onEditApartment(Apartment apartment) {
 
         (new EntityManager()).persist(
-                apartment.setCity(FormUtil.readString("City (" + apartment.getCity() + ")"))
+                apartment
+                        .setAgent((Agent) (new MenuChooseAgent("Choose agent (" + apartment.getAgent() + ")")).process())
                         .setZip(FormUtil.readString("Zip (" + apartment.getZip() + ")"))
+                        .setCity(FormUtil.readString("City (" + apartment.getCity() + ")"))
                         .setStreet(FormUtil.readString("Street (" + apartment.getStreet() + ")"))
                         .setStreet_no(FormUtil.readString("Street No (" + apartment.getStreet_no() + ")"))
                         .setFloor(FormUtil.readInt("Floor (" + apartment.getFloor() + ")"))
                         .setRoom_count(FormUtil.readInt("Rooms (" + apartment.getRoom_count() + ")"))
+                        .setIs_balcony(FormUtil.readBoolean("Has Balcon (" + apartment.getIs_balcony() + ")") ? 1 : 0)
+                        .setIs_kitchen(FormUtil.readBoolean("Has Kitchen (" + apartment.getIs_kitchen() + ")") ? 1 : 0)
                         .setRent(FormUtil.readFloat("Rent (" + apartment.getRent() + ")"))
-                        .setIs_balcony(FormUtil.readBoolean("Has Balcon (" + apartment.getIs_balcony() + ")"))
-                        .setIs_kitchen(FormUtil.readBoolean("Has Kitchen (" + apartment.getIs_kitchen() + ")"))
         );
         return true;
     }

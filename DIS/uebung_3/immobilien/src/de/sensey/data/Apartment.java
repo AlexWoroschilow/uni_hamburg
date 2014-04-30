@@ -10,8 +10,8 @@ public class Apartment {
     private String square;
     private float rent;
     private int room_count;
-    private boolean is_balcony;
-    private boolean is_kitchen;
+    private int is_balcony;
+    private int is_kitchen;
     private Agent agent;
     private Tenancy contract;
 
@@ -19,16 +19,18 @@ public class Apartment {
         return contract;
     }
 
-    public void setContract(Tenancy contract) {
+    public Apartment setContract(Tenancy contract) {
         this.contract = contract;
+        return this;
     }
 
     public Agent getAgent() {
         return agent;
     }
 
-    public void setAgent(Agent agent) {
+    public Apartment setAgent(Agent agent) {
         this.agent = agent;
+        return this;
     }
 
     /**
@@ -178,7 +180,7 @@ public class Apartment {
     /**
      * @return
      */
-    public boolean getIs_balcony() {
+    public int getIs_balcony() {
         return this.is_balcony;
     }
 
@@ -186,7 +188,7 @@ public class Apartment {
      * @param isBalcony
      * @return
      */
-    public Apartment setIs_balcony(boolean isBalcony) {
+    public Apartment setIs_balcony(int isBalcony) {
         this.is_balcony = isBalcony;
         return this;
     }
@@ -194,7 +196,7 @@ public class Apartment {
     /**
      * @return
      */
-    public boolean getIs_kitchen() {
+    public int getIs_kitchen() {
         return this.is_kitchen;
     }
 
@@ -202,7 +204,7 @@ public class Apartment {
      * @param isKitchen
      * @return
      */
-    public Apartment setIs_kitchen(boolean isKitchen) {
+    public Apartment setIs_kitchen(int isKitchen) {
         this.is_kitchen = isKitchen;
         return this;
     }

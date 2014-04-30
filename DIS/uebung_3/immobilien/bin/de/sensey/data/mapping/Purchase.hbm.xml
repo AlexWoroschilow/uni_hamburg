@@ -15,7 +15,7 @@
 
         <many-to-one name="person" class="de.sensey.data.Person" column="person" not-null="true"/>
 
-        <set name="estate" table="sell">
+        <set name="estate" table="sell" inverse="true" lazy="true" fetch="select">
             <key column="purchase_id"/>
             <many-to-many column="house_id" class="de.sensey.data.House"/>
         </set>

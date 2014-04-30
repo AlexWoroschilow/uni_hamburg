@@ -13,7 +13,7 @@ public class MenuAgentDelete extends Menu {
 
     public MenuAgentDelete(String title) {
         super(title);
-        final ArrayList<Agent> collection = (new EntityManager()).getEstateAgents();
+        final ArrayList<Agent> collection = (new EntityManager()).getAgents();
         if (!collection.isEmpty()) {
             for (int i = 0; i < collection.size(); ++i) {
                 Agent agent = collection.get(i);

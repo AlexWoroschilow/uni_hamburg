@@ -14,8 +14,8 @@
         <property name="square" type="string" column="square"/>
         <property name="rent" type="float" column="rent"/>
         <property name="room_count" type="integer" column="room_count"/>
-        <property name="is_balcony" type="boolean" column="is_balcony"/>
-        <property name="is_kitchen" type="boolean" column="is_kitchen"/>
+        <property name="is_balcony" type="integer" column="is_balcony"/>
+        <property name="is_kitchen" type="integer" column="is_kitchen"/>
 
         <many-to-one name="agent" class="de.sensey.data.Agent" column="agent" not-null="true"/>
 

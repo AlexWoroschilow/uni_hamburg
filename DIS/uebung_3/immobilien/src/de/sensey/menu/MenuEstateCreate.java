@@ -1,5 +1,6 @@
 package de.sensey.menu;
 
+import de.sensey.data.Agent;
 import de.sensey.service.EntityManager;
 import de.sensey.FormUtil;
 import de.sensey.data.Apartment;
@@ -30,24 +31,37 @@ public class MenuEstateCreate extends Menu {
      */
     protected Object onCreateHouse(Object item) {
         (new EntityManager()).persist(
-                (new House()).setFloor_count(FormUtil.readInt("Floor count"))
+                (new House())
+                        .setAgent((Agent) (new MenuChooseAgent("Choose agent")).process())
+                        .setZip(FormUtil.readString("Zip"))
+                        .setCity(FormUtil.readString("City"))
+                        .setStreet(FormUtil.readString("Street"))
+                        .setStreet_no(FormUtil.readString("Street No"))
+                        .setSquare(FormUtil.readString("Square"))
+                        .setFloor_count(FormUtil.readInt("Floor count"))
+                        .setIs_garden(FormUtil.readBoolean("Has garden") ? 1 : 0)
                         .setPrice(FormUtil.readFloat("Price"))
-                        .setIs_garden(FormUtil.readInt("Has garden"))
         );
         return true;
     }
 
     /**
      * @param item
-     * @return
+     * @return0
      */
     protected Object onCreateApartment(Object item) {
         (new EntityManager()).persist(
                 (new Apartment()).setFloor(FormUtil.readInt("Floor"))
+                        .setAgent((Agent) (new MenuChooseAgent("Choose agent")).process())
+                        .setZip(FormUtil.readString("Zip"))
+                        .setCity(FormUtil.readString("City"))
+                        .setStreet(FormUtil.readString("Street"))
+                        .setStreet_no(FormUtil.readString("Street No"))
+                        .setSquare(FormUtil.readString("Square"))
                         .setRoom_count(FormUtil.readInt("Room count"))
+                        .setIs_balcony(FormUtil.readBoolean("Has balcon") ? 1 : 0)
+                        .setIs_kitchen(FormUtil.readBoolean("Has kitchen") ? 1 : 0)
                         .setRent(FormUtil.readFloat("Rent"))
-                        .setIs_balcony(FormUtil.readBoolean("Has balcon"))
-                        .setIs_kitchen(FormUtil.readBoolean("Has kitchen"))
         );
 
         return true;
