@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="de.sensey.data.House" table="House">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="zip" type="string" column="zip"/>
+        <property name="city" type="string" column="city"/>
+        <property name="street" type="string" column="street"/>
+        <property name="street_no" type="string" column="street_no"/>
+        <property name="square" type="string" column="square"/>
+        <property name="price" type="float" column="price"/>
+        <property name="floor_count" type="integer" column="floor_count"/>
+        <property name="is_garden" type="boolean" column="is_garden"/>
+
+        <many-to-one name="agent" class="de.sensey.data.Agent" column="agent" not-null="true"/>
+
+        <set name="contract" table="sell">
+            <key column="house_id"/>
+            <many-to-many column="purchase_id" class="de.sensey.data.Purchase"/>
+        </set>
+
+    </class>
+</hibernate-mapping>

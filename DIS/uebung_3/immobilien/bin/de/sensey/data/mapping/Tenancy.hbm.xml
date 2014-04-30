@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="de.sensey.data.Tenancy" table="Tenancy">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="contract_no" type="integer" column="contract_no"/>
+        <property name="date" type="date" column="name_last"/>
+        <property name="place" type="string" column="address"/>
+        <property name="start" type="date" column="start"/>
+        <property name="duration" type="integer" column="duration"/>
+        <property name="additional_costs" type="float" column="additional_costs"/>
+
+        <many-to-one name="person" class="de.sensey.data.Person" column="person" not-null="true"/>
+
+        <set name="estate" table="rent">
+            <key column="tenancy_id"/>
+            <many-to-many column="apartment_id" class="de.sensey.data.Apartment"/>
+        </set>
+
+    </class>
+</hibernate-mapping>

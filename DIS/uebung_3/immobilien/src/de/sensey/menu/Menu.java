@@ -1,4 +1,7 @@
-package de.dis2011;
+package de.sensey.menu;
+
+import de.sensey.menu.item.MenuItemInterface;
+import de.sensey.menu.item.MenuItem;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,12 +29,12 @@ import java.util.function.Function;
  * [3] Nach Hause gehen
  * --
  */
-public class Menu {
+public abstract class Menu {
     protected String title;
     protected ArrayList<String> labels = new ArrayList<String>();
     protected ArrayList<Integer> returnValues = new ArrayList<Integer>();
 
-    protected ArrayList<MenuInterface> items = new ArrayList<MenuInterface>();
+    protected ArrayList<MenuItemInterface> items = new ArrayList<MenuItemInterface>();
 
     /**
      * Konstruktor.
@@ -48,7 +51,7 @@ public class Menu {
         return this;
     }
 
-    public Menu addMenuItem(MenuInterface item) {
+    public Menu addMenuItem(MenuItemInterface item) {
         this.items.add(item);
         return this;
     }
@@ -63,7 +66,7 @@ public class Menu {
             System.out.println(this.title + ":");
 
             for (int i = 0; i < this.items.size(); ++i) {
-                MenuInterface item = this.items.get(i);
+                MenuItemInterface item = this.items.get(i);
                 item.setCode(i);
                 System.out.println("[" + i + "] " + item.toString());
             }
@@ -79,7 +82,7 @@ public class Menu {
             }
 
             for (int i = 0; i < this.items.size(); ++i) {
-                MenuInterface item = this.items.get(i);
+                MenuItemInterface item = this.items.get(i);
                 if (selection == item.getCode()) {
                     return item.getLambda().apply(item);
                 }
