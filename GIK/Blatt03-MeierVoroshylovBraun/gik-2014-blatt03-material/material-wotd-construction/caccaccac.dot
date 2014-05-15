@@ -1,0 +1,18 @@
+digraph suffixtree_caccaccacz {
+  root -> ac [label=ac];
+  ac -> accac [label=cac];
+  accac -> 1 [label=cacz];
+  accac -> 4 [label=z];
+  ac -> 7 [label=z];
+  root -> c [label=c];
+  c -> cac [label=ac];
+  cac -> caccac [label=cac];
+  caccac -> 0 [label=cacz];
+  caccac -> 3 [label=z];
+  cac -> 6 [label=z];
+  c -> ccac [label=cac];
+  ccac -> 2 [label=cacz];
+  ccac -> 5 [label=z];
+  c -> 8 [label=z];
+  root -> 9 [label=z];
+}

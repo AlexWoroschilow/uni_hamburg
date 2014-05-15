@@ -1,0 +1,16 @@
+ac
+  cac
+    cac$	1
+    $	4
+  $	7
+c
+  ac
+    cac
+      cac$	0
+      $	3
+    $	6
+  cac
+    cac$	2
+    $	5
+  $	8
+$	9

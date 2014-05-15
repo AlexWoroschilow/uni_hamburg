@@ -1,0 +1,9 @@
+digraph suffixtree_acacz {
+  root -> ac [label=ac];
+  ac -> 0 [label=acz];
+  ac -> 2 [label=z];
+  root -> c [label=c];
+  c -> 1 [label=acz];
+  c -> 3 [label=z];
+  root -> 4 [label=z];
+}
