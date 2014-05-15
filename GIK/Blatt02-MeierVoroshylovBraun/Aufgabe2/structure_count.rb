@@ -1,3 +1,14 @@
+#!/usr/bin/env ruby
+#
+# Genominformatik Uebungen - Blatt 2
+#
+# Aufgabe 2:
+#    Recurrentz um zu berechnen S(n) die Anzahl
+#   der potentiell moeglichen RNA-Sekundaerstrukturen
+#   einer Sequenz der Laenge n
+#
+# Gruppe: Voroshylov, Meier, Braun
+#
 def structure_count(i, j, l)
   c=0
   if i < j
