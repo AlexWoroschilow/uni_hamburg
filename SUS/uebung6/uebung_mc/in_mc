@@ -1,0 +1,5 @@
+0.8   density
+64    num_particles
+1.0   temperature
+10000 max_cycles
+1     averages_type(0=time_averages,1=instantaneous)
