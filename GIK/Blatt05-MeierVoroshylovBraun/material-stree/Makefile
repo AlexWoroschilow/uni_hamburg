@@ -1,0 +1,79 @@
+.PHONY: clean
+# set prefix GTDIR for libgenometools
+LD:=$(CC)
+GTDIR=/home/sensey/material-stree/genometools
+
+GT_INCLUDE:=-DWITHOUT_CAIRO -I${GTDIR}/src
+GT_CFLAGS:=-Wall -Werror -Wunused-parameter -g -Os -pipe ${GT_INCLUDE}
+CFLAGS=-O3
+LIBS=$(GTDIR)/lib/libgenometools.a -lpthread -lm
+
+STREE_MATCH_OBJ=gt_suffixtree.o\
+                stree-exact.o\
+                stree-approx.o\
+                stree-match-mn.o
+
+STREE_MINUNIQUE_MATCH_OBJ=gt_suffixtree.o\
+                          stree-minunique.o\
+                          stree-minunique-mn.o
+
+STREE_MUM_OBJ=gt_suffixtree.o\
+              stree-mum.o\
+              stree-mum-mn.o
+
+all:stree-match.x stree-minunique.x stree-mum.x
+
+test-match:stree-match.x
+	./download.sh 1
+	./check-match.sh Ecoli_K12.fna Ecoli_K12 patternfile 0
+
+test-approx-match:stree-match.x
+	./download.sh 1
+	./check-match.sh Ecoli_K12.fna Ecoli_K12 patternfile 1
+	./check-match.sh Ecoli_K12.fna Ecoli_K12 patternfile 2
+
+test-minunique:stree-minunique.x
+	./download.sh 1
+	./index.sh Ecoli_K12 Ecoli_K12.fna
+	env -i ./stree-minunique.x Ecoli_K12 2700 | diff - Ecoli_K12_MU_2700.csv
+
+test-mum:stree-mum.x
+	./download.sh 1 2
+	./index.sh Ecoli_K12_O127 Ecoli_K12.fna Ecoli_O127_H6.fna
+	env -i ./stree-mum.x Ecoli_K12_O127 400 | diff - Ecoli_K12_O127_MUM.csv
+
+test:test-match test-approx-match test-minunique test-mum
+
+# generic compilation rule which creates dependency file on the fly
+%.o: %.c
+	$(CC) -c $< -o $@ $(CFLAGS) $(GT_CFLAGS) -MT $@ -MMD -MP -MF $(@:.o=.d)
+
+stree-match.x:${STREE_MATCH_OBJ}
+	$(LD) -o $@ $(LDFLAGS) $(GT_LDFLAGS) $(STREE_MATCH_OBJ) $(LIBS)
+
+stree-minunique.x:${STREE_MINUNIQUE_MATCH_OBJ}
+	$(LD) -o $@ $(LDFLAGS) $(GT_LDFLAGS) $(STREE_MINUNIQUE_MATCH_OBJ) $(LIBS)
+
+stree-mum.x:${STREE_MUM_OBJ}
+	$(LD) -o $@ $(LDFLAGS) $(GT_LDFLAGS) $(STREE_MUM_OBJ) $(LIBS)
+
+genometools:
+	current=`pwd`
+	cd ${GTDIR} && rm -f LocalMakefile* && CC=${CC} scripts/skmake.rb && cd ${current}
+
+src_check:
+	${GTDIR}/scripts/src_check *.c
+
+patternfile:
+	mkvtree -db ${ECOLI1} -dna -tis -v -ois -indexname Ecoli_K12
+	vsubseqselect -minlength 15 -maxlength 20 -snum 100 Ecoli_K12 |\
+                grep -v '^#' | sed -e 's/^/>X/' | tr 'X' '\n' > $@
+	cleanpp.sh
+
+# read dependencies
+-include $(wildcard *.d)
+
+clean:
+	rm -f *.[odx]
+	rm -f *.des *.esq *.lcp *.llv *.md5 *.prj *.sds *.ssp *.suf
+	rm -f *.tis *.ois *.sti1 *.skp *.bwt *.bck *.al1
