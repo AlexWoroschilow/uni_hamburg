@@ -1,27 +1,27 @@
 ;
-;	File '1OMB_em.mdp' was generated
+;	File 'mdout.mdp' was generated
 ;	By user: onbekend (0)
 ;	On host: onbekend
-;	At date: Tue Jul 15 15:03:42 2014
+;	At date: Tue Jul 15 12:21:28 2014
 ;
 
 ; VARIOUS PREPROCESSING OPTIONS
-title                    = 
+title                    = Yo
 ; Preprocessor - specify a full path if necessary.
 cpp                      = /usr/bin/cpp
 include                  = 
 define                   = 
 
 ; RUN CONTROL PARAMETERS
-integrator               = steep
+integrator               = md
 ; Start time and timestep in ps
 tinit                    = 0
-dt                       = 0.001
-nsteps                   = 50000
+dt                       = 0.002
+nsteps                   = 250000
 ; For exact run continuation or redoing part of a run
 init_step                = 0
 ; mode for center of mass motion removal
-comm-mode                = Linear
+comm_mode                = angular
 ; number of steps for center of mass motion removal
 nstcomm                  = 1
 ; group(s) for center of mass motion removal
@@ -34,7 +34,7 @@ ld-seed                  = 1993
 
 ; ENERGY MINIMIZATION OPTIONS
 ; Force tolerance and initial step-size
-emtol                    = 20
+emtol                    = 10
 emstep                   = 0.01
 ; Max number of iterations in relax_shells
 niter                    = 20
@@ -46,14 +46,14 @@ nbfgscorr                = 10
 
 ; OUTPUT CONTROL OPTIONS
 ; Output frequency for coords (x), velocities (v) and forces (f)
-nstxout                  = 100
-nstvout                  = 100
+nstxout                  = 1000
+nstvout                  = 0
 nstfout                  = 0
 ; Checkpointing helps you continue after crashes
 nstcheckpoint            = 1000
 ; Output frequency for energies to log file and energy file
-nstlog                   = 100
-nstenergy                = 100
+nstlog                   = 200
+nstenergy                = 200
 ; Output frequency and precision for xtc file
 nstxtcout                = 0
 xtc-precision            = 1000
@@ -61,25 +61,25 @@ xtc-precision            = 1000
 ; select multiple groups. By default all atoms will be written.
 xtc-grps                 = 
 ; Selection of energy groups
-energygrps               = 
+energygrps               = Protein
 
 ; NEIGHBORSEARCHING PARAMETERS
 ; nblist update frequency
 nstlist                  = 10
 ; ns algorithm (simple or grid)
-nstype                   = simple
+ns_type                  = simple
 ; Periodic boundary conditions: xyz (default), no (vacuum)
 ; or full (infinite systems only)
 pbc                      = no
 ; nblist cut-off        
-rlist                    = 1
+rlist                    = 1.5
 domain-decomposition     = no
 
 ; OPTIONS FOR ELECTROSTATICS AND VDW
 ; Method for doing electrostatics
 coulombtype              = Cut-off
 rcoulomb-switch          = 0
-rcoulomb                 = 1.0
+rcoulomb                 = 1.5
 ; Relative dielectric constant for the medium and the reaction field
 epsilon_r                = 1
 epsilon_rf               = 1
@@ -87,7 +87,7 @@ epsilon_rf               = 1
 vdw-type                 = Cut-off
 ; cut-off lengths       
 rvdw-switch              = 0
-rvdw                     = 1.0
+rvdw                     = 1.5
 ; Apply long range dispersion corrections for Energy and Pressure
 DispCorr                 = No
 ; Extension of the potential lookup tables beyond the cut-off
@@ -123,14 +123,14 @@ implicit_solvent         = No
 
 ; OPTIONS FOR WEAK COUPLING ALGORITHMS
 ; Temperature coupling  
-Tcoupl                   = no
+Tcoupl                   = berendsen
 ; Groups to couple separately
-tc-grps                  = 
+tc_grps                  = Protein
 ; Time constant (ps) and reference temperature (K)
-tau-t                    = 
-ref-t                    = 
+tau_t                    = 0.1
+ref_t                    = 350
 ; Pressure coupling     
-Pcoupl                   = no
+Pcoupl                   = No
 Pcoupltype               = Isotropic
 ; Time constant (ps), compressibility (1/bar) and reference P (bar)
 tau-p                    = 1
@@ -179,11 +179,11 @@ annealing_temp           =
 
 ; GENERATE VELOCITIES FOR STARTUP RUN
 gen_vel                  = no
-gen-temp                 = 300
-gen-seed                 = 173529
+gen_temp                 = 300.0
+gen_seed                 = 173529
 
 ; OPTIONS FOR BONDS    
-constraints              = none
+constraints              = all-bonds
 ; Type of constraint algorithm
 constraint-algorithm     = Lincs
 ; Do not constrain the start configuration

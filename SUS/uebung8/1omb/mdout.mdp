@@ -2,7 +2,7 @@
 ;	File 'mdout.mdp' was generated
 ;	By user: onbekend (0)
 ;	On host: onbekend
-;	At date: Tue Jul 15 12:21:28 2014
+;	At date: Tue Jul 15 15:23:53 2014
 ;
 
 ; VARIOUS PREPROCESSING OPTIONS
@@ -128,7 +128,7 @@ Tcoupl                   = berendsen
 tc_grps                  = Protein
 ; Time constant (ps) and reference temperature (K)
 tau_t                    = 0.1
-ref_t                    = 350
+ref_t                    = 200
 ; Pressure coupling     
 Pcoupl                   = No
 Pcoupltype               = Isotropic

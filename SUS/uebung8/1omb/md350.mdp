@@ -1,0 +1,39 @@
+;
+;	User spoel (236)
+;	Wed Nov  3 17:12:44 1993
+;	Input file
+;
+title               =  Yo
+cpp                 =  /usr/bin/cpp
+constraints         =  all-bonds
+integrator          =  md
+dt                  =  0.002	; ps !
+;      Half a million steps will give us a nanosecond
+nsteps              =  250000
+;      Turn off periodic boundary conditions
+pbc                 =  no
+nstcomm             =  1
+nstxout             =  1000
+nstvout             =  0
+nstfout             =  0
+nstlog              =  200
+nstenergy           =  200
+nstlist             =  10
+ns_type             =  simple
+rlist               =  1.5
+rcoulomb            =  1.5
+rvdw                =  1.5
+; Berendsen temperature coupling
+Tcoupl              =  berendsen
+tc_grps             =  Protein
+tau_t               =  0.1
+ref_t               =  350
+; Remove centre of mass translation and rotation
+comm_mode           =  angular
+; Energy monitoring
+energygrps          =  Protein
+; Generate velocites at 300 K.
+gen_vel             =  no
+gen_temp            =  300.0
+gen_seed            =  173529
+
