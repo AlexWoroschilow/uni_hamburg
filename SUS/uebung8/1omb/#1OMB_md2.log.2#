@@ -1,0 +1,350 @@
+Log file opened on Tue Jul 15 12:20:47 2014
+Host: obersee  pid: 23634  nodeid: 0  nnodes:  1
+The Gromacs distribution was built Tue Jun 11 12:51:50 CEST 2013 by
+matthies@jena (Linux 3.4.33-2.24-desktop x86_64)
+
+
+                         :-)  G  R  O  M  A  C  S  (-:
+
+                               Grunge ROck MAChoS
+
+                            :-)  VERSION 3.3.4  (-:
+
+
+      Written by David van der Spoel, Erik Lindahl, Berk Hess, and others.
+       Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+             Copyright (c) 2001-2008, The GROMACS development team,
+            check out http://www.gromacs.org for more information.
+
+         This program is free software; you can redistribute it and/or
+          modify it under the terms of the GNU General Public License
+         as published by the Free Software Foundation; either version 2
+             of the License, or (at your option) any later version.
+
+                   :-)  /home/matthies/gromacs/bin/mdrun  (-:
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+D. van der Spoel, E. Lindahl, B. Hess, G. Groenhof, A. E. Mark and H. J. C.
+Berendsen
+GROMACS: Fast, Flexible and Free
+J. Comp. Chem. 26 (2005) pp. 1701-1719
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+E. Lindahl and B. Hess and D. van der Spoel
+GROMACS 3.0: A package for molecular simulation and trajectory analysis
+J. Mol. Mod. 7 (2001) pp. 306-317
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+H. J. C. Berendsen, D. van der Spoel and R. van Drunen
+GROMACS: A message-passing parallel molecular dynamics implementation
+Comp. Phys. Comm. 91 (1995) pp. 43-56
+-------- -------- --- Thank You --- -------- --------
+
+Input Parameters:
+   integrator           = md
+   nsteps               = 20
+   init_step            = 0
+   ns_type              = Simple
+   nstlist              = 10
+   ndelta               = 2
+   bDomDecomp           = FALSE
+   decomp_dir           = 0
+   nstcomm              = 1
+   comm_mode            = Angular
+   nstcheckpoint        = 1000
+   nstlog               = 200
+   nstxout              = 1000
+   nstvout              = 0
+   nstfout              = 0
+   nstenergy            = 200
+   nstxtcout            = 0
+   init_t               = 0
+   delta_t              = 0.002
+   xtcprec              = 1000
+   nkx                  = 0
+   nky                  = 0
+   nkz                  = 0
+   pme_order            = 4
+   ewald_rtol           = 1e-05
+   ewald_geometry       = 0
+   epsilon_surface      = 0
+   optimize_fft         = FALSE
+   ePBC                 = no
+   bUncStart            = FALSE
+   bShakeSOR            = FALSE
+   etc                  = Berendsen
+   epc                  = No
+   epctype              = Isotropic
+   tau_p                = 1
+   ref_p (3x3):
+      ref_p[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      ref_p[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      ref_p[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   compress (3x3):
+      compress[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      compress[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      compress[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   andersen_seed        = 815131
+   rlist                = 1.5
+   coulombtype          = Cut-off
+   rcoulomb_switch      = 0
+   rcoulomb             = 1.5
+   vdwtype              = Cut-off
+   rvdw_switch          = 0
+   rvdw                 = 1.5
+   epsilon_r            = 1
+   epsilon_rf           = 1
+   tabext               = 1
+   gb_algorithm         = Still
+   nstgbradii           = 1
+   rgbradii             = 2
+   gb_saltconc          = 0
+   implicit_solvent     = No
+   DispCorr             = No
+   fudgeQQ              = 1
+   free_energy          = no
+   init_lambda          = 0
+   sc_alpha             = 0
+   sc_power             = 0
+   sc_sigma             = 0.3
+   delta_lambda         = 0
+   disre_weighting      = Conservative
+   disre_mixed          = FALSE
+   dr_fc                = 1000
+   dr_tau               = 0
+   nstdisreout          = 100
+   orires_fc            = 0
+   orires_tau           = 0
+   nstorireout          = 100
+   dihre-fc             = 1000
+   dihre-tau            = 0
+   nstdihreout          = 100
+   em_stepsize          = 0.01
+   em_tol               = 10
+   niter                = 20
+   fc_stepsize          = 0
+   nstcgsteep           = 1000
+   nbfgscorr            = 10
+   ConstAlg             = Lincs
+   shake_tol            = 0.0001
+   lincs_order          = 4
+   lincs_warnangle      = 30
+   lincs_iter           = 1
+   bd_fric              = 0
+   ld_seed              = 1993
+   cos_accel            = 0
+   deform (3x3):
+      deform[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   userint1             = 0
+   userint2             = 0
+   userint3             = 0
+   userint4             = 0
+   userreal1            = 0
+   userreal2            = 0
+   userreal3            = 0
+   userreal4            = 0
+grpopts:
+   nrdf:	         648
+   ref_t:	         350
+   tau_t:	         0.1
+anneal:		          No
+ann_npoints:	           0
+   acc:	           0           0           0
+   nfreeze:           N           N           N
+   energygrp_flags[  0]: 0
+   efield-x:
+      n = 0
+   efield-xt:
+      n = 0
+   efield-y:
+      n = 0
+   efield-yt:
+      n = 0
+   efield-z:
+      n = 0
+   efield-zt:
+      n = 0
+   bQMMM                = FALSE
+   QMconstraints        = 0
+   QMMMscheme           = 0
+   scalefactor          = 1
+qm_opts:
+   ngQM                 = 0
+CPU=  0, lastcg=  140, targetcg=   70, myshift=    0
+nsb->shift =   1, nsb->bshift=  0
+Neighbor Search Blocks
+nsb->nodeid:         0
+nsb->nnodes:      1
+nsb->cgtotal:   141
+nsb->natoms:    331
+nsb->shift:       1
+nsb->bshift:      0
+Nodeid   index  homenr  cgload  workload
+     0       0     331     141       141
+
+Table routines are used for coulomb: FALSE
+Table routines are used for vdw:     FALSE
+Cut-off's:   NS: 1.5   Coulomb: 1.5   LJ: 1.5
+System total charge: 0.000
+Generated table with 500 data points for 1-4 COUL.
+Tabscale = 500 points/nm
+Generated table with 500 data points for 1-4 LJ6.
+Tabscale = 500 points/nm
+Generated table with 500 data points for 1-4 LJ12.
+Tabscale = 500 points/nm
+Center of mass motion removal mode is Angular
+We have the following groups for center of mass motion removal:
+  0:  rest, initial mass: 3798.4
+There are: 331 Atoms
+
+Constraining the starting coordinates (step -2)
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+H. J. C. Berendsen, J. P. M. Postma, A. DiNola and J. R. Haak
+Molecular dynamics with coupling to an external bath
+J. Chem. Phys. 81 (1984) pp. 3684-3690
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+B. Hess and H. Bekker and H. J. C. Berendsen and J. G. E. M. Fraaije
+LINCS: A Linear Constraint Solver for molecular simulations
+J. Comp. Chem. 18 (1997) pp. 1463-1472
+-------- -------- --- Thank You --- -------- --------
+
+
+Initializing LINear Constraint Solver
+  number of constraints is 339
+  average number of constraints coupled to one constraint is 2.9
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.000882     60     61   0.000307
+        After LINCS         0.000008    103    107   0.000002
+
+
+Constraining the coordinates at t0-dt (step -1)
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.000008    103    107   0.000002
+        After LINCS         0.000002     60     62   0.000000
+
+Started mdrun on node 0 Tue Jul 15 12:20:47 2014
+Initial temperature: 1.5225e-05 K
+           Step           Time         Lambda
+              0        0.00000        0.00000
+
+Configuring nonbonded kernels...
+Testing x86_64 SSE support... present.
+
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.022181    131    132   0.003268
+        After LINCS         0.000034     23     25   0.000009
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    3.90155e+02    3.28412e+02    1.46116e+02    1.03446e+02    3.46265e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -1.08607e+03   -4.71256e+03   -1.36785e+03    1.98462e+01   -1.34800e+03
+    Temperature Pressure (bar)
+    7.36707e+00    0.00000e+00
+
+           Step           Time         Lambda
+             20        0.04000        0.00000
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    3.47387e+02    2.45887e+02    1.09597e+02    8.88151e+01    3.46687e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -1.09281e+03   -4.71295e+03   -1.54720e+03    4.56583e+02   -1.09062e+03
+    Temperature Pressure (bar)
+    1.69488e+02    0.00000e+00
+
+	<======  ###############  ==>
+	<====  A V E R A G E S  ====>
+	<==  ###############  ======>
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    3.19918e+02    2.83805e+02    1.01780e+02    9.18409e+01    3.46729e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -1.09580e+03   -4.70993e+03   -1.54111e+03    3.39034e+02   -1.20208e+03
+    Temperature Pressure (bar)
+    1.25852e+02    0.00000e+00
+
+   Total Virial (kJ/mol)
+   -4.57172e+01    8.13913e+01    8.77005e+01
+    8.13915e+01    1.42167e+02    6.22812e+01
+    8.77005e+01    6.22820e+01    3.86847e+00
+
+   Pressure (bar)
+    0.00000e+00    0.00000e+00    0.00000e+00
+    0.00000e+00    0.00000e+00    0.00000e+00
+    0.00000e+00    0.00000e+00    0.00000e+00
+
+   Total Dipole (Debye)
+   -1.72604e+00   -2.56448e+00   -6.36388e+00
+
+	<======  ###############################  ==>
+	<====  R M S - F L U C T U A T I O N S  ====>
+	<==  ###############################  ======>
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    3.54192e+01    2.57118e+01    1.57499e+01    5.07667e+00    3.24342e+00
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+    5.05620e+00    2.43735e+00    5.67400e+01    1.15927e+02    7.51380e+01
+    Temperature Pressure (bar)
+    4.30331e+01    0.00000e+00
+
+   Total Virial (kJ/mol)
+    3.09528e+02    1.61632e+02    1.23233e+02
+    1.61633e+02    3.90562e+02    5.57942e+01
+    1.23233e+02    5.57944e+01    1.17785e+02
+
+   Pressure (bar)
+    0.00000e+00    0.00000e+00    0.00000e+00
+    0.00000e+00    0.00000e+00    0.00000e+00
+    0.00000e+00    0.00000e+00    0.00000e+00
+
+   Total Dipole (Debye)
+    8.90289e-01    1.75876e-01    7.31521e-01
+
+
+	M E G A - F L O P S   A C C O U N T I N G
+
+   RF=Reaction-Field  FE=Free Energy  SCFE=Soft-Core/Free Energy
+   T=Tabulated        W3=SPC/TIP3p    W4=TIP4p (single or pairs)
+   NF=No Forces
+
+ Computing:                        M-Number         M-Flops  % of Flops
+-----------------------------------------------------------------------
+ LJ                                0.378802       12.500466    37.3
+ Coulomb                           0.206293        5.569911    16.6
+ Coulomb + LJ                      0.218764        8.313032    24.8
+ Outer nonbonded loop              0.013629        0.136290     0.4
+ 1,4 nonbonded interactions        0.013020        1.171800     3.5
+ NS-Pairs                          0.030033        0.630693     1.9
+ CG-CoM                            0.000423        0.012267     0.0
+ Angles                            0.010353        1.687539     5.0
+ Propers                           0.004116        0.942564     2.8
+ Impropers                         0.003234        0.672672     2.0
+ Virial                            0.007896        0.142128     0.4
+ Update                            0.006951        0.215481     0.6
+ Stop-CM                           0.006620        0.066200     0.2
+ Calc-Ekin                         0.007282        0.196614     0.6
+ Lincs                             0.007797        0.467820     1.4
+ Lincs-Mat                         0.136068        0.544272     1.6
+ Constraint-V                      0.006951        0.041706     0.1
+ Constraint-Vir                    0.007797        0.187128     0.6
+-----------------------------------------------------------------------
+ Total                                            33.498583   100.0
+-----------------------------------------------------------------------
+
+Finished mdrun on node 0 Tue Jul 15 12:20:47 2014
