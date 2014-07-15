@@ -1,12 +1,12 @@
-Log file opened on Tue Jul 15 16:28:48 2014
-Host: obersee  pid: 7155  nodeid: 0  nnodes:  1
+Log file opened on Tue Jul 15 16:44:35 2014
+Host: obersee  pid: 7575  nodeid: 0  nnodes:  1
 The Gromacs distribution was built Tue Jun 11 12:51:50 CEST 2013 by
 matthies@jena (Linux 3.4.33-2.24-desktop x86_64)
 
 
                          :-)  G  R  O  M  A  C  S  (-:
 
-                               Grunge ROck MAChoS
+                       GRowing Old MAkes el Chrono Sweat
 
                             :-)  VERSION 3.3.4  (-:
 
@@ -234,7 +234,7 @@ Constraining the coordinates at t0-dt (step -1)
        Before LINCS         0.000008    103    107   0.000002
         After LINCS         0.000002     60     62   0.000000
 
-Started mdrun on node 0 Tue Jul 15 16:28:48 2014
+Started mdrun on node 0 Tue Jul 15 16:44:36 2014
 Initial temperature: 1.5225e-05 K
            Step           Time         Lambda
               0        0.00000        0.00000
@@ -19087,8 +19087,8 @@ Testing x86_64 SSE support... present.
 -----------------------------------------------------------------------
 
                NODE (s)   Real (s)      (%)
-       Time:    184.230    185.000     99.6
+       Time:    184.590    636.000     29.0
                        3:04
                (Mnbf/s)   (GFlops)   (ns/day)  (hour/ns)
-Performance:     47.593      2.001    234.490      0.102
-Finished mdrun on node 0 Tue Jul 15 16:31:53 2014
+Performance:     47.500      1.997    234.032      0.103
+Finished mdrun on node 0 Tue Jul 15 16:55:12 2014

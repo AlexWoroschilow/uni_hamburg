@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#!/bin/bash
+TEMPERATURE=$1
+STEP1="/home/matthies/gromacs/bin/grompp -c 1OMB_md1 -f md${TEMPERATURE}.mdp -p 1OMB -o 1OMB_md${TEMPERATURE}"
+STEP2="/home/matthies/gromacs/bin/mdrun -s 1OMB_md${TEMPERATURE} -o 1OMB_md${TEMPERATURE} -c 1OMB_md${TEMPERATURE}.pdb -e 1OMB_md${TEMPERATURE} -g 1OMB_md${TEMPERATURE}"
+echo "Run simulation with Temperature: ${TEMPERATURE}"
+echo "Step 1, prepare: ${TEMPERATURE}"
+${STEP1}
+echo "Step 2, siulation: ${TEMPERATURE}"
+${STEP2}
+echo "bye:-)"
+exit;
+
+
+
+

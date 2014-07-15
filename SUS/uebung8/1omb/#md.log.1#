@@ -1,0 +1,595 @@
+Log file opened on Tue Jul 15 11:46:45 2014
+Host: obersee  pid: 22906  nodeid: 0  nnodes:  1
+The Gromacs distribution was built Tue Jun 11 12:51:50 CEST 2013 by
+matthies@jena (Linux 3.4.33-2.24-desktop x86_64)
+
+
+                         :-)  G  R  O  M  A  C  S  (-:
+
+                       GRowing Old MAkes el Chrono Sweat
+
+                            :-)  VERSION 3.3.4  (-:
+
+
+      Written by David van der Spoel, Erik Lindahl, Berk Hess, and others.
+       Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+             Copyright (c) 2001-2008, The GROMACS development team,
+            check out http://www.gromacs.org for more information.
+
+         This program is free software; you can redistribute it and/or
+          modify it under the terms of the GNU General Public License
+         as published by the Free Software Foundation; either version 2
+             of the License, or (at your option) any later version.
+
+                   :-)  /home/matthies/gromacs/bin/mdrun  (-:
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+D. van der Spoel, E. Lindahl, B. Hess, G. Groenhof, A. E. Mark and H. J. C.
+Berendsen
+GROMACS: Fast, Flexible and Free
+J. Comp. Chem. 26 (2005) pp. 1701-1719
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+E. Lindahl and B. Hess and D. van der Spoel
+GROMACS 3.0: A package for molecular simulation and trajectory analysis
+J. Mol. Mod. 7 (2001) pp. 306-317
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+H. J. C. Berendsen, D. van der Spoel and R. van Drunen
+GROMACS: A message-passing parallel molecular dynamics implementation
+Comp. Phys. Comm. 91 (1995) pp. 43-56
+-------- -------- --- Thank You --- -------- --------
+
+Input Parameters:
+   integrator           = md
+   nsteps               = 10000
+   init_step            = 0
+   ns_type              = Simple
+   nstlist              = 10
+   ndelta               = 2
+   bDomDecomp           = FALSE
+   decomp_dir           = 0
+   nstcomm              = 1
+   comm_mode            = Angular
+   nstcheckpoint        = 1000
+   nstlog               = 100
+   nstxout              = 100
+   nstvout              = 0
+   nstfout              = 0
+   nstenergy            = 50
+   nstxtcout            = 0
+   init_t               = 0
+   delta_t              = 0.002
+   xtcprec              = 1000
+   nkx                  = 0
+   nky                  = 0
+   nkz                  = 0
+   pme_order            = 4
+   ewald_rtol           = 1e-05
+   ewald_geometry       = 0
+   epsilon_surface      = 0
+   optimize_fft         = FALSE
+   ePBC                 = no
+   bUncStart            = FALSE
+   bShakeSOR            = FALSE
+   etc                  = Berendsen
+   epc                  = No
+   epctype              = Isotropic
+   tau_p                = 1
+   ref_p (3x3):
+      ref_p[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      ref_p[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      ref_p[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   compress (3x3):
+      compress[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      compress[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      compress[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   andersen_seed        = 815131
+   rlist                = 1.5
+   coulombtype          = Cut-off
+   rcoulomb_switch      = 0
+   rcoulomb             = 1.5
+   vdwtype              = Cut-off
+   rvdw_switch          = 0
+   rvdw                 = 1.5
+   epsilon_r            = 1
+   epsilon_rf           = 1
+   tabext               = 1
+   gb_algorithm         = Still
+   nstgbradii           = 1
+   rgbradii             = 2
+   gb_saltconc          = 0
+   implicit_solvent     = No
+   DispCorr             = No
+   fudgeQQ              = 1
+   free_energy          = no
+   init_lambda          = 0
+   sc_alpha             = 0
+   sc_power             = 0
+   sc_sigma             = 0.3
+   delta_lambda         = 0
+   disre_weighting      = Conservative
+   disre_mixed          = FALSE
+   dr_fc                = 1000
+   dr_tau               = 0
+   nstdisreout          = 100
+   orires_fc            = 0
+   orires_tau           = 0
+   nstorireout          = 100
+   dihre-fc             = 1000
+   dihre-tau            = 0
+   nstdihreout          = 100
+   em_stepsize          = 0.01
+   em_tol               = 10
+   niter                = 20
+   fc_stepsize          = 0
+   nstcgsteep           = 1000
+   nbfgscorr            = 10
+   ConstAlg             = Lincs
+   shake_tol            = 0.0001
+   lincs_order          = 4
+   lincs_warnangle      = 30
+   lincs_iter           = 1
+   bd_fric              = 0
+   ld_seed              = 1993
+   cos_accel            = 0
+   deform (3x3):
+      deform[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   userint1             = 0
+   userint2             = 0
+   userint3             = 0
+   userint4             = 0
+   userreal1            = 0
+   userreal2            = 0
+   userreal3            = 0
+   userreal4            = 0
+grpopts:
+   nrdf:	         648
+   ref_t:	         250
+   tau_t:	         0.1
+anneal:		          No
+ann_npoints:	           0
+   acc:	           0           0           0
+   nfreeze:           N           N           N
+   energygrp_flags[  0]: 0
+   efield-x:
+      n = 0
+   efield-xt:
+      n = 0
+   efield-y:
+      n = 0
+   efield-yt:
+      n = 0
+   efield-z:
+      n = 0
+   efield-zt:
+      n = 0
+   bQMMM                = FALSE
+   QMconstraints        = 0
+   QMMMscheme           = 0
+   scalefactor          = 1
+qm_opts:
+   ngQM                 = 0
+CPU=  0, lastcg=  140, targetcg=   70, myshift=    0
+nsb->shift =   1, nsb->bshift=  0
+Neighbor Search Blocks
+nsb->nodeid:         0
+nsb->nnodes:      1
+nsb->cgtotal:   141
+nsb->natoms:    331
+nsb->shift:       1
+nsb->bshift:      0
+Nodeid   index  homenr  cgload  workload
+     0       0     331     141       141
+
+Table routines are used for coulomb: FALSE
+Table routines are used for vdw:     FALSE
+Cut-off's:   NS: 1.5   Coulomb: 1.5   LJ: 1.5
+System total charge: 0.000
+Generated table with 500 data points for 1-4 COUL.
+Tabscale = 500 points/nm
+Generated table with 500 data points for 1-4 LJ6.
+Tabscale = 500 points/nm
+Generated table with 500 data points for 1-4 LJ12.
+Tabscale = 500 points/nm
+Center of mass motion removal mode is Angular
+We have the following groups for center of mass motion removal:
+  0:  rest, initial mass: 3798.4
+There are: 331 Atoms
+
+Constraining the starting coordinates (step -2)
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+H. J. C. Berendsen, J. P. M. Postma, A. DiNola and J. R. Haak
+Molecular dynamics with coupling to an external bath
+J. Chem. Phys. 81 (1984) pp. 3684-3690
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+B. Hess and H. Bekker and H. J. C. Berendsen and J. G. E. M. Fraaije
+LINCS: A Linear Constraint Solver for molecular simulations
+J. Comp. Chem. 18 (1997) pp. 1463-1472
+-------- -------- --- Thank You --- -------- --------
+
+
+Initializing LINear Constraint Solver
+  number of constraints is 339
+  average number of constraints coupled to one constraint is 2.9
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.012484    171    175   0.004274
+        After LINCS         0.000391    100    103   0.000111
+
+
+Constraining the coordinates at t0-dt (step -1)
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.080211    109    110   0.017871
+        After LINCS         0.000120    200    202   0.000030
+
+Started mdrun on node 0 Tue Jul 15 11:46:45 2014
+Initial temperature: 294.72 K
+           Step           Time         Lambda
+              0        0.00000        0.00000
+
+Configuring nonbonded kernels...
+Testing x86_64 SSE support... present.
+
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.020575    298    299   0.002491
+        After LINCS         0.000127    103    107   0.000033
+
+Group rest with mass  3.79840e+03, Ekrot  4.71856e+00 Det(I) =  8.10004e+08
+  COM:     -0.16020      -2.38495      -0.41787
+  P:        0.00119      -0.02213      -0.00126
+  V:        0.00000      -0.00001      -0.00000
+  J:       88.86646     113.13280      34.01564
+  w:        0.04677       0.04096       0.01901
+Inertia tensor (3x3):
+   Inertia tensor[    0]={ 1.36450e+03, -2.93683e+02,  4.83672e+02}
+   Inertia tensor[    1]={-2.93683e+02,  9.25961e+02, -3.19902e+02}
+   Inertia tensor[    2]={ 4.83672e+02, -3.19902e+02,  9.13486e+02}
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    1.60514e+02    2.33547e+02    5.07966e+01    8.77845e+01    3.49488e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -8.22455e+02   -4.58031e+03   -1.37524e+03    7.92539e+02   -5.82705e+02
+    Temperature Pressure (bar)
+    2.94198e+02    0.00000e+00
+
+           Step           Time         Lambda
+            100        0.20000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.023827    298    299   0.002851
+        After LINCS         0.000078    322    324   0.000021
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.28023e+02    2.77021e+02    1.25947e+02    8.57472e+01    3.48312e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -8.18778e+02   -4.63085e+03   -1.04977e+03    6.40585e+02   -4.09184e+02
+    Temperature Pressure (bar)
+    2.37791e+02    0.00000e+00
+
+           Step           Time         Lambda
+            200        0.40000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.018764    319    320   0.002744
+        After LINCS         0.000083    255    257   0.000020
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.02918e+02    3.12121e+02    1.23728e+02    1.06234e+02    3.53000e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -8.49438e+02   -4.65460e+03   -1.02905e+03    6.51738e+02   -3.77308e+02
+    Temperature Pressure (bar)
+    2.41931e+02    0.00000e+00
+
+           Step           Time         Lambda
+            300        0.60000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.030822    319    320   0.003200
+        After LINCS         0.000068    100    103   0.000017
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.20170e+02    3.58264e+02    1.29407e+02    1.16217e+02    3.50255e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -8.84426e+02   -4.70963e+03   -1.06745e+03    6.99469e+02   -3.67979e+02
+    Temperature Pressure (bar)
+    2.59649e+02    0.00000e+00
+
+           Step           Time         Lambda
+            400        0.80000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.014910    319    320   0.002478
+        After LINCS         0.000059    100    103   0.000015
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.76280e+02    3.49952e+02    1.33297e+02    8.67088e+01    3.50725e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.17785e+02   -4.65406e+03   -1.01836e+03    6.24027e+02   -3.94335e+02
+    Temperature Pressure (bar)
+    2.31644e+02    0.00000e+00
+
+           Step           Time         Lambda
+            500        1.00000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.013413     19     20   0.002747
+        After LINCS         0.000083    103    107   0.000020
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.44112e+02    3.29169e+02    1.21567e+02    9.64120e+01    3.50501e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.28456e+02   -4.65625e+03   -1.08843e+03    6.80860e+02   -4.07574e+02
+    Temperature Pressure (bar)
+    2.52741e+02    0.00000e+00
+
+           Step           Time         Lambda
+            600        1.20000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.014821    319    320   0.002686
+        After LINCS         0.000044    322    324   0.000015
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    3.47584e+02    3.09296e+02    1.31781e+02    1.16849e+02    3.53058e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.36640e+02   -4.67117e+03   -1.17172e+03    7.18514e+02   -4.53206e+02
+    Temperature Pressure (bar)
+    2.66719e+02    0.00000e+00
+
+           Step           Time         Lambda
+            700        1.40000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.014143    275    276   0.002912
+        After LINCS         0.000047    200    202   0.000014
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.27480e+02    2.95238e+02    1.32170e+02    1.08006e+02    3.50647e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -8.91293e+02   -4.69883e+03   -1.12075e+03    6.54247e+02   -4.66504e+02
+    Temperature Pressure (bar)
+    2.42862e+02    0.00000e+00
+
+           Step           Time         Lambda
+            800        1.60000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.013649    275    276   0.002848
+        After LINCS         0.000071    255    257   0.000019
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    3.85828e+02    3.02695e+02    1.14941e+02    1.10199e+02    3.49947e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -8.99005e+02   -4.67691e+03   -1.16278e+03    6.93847e+02   -4.68930e+02
+    Temperature Pressure (bar)
+    2.57562e+02    0.00000e+00
+
+           Step           Time         Lambda
+            900        1.80000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.012890    240    241   0.002502
+        After LINCS         0.000060    103    107   0.000017
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.43982e+02    3.11604e+02    1.49260e+02    1.01978e+02    3.50333e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.11502e+02   -4.66165e+03   -1.06300e+03    6.34131e+02   -4.28865e+02
+    Temperature Pressure (bar)
+    2.35395e+02    0.00000e+00
+
+           Step           Time         Lambda
+           1000        2.00000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.024147    131    132   0.003010
+        After LINCS         0.000060    322    324   0.000020
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.25551e+02    3.09367e+02    1.25036e+02    1.12803e+02    3.50695e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -8.99194e+02   -4.70359e+03   -1.12308e+03    6.76703e+02   -4.46378e+02
+    Temperature Pressure (bar)
+    2.51198e+02    0.00000e+00
+
+           Step           Time         Lambda
+           1100        2.20000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.038364    131    132   0.003674
+        After LINCS         0.000093    322    324   0.000018
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.25316e+02    3.16001e+02    1.22103e+02    1.01948e+02    3.46898e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -8.77634e+02   -4.70617e+03   -1.14946e+03    6.81818e+02   -4.67639e+02
+    Temperature Pressure (bar)
+    2.53097e+02    0.00000e+00
+
+           Step           Time         Lambda
+           1200        2.40000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.041566    131    132   0.003537
+        After LINCS         0.000058    158    161   0.000018
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.74279e+02    2.57665e+02    1.10591e+02    1.07225e+02    3.48504e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -8.91236e+02   -4.66604e+03   -1.12247e+03    6.37895e+02   -4.84577e+02
+    Temperature Pressure (bar)
+    2.36792e+02    0.00000e+00
+
+           Step           Time         Lambda
+           1300        2.60000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.035359    131    132   0.003426
+        After LINCS         0.000070    100    103   0.000018
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.41403e+02    2.78915e+02    1.31729e+02    1.05646e+02    3.45395e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.17714e+02   -4.64721e+03   -1.15327e+03    6.83501e+02   -4.69770e+02
+    Temperature Pressure (bar)
+    2.53722e+02    0.00000e+00
+
+           Step           Time         Lambda
+           1400        2.80000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.031061    131    132   0.003138
+        After LINCS         0.000047    158    161   0.000014
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.22128e+02    2.90655e+02    1.24990e+02    1.09884e+02    3.47341e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.58871e+02   -4.66313e+03   -1.20093e+03    6.95851e+02   -5.05075e+02
+    Temperature Pressure (bar)
+    2.58306e+02    0.00000e+00
+
+           Step           Time         Lambda
+           1500        3.00000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.029134    131    132   0.003237
+        After LINCS         0.000057    322    324   0.000017
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.26207e+02    3.28734e+02    1.05575e+02    9.56802e+01    3.50974e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.62049e+02   -4.68719e+03   -1.18330e+03    6.72235e+02   -5.11067e+02
+    Temperature Pressure (bar)
+    2.49539e+02    0.00000e+00
+
+           Step           Time         Lambda
+           1600        3.20000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.031612    131    132   0.003407
+        After LINCS         0.000048    103    107   0.000014
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.20339e+02    3.28742e+02    1.06603e+02    1.29431e+02    3.43831e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.70815e+02   -4.65202e+03   -1.19942e+03    6.62194e+02   -5.37226e+02
+    Temperature Pressure (bar)
+    2.45812e+02    0.00000e+00
+
+           Step           Time         Lambda
+           1700        3.40000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.028935    131    132   0.003289
+        After LINCS         0.000061    322    324   0.000016
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.86043e+02    2.75087e+02    1.06880e+02    1.15197e+02    3.50748e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -1.00712e+03   -4.67722e+03   -1.19366e+03    6.56685e+02   -5.36971e+02
+    Temperature Pressure (bar)
+    2.43767e+02    0.00000e+00
+
+           Step           Time         Lambda
+           1800        3.60000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.015786    131    132   0.002694
+        After LINCS         0.000056    322    324   0.000016
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.66147e+02    2.65461e+02    1.28563e+02    1.24394e+02    3.44564e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.99560e+02   -4.60883e+03   -1.17819e+03    6.54412e+02   -5.23775e+02
+    Temperature Pressure (bar)
+    2.42923e+02    0.00000e+00
+
+           Step           Time         Lambda
+           1900        3.80000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.020035    319    320   0.003000
+        After LINCS         0.000067    322    324   0.000020
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.40143e+02    3.13219e+02    1.21624e+02    8.06079e+01    3.50730e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.68551e+02   -4.70484e+03   -1.21050e+03    6.64159e+02   -5.46338e+02
+    Temperature Pressure (bar)
+    2.46542e+02    0.00000e+00
+
+           Step           Time         Lambda
+           2000        4.00000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.016631    244    245   0.002944
+        After LINCS         0.000072    322    324   0.000017
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.64268e+02    2.96445e+02    1.38421e+02    7.94254e+01    3.49939e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.69358e+02   -4.70386e+03   -1.19527e+03    6.74824e+02   -5.20443e+02
+    Temperature Pressure (bar)
+    2.50500e+02    0.00000e+00
+
+           Step           Time         Lambda
+           2100        4.20000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.014548    131    132   0.002620
+        After LINCS         0.000061    200    202   0.000019
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.40361e+02    3.01929e+02    1.21931e+02    8.98191e+01    3.45263e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -9.65957e+02   -4.66293e+03   -1.22221e+03    6.96317e+02   -5.25893e+02
+    Temperature Pressure (bar)
+    2.58479e+02    0.00000e+00
+
+           Step           Time         Lambda
+           2200        4.40000        0.00000
+
+   Rel. Constraint Deviation:  Max    between atoms     RMS
+       Before LINCS         0.017675    319    320   0.002627
+        After LINCS         0.000057    322    324   0.000020
+
+   Energies (kJ/mol)
+       G96Angle    Proper Dih.  Improper Dih.          LJ-14     Coulomb-14
+    4.35220e+02    3.04659e+02    1.15366e+02    9.40962e+01    3.50248e+03
+        LJ (SR)   Coulomb (SR)      Potential    Kinetic En.   Total Energy
+   -1.04071e+03   -4.64989e+03   -1.23878e+03    6.91656e+02   -5.47123e+02
+    Temperature

@@ -128,7 +128,7 @@ Tcoupl                   = berendsen
 tc_grps                  = Protein
 ; Time constant (ps) and reference temperature (K)
 tau_t                    = 0.1
-ref_t                    = 600
+ref_t                    = 400
 ; Pressure coupling     
 Pcoupl                   = No
 Pcoupltype               = Isotropic
