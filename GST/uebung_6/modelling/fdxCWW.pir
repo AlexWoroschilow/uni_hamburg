@@ -1,0 +1,30 @@
+>P1;1fxd
+structure:1fxd:FIRST:@:58:@:.:.:.:.
+---PIEVNDDCMACEACVEICPDVFEMNEEGDKAVVIN--------PDSDLDCVEEAIDS
+CPAEAIVRS------------
+*
+>P1;1fdn
+structure:1fdn:FIRST:@:55:@:.:.:.:.
+---AYVINEACISCGACEPECP--VNAISSGDDRYVID--------ADTCIDCGACAG-V
+CPVDAPVQA------------
+*
+>P1;ferodoxM
+sequence:1fdx:1: :55: :ferredoxin:Peptococcus aerogenes: 2.00:-1.00
+---AYVINDSCIACGACKPECP--VNIIQEG-SIYAID--------ADSCIDCGSCAS-V
+CPVGAPNPED-----------
+*
+>P1;1clf
+structure:1clf:FIRST:@:55   :@:.:.:.:.
+---AYKIADSCVSCGACASECP--VNAISQGDSIFVID--------ADTCIDCGNCAN-V
+CPVGAPVQE------------
+*
+>P1;1fca
+structure:1fca:FIRST:@:55   :@:.:.:.:.
+---AYVINEACISCGACEPECP--VDAISQGGSRYVID--------ADTCIDCGACAG-V
+CPVDAPVQA------------
+*
+>P1;2fxb
+structure:2fxb:FIRST:@:81   :@:.:.:.:.
+PKYTIVDKETCIACGACGAAAPDIYDYDEDGIAYVTLDDNQGIVEVPDILIDDMMDAFEG
+CPTDSIKVADEPFDGDPNKFE
+*
